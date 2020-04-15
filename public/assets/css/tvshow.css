@@ -1,0 +1,31 @@
+.container.tvshow{
+    padding: 0;
+}
+
+header{
+    background-color: #FFB400;
+    padding-top: 20px;
+    height: 100vh;
+}
+
+.row.title-header{
+    text-align: center;
+}
+
+.row.rating-header{
+    text-align: center;
+}
+
+.buzzer{
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (min-width: 640px) {
+    header{
+        height: 100%;
+    }
+    .watched {
+        text-align: right;
+    }
+}
