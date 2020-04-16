@@ -1,0 +1,49 @@
+{% extends 'tvshowlayout.html.twig' %}
+
+
+
+{% block img_header %}{{ tvshow.img }}{% endblock %}
+{% block alt_img %}{{ tvshow.title }}{% endblock %}
+{% block serietitle %}{{ tvshow.title }}{% endblock %}
+{% block rating_season %}1,345 buzz{% endblock %}
+{% block synopsis %}{{ tvshow.synopsis }}{% endblock %}
+{% block genre %}{{ tvshow.genre }}{% endblock %}
+{% block year %}{{ tvshow.year }}{% endblock %}
+{% block friends_watched %}Lucas, Jeff and François have watched it{% endblock %}
+{% block watched %}Watched{% endblock %}
+{% block next_episode %}S03E03{% endblock %}
+{% block on_air %}On air : 23/04/2020{% endblock %}
+{% block buzz %}BUZZ{% endblock %}
+{% block tvshowlayoutcontent %}
+        <main>
+            <div class="row">
+                <div class="col-10 offset-1">Distribution</div>
+            </div>
+            <div class="row">
+                <div class="col-1"><</div>
+                <div class="col-10 distribution">
+                    <div class="card" style="width: 10rem;" >
+                        <img src="https://image.tmdb.org/t/p/w138_and_h175_face/dWmzryckjVXOVoIVa3in1Cg6v4r.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Evan Rachel Wood</h5>
+                            <p class="card-text">Dolores Abernathy</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 10rem;">
+                        <img src="https://image.tmdb.org/t/p/w138_and_h175_face/byGtD0HVMgWFSluh1UlwB0qMhh7.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 10rem;">
+                        <img src="https://image.tmdb.org/t/p/w138_and_h175_face/npJjOiFiAP4wiRDNjKsO8ho03Mg.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+{% endblock %}

@@ -1,0 +1,73 @@
+﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+-- Link to schema: https://app.quickdatabasediagrams.com/#/d/vGD8bt
+-- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
+
+
+CREATE TABLE `USER` (
+    `ID_USER` Int  NOT NULL ,
+    PRIMARY KEY (
+        `ID_USER`
+    )
+);
+
+CREATE TABLE `BUZZ` (
+    `ID_USER` Int  NOT NULL ,
+    `API_ID_TVSHOW` Int  NOT NULL ,
+    PRIMARY KEY (
+        `ID_USER`,`API_ID_TVSHOW`
+    )
+);
+
+CREATE TABLE `TVSHOW` (
+    `API_ID_TVSHOW` Int  NOT NULL ,
+    `Title` VARCHAR(255)  NOT NULL ,
+    `Genre` VARCHAR(255)  NOT NULL ,
+    PRIMARY KEY (
+        `API_ID_TVSHOW`
+    )
+);
+
+CREATE TABLE `SEASON` (
+    `API_ID_SEASON` Int  NOT NULL ,
+    `API_ID_TVSHOW` Int  NOT NULL ,
+    `NbEpisodes` Int  NOT NULL ,
+    PRIMARY KEY (
+        `API_ID_SEASON`
+    )
+);
+
+CREATE TABLE `EPISODE` (
+    `API_ID_EPISODE` Int  NOT NULL ,
+    `API_ID_SEASON` Int  NOT NULL ,
+    `Title` VARCHAR(255)  NOT NULL ,
+    PRIMARY KEY (
+        `API_ID_EPISODE`
+    )
+);
+
+CREATE TABLE `SEEN` (
+    `ID_USER` Int  NOT NULL ,
+    `API_ID_EPISODE` Int  NOT NULL ,
+    PRIMARY KEY (
+        `ID_USER`,`API_ID_EPISODE`
+    )
+);
+
+ALTER TABLE `BUZZ` ADD CONSTRAINT `fk_BUZZ_ID_USER` FOREIGN KEY(`ID_USER`)
+REFERENCES `USER` (`ID_USER`);
+
+ALTER TABLE `BUZZ` ADD CONSTRAINT `fk_BUZZ_API_ID_TVSHOW` FOREIGN KEY(`API_ID_TVSHOW`)
+REFERENCES `TVSHOW` (id);
+
+ALTER TABLE `SEASON` ADD CONSTRAINT `fk_SEASON_API_ID_TVSHOW` FOREIGN KEY(`API_ID_TVSHOW`)
+REFERENCES `TVSHOW` (id);
+
+ALTER TABLE `EPISODE` ADD CONSTRAINT `fk_EPISODE_API_ID_SEASON` FOREIGN KEY(`API_ID_SEASON`)
+REFERENCES `SEASON` (`API_ID_SEASON`);
+
+ALTER TABLE `SEEN` ADD CONSTRAINT `fk_SEEN_ID_USER` FOREIGN KEY(`ID_USER`)
+REFERENCES `USER` (`ID_USER`);
+
+ALTER TABLE `SEEN` ADD CONSTRAINT `fk_SEEN_API_ID_EPISODE` FOREIGN KEY(`API_ID_EPISODE`)
+REFERENCES `EPISODE` (`API_ID_EPISODE`);
+
