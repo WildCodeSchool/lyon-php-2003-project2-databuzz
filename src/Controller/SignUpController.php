@@ -3,7 +3,6 @@
 
 namespace App\Controller;
 
-
 class SignUpController extends AbstractController
 {
 
