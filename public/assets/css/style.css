@@ -1,4 +1,5 @@
-.navbar, .navbar-expand-lg {
+/*///////////////////////   CSS NAVBAR   /////////////////////////*/
+.navbar {
 
     position: sticky;
     top: 0;
@@ -41,3 +42,4 @@
 .navbar-toggler {
     margin-left: auto;
 }
+/*//////////////////////    END CSS NAVBAR      //////////////////////*/
