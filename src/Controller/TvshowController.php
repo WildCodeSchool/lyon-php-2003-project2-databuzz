@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Model\TvshowManager;
+
 class TvshowController extends AbstractController
 {
 
@@ -22,5 +24,22 @@ class TvshowController extends AbstractController
     public function index()
     {
         return $this->twig->render('Tvshow/tvshow.html.twig');
+    }
+
+    /**
+     * Display item informations specified by $id
+     *
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function show(int $id)
+    {
+        $tvshow = new TvshowManager();
+        $tvshow = $tvshow->selectOneById($id);
+
+        return $this->twig->render('Tvshow/tvshow.html.twig', ['tvshow' => $tvshow]);
     }
 }
