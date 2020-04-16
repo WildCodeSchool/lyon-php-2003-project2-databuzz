@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Sign up page{% endblock %}
+
+{# TODO Delete before merging because it will be in layout file #}
+    {% block stylesheet %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+    {% endblock %}
+
+
+{% block content %}
+    {# Form to sign up #}
+    <form class="container" action="" method="POST">
+        <div class="form-group col-10 offset-1">
+            <label for="inputFirstname">Firstname</label>
+            <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp">
+        </div>
+        <div class="form-group col-10 offset-1">
+            <label for="inputLastname">Lastname</label>
+            <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp">
+        </div>
+        <div class="form-group col-10 offset-1">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group col-10 offset-1">
+            <label for="inputPassword1">Password</label>
+            <input type="password" class="form-control" id="inputPassword1">
+        </div>
+        <div class="form-group col-10 offset-1">
+            <label for="inputPassword2">Confirm Password</label>
+            <input type="password" class="form-control" id="inputPassword2">
+        </div>
+        <button type="submit" class="btn btn-primary col-4 offset-4">Submit</button>
+    </form>
+{% endblock %}
