@@ -6,3 +6,50 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+/*///////////////////////   CSS NAVBAR   /////////////////////////*/
+.navbar {
+
+    position: sticky;
+    top: 0;
+
+}
+
+.navbar-expand-lg, .navbar-brand {
+    background-color:#204051;
+    color: #FFB400;
+}
+
+.navbar .custom-toggler .navbar-toggler-icon {
+    background-image: url(
+    "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 180, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar .custom-toggler.navbar-toggler {
+    border-color: RGBA(255, 180, 0, 0.6);
+}
+
+.navbar-nav .nav-link {
+    color: #FFB400;
+    margin-right: 20px;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #FFB400;
+    text-shadow: 0 0 5px #FFB400;
+}
+
+.navbar .custom-toggler.navbar-toggler:hover {
+    box-shadow: 0 0 5px #FFB400;
+}
+
+.navbar-nav {
+    float: right;
+    margin-left: auto;
+}
+
+.navbar-toggler {
+    margin-left: auto;
+}
+/*//////////////////////    END CSS NAVBAR      //////////////////////*/
+
