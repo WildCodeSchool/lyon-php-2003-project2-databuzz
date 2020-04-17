@@ -3,7 +3,6 @@
 
 namespace App\Model;
 
-
 class SignUpManager extends AbstractManager
 {
     /**
@@ -18,5 +17,4 @@ class SignUpManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-
 }
