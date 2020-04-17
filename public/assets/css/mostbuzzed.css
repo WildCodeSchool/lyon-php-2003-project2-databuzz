@@ -1,12 +1,8 @@
 /***********************  F O R   A L L   V E R S I O N  ***************************/
-.card {
+.mostbuzzedcard{
     margin: 15px 5% 15px 5%;
     border: rgb(255,180,0)  solid 1px;
 
-}
-
-.mostbuzzed-medium-view .row {
-    border: rgb(255,180,0)  solid 1px;
 }
 
 /***********************  M O B I L E   F I R S T   :   V U E   M O B I L E   P O R T R A I T  ***************************/
