@@ -26,8 +26,13 @@
                 <div class="col-4 watched">{% block watched %}{% endblock %}</div>
             </div>
             <div class="row justify-content-around buzz-episodes-informations-header">
-                <div class="col-4 buzzer"><div>{% block buzz %}{% endblock %}</div></div>
-                <div class="col-4 watched"><div>{% block next_episode %}{% endblock %}</div><div>{% block on_air %}{% endblock %}</div></div>
+                <div class="col-4 buzzer">
+                    <div>{% block buzz %}{% endblock %}</div>
+                </div>
+                <div class="col-4 watched">
+                    <div>{% block next_episode %}{% endblock %}</div>
+                    <div>{% block on_air %}{% endblock %}</div>
+                </div>
             </div>
         </header>
         {% block tvshowlayoutcontent %}{% endblock %}
