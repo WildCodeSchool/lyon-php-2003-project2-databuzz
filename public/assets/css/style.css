@@ -1,5 +1,12 @@
 @import "tvshow.css";
 
+.home_page_visitor_image {
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /*///////////////////////   CSS NAVBAR   /////////////////////////*/
 .navbar {
 
@@ -45,6 +52,4 @@
     margin-left: auto;
 }
 /*//////////////////////    END CSS NAVBAR      //////////////////////*/
-
-
 
