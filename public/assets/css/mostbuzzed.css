@@ -1,0 +1,41 @@
+/***********************  F O R   A L L   V E R S I O N  ***************************/
+.card {
+    margin: 15px 5% 15px 5%;
+    border: rgb(255,180,0)  solid 1px;
+
+}
+
+.mostbuzzed-medium-view .row {
+    border: rgb(255,180,0)  solid 1px;
+}
+
+/***********************  M O B I L E   F I R S T   :   V U E   M O B I L E   P O R T R A I T  ***************************/
+@media screen and (max-width: 470px) {
+    .mostbuzzed-medium-view {
+        display: none;
+    }
+
+    .mostbuzzed-large-view {
+        display: none;
+    }
+}
+
+
+/*******  M E D I A   Q U E R I E S   :   V U E   M O B I L E   P A Y S A G E  -  T A B L E T T E   P O R T R A I T *****/
+@media screen and (min-width: 470px) {
+    .mostbuzzed-small-view {
+        display: none;
+    }
+    .mostbuzzed-large-view {
+        display: none;
+    }
+}
+/*******  M E D I A   Q U E R I E S   :   V U E   T A B L E T T E   P A Y S A G E  -  D E S K T O P *****/
+@media screen and (min-width: 960px) {
+    .mostbuzzed-medium-view {
+        display: none;
+    }
+    .mostbuzzed-large-view {
+        display: initial;
+    }
+}
