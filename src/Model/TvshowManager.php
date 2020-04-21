@@ -26,10 +26,15 @@ class TvshowManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+
     public function getGenre(int $id)
     {
         // prepared request
-        $statement = $this->pdo->prepare("SELECT genre.name FROM $this->table, genre JOIN genre_tvshow gt on genre.id = gt.genre_id WHERE $this->table.id = :id;");
+        $statement = $this->pdo->prepare("
+            SELECT genre.name FROM $this->table, genre 
+            JOIN genre_tvshow gt on genre.id = gt.genre_id 
+            WHERE $this->table.id = :id;
+            ");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
