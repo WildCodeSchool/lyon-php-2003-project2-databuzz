@@ -39,7 +39,9 @@ class TvshowController extends AbstractController
     {
         $tvshow = new TvshowManager();
         $tvshow = $tvshow->selectOneById($id);
+        $genre = new TvshowManager();
+        $genre = $genre->getGenre($id);
 
-        return $this->twig->render('Tvshow/tvshow.html.twig', ['tvshow' => $tvshow]);
+        return $this->twig->render('Tvshow/tvshow.html.twig', ['tvshow' => $tvshow, 'genres' => $genre]);
     }
 }

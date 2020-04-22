@@ -18,16 +18,21 @@
                 <div class="col-10 offset-1">{% block synopsis %}{% endblock %}</div>
             </div>
             <div class="row informations-header">
-                <div class="col-2 offset-1">{% block genre %}{% endblock %}</div>
-                <div class="col-2">{% block year %}{% endblock %}</div>
+                <div class="col-3 offset-1">{% block genre %}{% endblock %}</div>
+                <div class="col-1">{% block year %}{% endblock %}</div>
             </div>
             <div class="row watched-header">
                 <div class="col-6 offset-1">{% block friends_watched %}{% endblock %}</div>
                 <div class="col-4 watched">{% block watched %}{% endblock %}</div>
             </div>
             <div class="row justify-content-around buzz-episodes-informations-header">
-                <div class="col-4 buzzer"><div>{% block buzz %}{% endblock %}</div></div>
-                <div class="col-4 watched"><div>{% block next_episode %}{% endblock %}</div><div>{% block on_air %}{% endblock %}</div></div>
+                <div class="col-4 buzzer">
+                    <div>{% block buzz %}{% endblock %}</div>
+                </div>
+                <div class="col-4 watched">
+                    <div>{% block next_episode %}{% endblock %}</div>
+                    <div>{% block on_air %}{% endblock %}</div>
+                </div>
             </div>
         </header>
         {% block tvshowlayoutcontent %}{% endblock %}
