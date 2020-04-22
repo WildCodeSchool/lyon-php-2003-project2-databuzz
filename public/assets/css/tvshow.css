@@ -21,9 +21,16 @@ header{
     align-items: center;
 }
 
-.distribution{
+.actors{
     display: flex;
     flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.card{
+    width: 12rem;
+    height: 22rem;
 }
 
 @media screen and (min-width: 640px) {

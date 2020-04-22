@@ -1,7 +1,5 @@
 {% extends 'tvshowlayout.html.twig' %}
 
-
-
 {% block img_header %}{{ tvshow.img }}{% endblock %}
 {% block alt_img %}{{ tvshow.title }}{% endblock %}
 {% block serietitle %}{{ tvshow.title }}{% endblock %}
@@ -15,35 +13,25 @@
 {% block on_air %}On air : 23/04/2020{% endblock %}
 {% block buzz %}BUZZ{% endblock %}
 {% block tvshowlayoutcontent %}
-        <main>
-            <div class="row">
-                <div class="col-10 offset-1">Distribution</div>
+    <main>
+        <div class="row">
+            <div class="col-10">Distribution</div>
+        </div>
+        <div class="row">
+            <div class="col-12 actors">
+                {% for actor in actors %}
+                    <div class="col-6 col-sm-2">
+                        <div class="card">
+                            <img src="https://image.tmdb.org/t/p/w138_and_h175_face/{{ actor.profile_path }}"
+                                 class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ actor.name }}</h5>
+                                <p class="card-text">{{ actor.character }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-            <div class="row">
-                <div class="col-1"><</div>
-                <div class="col-10 distribution">
-                    <div class="card" style="width: 10rem;" >
-                        <img src="https://image.tmdb.org/t/p/w138_and_h175_face/dWmzryckjVXOVoIVa3in1Cg6v4r.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Evan Rachel Wood</h5>
-                            <p class="card-text">Dolores Abernathy</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 10rem;">
-                        <img src="https://image.tmdb.org/t/p/w138_and_h175_face/byGtD0HVMgWFSluh1UlwB0qMhh7.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 10rem;">
-                        <img src="https://image.tmdb.org/t/p/w138_and_h175_face/npJjOiFiAP4wiRDNjKsO8ho03Mg.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+        </div>
+    </main>
 {% endblock %}

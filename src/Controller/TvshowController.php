@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\TvshowManager;
+use App\Service\API\APITvShowManager;
 
 class TvshowController extends AbstractController
 {
@@ -41,7 +42,9 @@ class TvshowController extends AbstractController
         $tvshow = $tvshow->selectOneById($id);
         $genre = new TvshowManager();
         $genre = $genre->getGenre($id);
+        $api = new APITvShowManager();
+        $actors = $api->getActors($id);
 
-        return $this->twig->render('Tvshow/tvshow.html.twig', ['tvshow' => $tvshow, 'genres' => $genre]);
+        return $this->twig->render('Tvshow/tvshow.html.twig', ['tvshow' => $tvshow, 'genres' => $genre, 'actors'=>$actors]);
     }
 }

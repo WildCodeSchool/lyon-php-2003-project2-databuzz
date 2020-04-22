@@ -18,3 +18,4 @@ define('APP_VIEW_PATH', __DIR__ . '/../src/View/');
 define('APP_CACHE_PATH', __DIR__ . '/../temp/cache/');
 
 define('HOME_PAGE', 'home/index');
+define('API_KEY', 'a0a009ff86cb1d07abc222f39334f4fa');
