@@ -27,12 +27,21 @@ class SignUpController extends AbstractController
 
             // Validate each input after another and store the errors or the cleaned input in an array
             foreach ($_POST as $type => $input) {
-                if (!$formValidator->validateInput($input)) {
-                    $errors[$type] = $formValidator->getErrors();
-                } else {
-                    $cleanedInput[$type] = $formValidator->getCleanedInput();
+                switch ($type) {
+                    case 'email':
+                        if (!$formValidator->validateInput($input, ['required' => true, 'maxLength' => 320])) {
+                            $errors[$type] = $formValidator->getErrors();
+                        }
+                        break;
+                    default:
+                        if (!$formValidator->validateInput($input)) {
+                            $errors[$type] = $formValidator->getErrors();
+                        }
+                        break;
                 }
+                $cleanedInput[$type] = $formValidator->getCleanedInput();
             }
+
 
             // Check if both passwords are matching, if not, add error to array
             if (!$formValidator->matchingPasswords($_POST['password'], $_POST['password2'])) {
@@ -58,7 +67,7 @@ class SignUpController extends AbstractController
                     );
                 }
             }
+            return $this->twig->render('SignUp/signup.html.twig', ['errors' => $errors, 'inputs' => $_POST]);
         }
-        return $this->twig->render('SignUp/signup.html.twig', ['errors' => $errors, 'inputs' => $_POST]);
     }
 }
