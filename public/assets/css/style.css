@@ -1,1 +1,6 @@
 @import "tvshow.css";
+
+/****************** SIGN UP FORM STYLING ******************/
+.text-error {
+    color: red;
+}
