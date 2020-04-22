@@ -3,7 +3,6 @@
 
 namespace App\Service\API;
 
-
 class APITvShowManager extends APIAbstractManager
 {
     const RESOURCE = "tv/";
@@ -13,7 +12,8 @@ class APITvShowManager extends APIAbstractManager
         parent::__construct(self::RESOURCE);
     }
 
-    public function getActors($id){
+    public function getActors($id)
+    {
         $response = $this->client->request('GET', $this->baseUrl . $id. '/credits' . $this->apiKey);
         $credits = $response->toArray();
         return $credits['cast'];

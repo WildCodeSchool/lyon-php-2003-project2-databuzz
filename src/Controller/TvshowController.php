@@ -45,6 +45,9 @@ class TvshowController extends AbstractController
         $api = new APITvShowManager();
         $actors = $api->getActors($id);
 
-        return $this->twig->render('Tvshow/tvshow.html.twig', ['tvshow' => $tvshow, 'genres' => $genre, 'actors'=>$actors]);
+        return $this->twig->render(
+            'Tvshow/tvshow.html.twig',
+            ['tvshow' => $tvshow, 'genres' => $genre, 'actors'=>$actors]
+        );
     }
 }
