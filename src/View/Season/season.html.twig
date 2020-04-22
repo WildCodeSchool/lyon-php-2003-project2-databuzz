@@ -4,6 +4,21 @@
 {# TODO Replace fixed text by info from API "Season X of tvshowname" #}
 {% block title %}Season 6{% endblock %}
 
+{# Essai de placement des blocks season #}
+{% block img_header %}{{ tvshow.img }}{% endblock %}
+{% block alt_img %}{{ tvshow.title }}{% endblock %}
+{#{% block serietitle %}{{ tvshow.title }}{% endblock %}#}
+{% block rating_season %}1,345 buzz{% endblock %}
+{% block synopsis %}{{ tvshow.synopsis }}{% endblock %}
+{% block genre %}{{ tvshow.genre }}{% endblock %}
+{% block year %}{{ tvshow.year }}{% endblock %}
+{% block friends_watched %}Lucas, Jeff and François have watched it{% endblock %}
+{% block watched %}Watched{% endblock %}
+{% block next_episode %}S03E03{% endblock %}
+{% block on_air %}On air : 23/04/2020{% endblock %}
+{% block buzz %}BUZZ{% endblock %}
+{# Fin éssai #}
+
 {% block serietitle %}Comedians in Cars{% endblock %}
 {% block tvshowlayoutcontent %}
 
