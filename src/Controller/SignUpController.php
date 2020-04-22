@@ -24,7 +24,8 @@ class SignUpController extends AbstractController
 
         if (!empty($_POST)) {
             $formValidator = new FormValidator();
-            var_dump($_POST);
+
+            // Validate each input after another and store the errors or the cleaned input in an array
             foreach ($_POST as $type => $input) {
                 if (!$formValidator->validateInput($input)) {
                     $errors[$type] = $formValidator->getErrors();
@@ -33,6 +34,7 @@ class SignUpController extends AbstractController
                 }
             }
 
+            // Check if both passwords are matching, if not, add error to array
             if (!$formValidator->matchingPasswords($_POST['password'], $_POST['password2'])) {
                 $errors['password2'] = $formValidator->getErrors();
             }

@@ -21,30 +21,12 @@ class FormValidator
         $cleanedInput = trim($input);
         $this->cleanedInput = $cleanedInput;
 
-        // foreach on $input : test each form entries
-
         if ($constraints['required'] === true &&  !$cleanedInput) {
             $errors = "This field cannot be empty";
         } elseif (strlen($input) > $constraints['maxLength']) {
             $errors = "This field cannot be more than " . $constraints['maxLength'] . " characters";
         }
 
-        /*
-        foreach ($constraints as $constraint => $value) {
-            switch ($constraint) {
-                case "required":
-                    if ($value === true && !$cleanedInput) {
-                        $errors = "This field cannot be empty";
-                    }
-                    break;
-                case "maxLength":
-                    if (strlen($input) > $value) {
-                        $errors = "This field cannot be more than $value characters";
-                    }
-                    break;
-            }
-        }
-        */
         $this->errors = $errors;
 
         if (empty($errors)) {
