@@ -41,33 +41,34 @@ class TvshowManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function buzzTvShow (int $showId, int $userId){
+    public function buzzTvShow(int $showId, int $userId)
+    {
         $statement = $this->pdo->prepare("INSERT INTO buzz VALUES (:userid,:showid);");
-        $statement->bindValue('userid', $userId,\PDO::PARAM_INT);
-        $statement->bindValue('showid', $showId,\PDO::PARAM_INT);
+        $statement->bindValue('userid', $userId, \PDO::PARAM_INT);
+        $statement->bindValue('showid', $showId, \PDO::PARAM_INT);
         $statement->execute();
     }
 
-    public function unbuzzTvShow (int $showId, int $userId){
+    public function unbuzzTvShow(int $showId, int $userId)
+    {
         $statement = $this->pdo->prepare("DELETE FROM buzz WHERE user_id=:userid AND tvshow_id=:showid;");
-        $statement->bindValue('userid', $userId,\PDO::PARAM_INT);
-        $statement->bindValue('showid', $showId,\PDO::PARAM_INT);
+        $statement->bindValue('userid', $userId, \PDO::PARAM_INT);
+        $statement->bindValue('showid', $showId, \PDO::PARAM_INT);
         $statement->execute();
     }
 
-    public function isBuzzed(int $showId, int $userId){
+    public function isBuzzed(int $showId, int $userId)
+    {
         $statement = $this->pdo->prepare("SELECT * FROM buzz WHERE user_id=:userId AND tvshow_id=:showId;");
-        $statement->bindValue('userId', $userId,\PDO::PARAM_INT);
-        $statement->bindValue('showId', $showId,\PDO::PARAM_INT);
+        $statement->bindValue('userId', $userId, \PDO::PARAM_INT);
+        $statement->bindValue('showId', $showId, \PDO::PARAM_INT);
         $statement->execute();
-        $result=$statement->fetch();
+        $result = $statement->fetch();
 
-        if($result){
+        if ($result) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
-
-
 }

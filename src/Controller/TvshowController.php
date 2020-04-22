@@ -38,20 +38,23 @@ class TvshowController extends AbstractController
         $genres = $tvshowManager->getGenres($id);
         $isBuzzed = $tvshowManager->isBuzzed($id, 1);
 
-        return $this->twig->render('Tvshow/tvshow.html.twig', ['tvshow' => $tvshow, 'genres' => $genres, 'buzzed'=>$isBuzzed]);
+        return $this->twig->render(
+            'Tvshow/tvshow.html.twig',
+            ['tvshow' => $tvshow, 'genres' => $genres, 'buzzed' => $isBuzzed]
+        );
     }
 
     public function buzz(int $showid, int $userid)
     {
         $tvshowManager = new TvshowManager();
         $tvshowManager->buzzTvShow($showid, $userid);
-        header('Location: /tvshow/show/'.$showid);
+        header('Location: /tvshow/show/' . $showid);
     }
 
     public function unbuzz(int $showid, int $userid)
     {
         $tvshowManager = new TvshowManager();
         $tvshowManager->unbuzzTvShow($showid, $userid);
-        header('Location: /tvshow/show/'.$showid);
+        header('Location: /tvshow/show/' . $showid);
     }
 }
