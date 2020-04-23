@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\TvshowManager;
+use App\Model\GenreManager;
 
 class TvshowController extends AbstractController
 {
@@ -39,8 +40,8 @@ class TvshowController extends AbstractController
     {
         $tvshow = new TvshowManager();
         $tvshow = $tvshow->selectOneById($id);
-        $genre = new TvshowManager();
-        $genre = $genre->getGenre($id);
+        $genresManager = new genreManager();
+        $genre = $genresManager->getGenreByShow($id);
 
         return $this->twig->render('Tvshow/tvshow.html.twig', ['tvshow' => $tvshow, 'genres' => $genre]);
     }
