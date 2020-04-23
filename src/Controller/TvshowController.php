@@ -40,10 +40,11 @@ class TvshowController extends AbstractController
         $isBuzzed = $tvshowManager->isBuzzed($id, 1);
         $api = new APITvShowManager();
         $actors = $api->getActors($id);
+        $seasons = $api->getSeasons($id);
 
         return $this->twig->render(
             'Tvshow/tvshow.html.twig',
-            ['tvshow' => $tvshow, 'genres' => $genres, 'buzzed' => $isBuzzed, 'actors'=>$actors]
+            ['tvshow' => $tvshow, 'genres' => $genres, 'buzzed' => $isBuzzed, 'actors'=>$actors, 'seasons'=>$seasons]
         );
     }
 

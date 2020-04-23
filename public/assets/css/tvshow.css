@@ -33,6 +33,14 @@ header{
     height: 22rem;
 }
 
+.season-block{
+    background-color: #FFB400;
+    display: flex;
+    align-items: center;
+    margin : 0.5rem;
+    color: black;
+}
+
 @media screen and (min-width: 640px) {
     header{
         height: 100%;
