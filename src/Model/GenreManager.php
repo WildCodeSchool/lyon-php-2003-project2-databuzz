@@ -5,7 +5,7 @@ namespace App\Model;
 class GenreManager extends AbstractManager
 {
     /**
-     *      La constante TABLE est ici inutile?
+     *
      */
     const TABLE = 'genre';
 
@@ -21,7 +21,7 @@ class GenreManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("
-            SELECT name FROM genre 
+            SELECT name FROM $this->table
             JOIN genre_tvshow AS gts on genre.id = gts.genre_id 
             WHERE gts.tvshow_id = :id;
             ");
@@ -34,7 +34,7 @@ class GenreManager extends AbstractManager
     public function getGenreBySeason(int $id)
     {
         $statement = $this->pdo->prepare("
-            SELECT name FROM genre 
+            SELECT name FROM $this->table 
             JOIN genre_tvshow AS gts ON genre.id = gts.genre_id
             JOIN season ON season.tvshow_id = gts.tvshow_id
             WHERE season.id = :id;

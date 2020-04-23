@@ -7,7 +7,6 @@ use App\Model\GenreManager;
 
 class SeasonController extends AbstractController
 {
-
     /**
      * Display Season Page
      *
@@ -36,20 +35,13 @@ class SeasonController extends AbstractController
                 impressed with Colbert’s beard and the manly way he pretends to smoke a pipe.",
             ]
         ];
-        $season = new SeasonManager();
-        $season = $season->selectOneById($id);
-        $tvshow = new SeasonManager();
-        $tvshow = $tvshow->getShowBySeason($id);
+        $seasonManager = new SeasonManager();
+        $season = $seasonManager->selectOneById($id);
+        $tvshow = $seasonManager->getShowBySeason($id);
         $genre = new GenreManager();
         $genre = $genre->getGenreBySeason($id);
 
         return $this->twig->render('Season/season.html.twig', ['season' => $season,
             'genre' => $genre, 'episodes' => $episodes, 'tvshow' => $tvshow]);
     }
-/*
-    public function show(int $id)
-    {
-
-    }
-*/
 }
