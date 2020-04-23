@@ -22,13 +22,13 @@ class GenreManager extends AbstractManager
         // prepared request
         $statement = $this->pdo->prepare("
             SELECT name FROM $this->table
-            JOIN genre_tvshow AS gts on genre.id = gts.genre_id 
+            JOIN genre_tvshow AS gts ON genre.id = gts.genre_id 
             WHERE gts.tvshow_id = :id;
             ");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetch();
+        return $statement->fetchAll();
     }
 
     public function getGenreBySeason(int $id)
@@ -42,6 +42,6 @@ class GenreManager extends AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetch();
+        return $statement->fetchAll();
     }
 }

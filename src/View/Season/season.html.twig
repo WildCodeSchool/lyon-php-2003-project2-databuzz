@@ -6,7 +6,7 @@
 {#       COMMENT : the "rating_season block matches 2 possible types of content; either the rating for the tvshow pqahge or the seasontitle for the season page       #}
 {% block rating_season %}Season {{season.season_number}}{% endblock %}
 {% block synopsis %}{{ season.synopsis }}{% endblock %}
-{% block genre %}Genre : {{ genre.name }}{% endblock %}
+{% block genre %}Genre : {% for genre in genres %}{{ genre.name }}  {% endfor %}{% endblock %}
 {% block year %}Year {{ season.year }}{% endblock %}
 {% block friends_watched %}Lucas, Jeff and François have watched it{% endblock %}
 {% block watched %}Watched or not ?{% endblock %}
