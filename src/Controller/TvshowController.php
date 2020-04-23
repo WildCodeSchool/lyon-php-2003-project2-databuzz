@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\TvshowManager;
+use App\Model\GenreManager;
 use App\Service\API\APITvShowManager;
 
 class TvshowController extends AbstractController
@@ -36,7 +37,8 @@ class TvshowController extends AbstractController
     {
         $tvshowManager = new TvshowManager();
         $tvshow = $tvshowManager->selectOneById($id);
-        $genres = $tvshowManager->getGenres($id);
+        $genresManager = new genreManager();
+        $genres = $genresManager->getGenreByShow($id);
         $isBuzzed = $tvshowManager->isBuzzed($id, 1);
         $api = new APITvShowManager();
         $actors = $api->getActors($id);
