@@ -43,7 +43,7 @@ class TvshowController extends AbstractController
 
         return $this->twig->render(
             'Tvshow/tvshow.html.twig',
-            ['tvshow' => $tvshow, 'genres' => $genre, 'actors'=>$actors]
+            ['tvshow' => $tvshow, 'genres' => $genres, 'actors'=>$actors]
         );
     }
 
