@@ -7,7 +7,7 @@ class HomePageVisitorController extends AbstractController
 {
 
     /**
-     * Display SignUp page
+     * Display User page
      *
      * @return string
      * @throws \Twig\Error\LoaderError
