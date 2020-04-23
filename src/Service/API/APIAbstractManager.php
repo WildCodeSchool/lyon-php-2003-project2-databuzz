@@ -3,7 +3,7 @@
 
 namespace App\Service\API;
 
-use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpClient\HttpClient; /* Appel de la classe HTTP Client de Symfony */
 
 class APIAbstractManager
 {
