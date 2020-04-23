@@ -11,7 +11,13 @@
 {% block watched %}Watched{% endblock %}
 {% block next_episode %}S03E03{% endblock %}
 {% block on_air %}On air : 23/04/2020{% endblock %}
-{% block buzz %}BUZZ{% endblock %}
+{% block buzz %}
+    {% if buzzed == 0 %}
+    <a href="/tvshow/buzz/{{ tvshow.id }}/1">BUZZ</a>
+    {% else %}
+    <a href="/tvshow/unbuzz/{{ tvshow.id }}/1">UNBUZZ</a>
+    {% endif %}
+{% endblock %}
 {% block tvshowlayoutcontent %}
     <main>
         <div class="row">
@@ -29,6 +35,7 @@
                                 <p class="card-text">{{ actor.character }}</p>
                             </div>
                         </div>
+
                     </div>
                 {% endfor %}
             </div>
