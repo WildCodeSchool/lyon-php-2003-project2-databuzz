@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use App\Model\TvshowManager;
 use App\Model\GenreManager;
+use App\Service\API\APITvShowManager;
 
 class TvshowController extends AbstractController
 {
@@ -22,10 +23,6 @@ class TvshowController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
-    {
-        return $this->twig->render('Tvshow/tvshow.html.twig');
-    }
 
     /**
      * Display item informations specified by $id
@@ -38,11 +35,31 @@ class TvshowController extends AbstractController
      */
     public function show(int $id)
     {
-        $tvshow = new TvshowManager();
-        $tvshow = $tvshow->selectOneById($id);
+        $tvshowManager = new TvshowManager();
+        $tvshow = $tvshowManager->selectOneById($id);
         $genresManager = new genreManager();
         $genre = $genresManager->getGenreByShow($id);
+        $isBuzzed = $tvshowManager->isBuzzed($id, 1);
+        $api = new APITvShowManager();
+        $actors = $api->getActors($id);
 
-        return $this->twig->render('Tvshow/tvshow.html.twig', ['tvshow' => $tvshow, 'genres' => $genre]);
+        return $this->twig->render(
+            'Tvshow/tvshow.html.twig',
+            ['tvshow' => $tvshow, 'genres' => $genres, 'buzzed' => $isBuzzed, 'actors'=>$actors]
+        );
+    }
+
+    public function buzz(int $showid, int $userid)
+    {
+        $tvshowManager = new TvshowManager();
+        $tvshowManager->buzzTvShow($showid, $userid);
+        header('Location: /tvshow/show/' . $showid);
+    }
+
+    public function unbuzz(int $showid, int $userid)
+    {
+        $tvshowManager = new TvshowManager();
+        $tvshowManager->unbuzzTvShow($showid, $userid);
+        header('Location: /tvshow/show/' . $showid);
     }
 }
