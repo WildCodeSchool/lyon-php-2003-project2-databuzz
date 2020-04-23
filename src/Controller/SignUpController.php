@@ -69,7 +69,7 @@ class SignUpController extends AbstractController
                     );
                 }
             }
-            return $this->twig->render('SignUp/signup.html.twig', ['errors' => $errors, 'inputs' => $_POST]);
         }
+        return $this->twig->render('SignUp/signup.html.twig', ['errors' => $errors, 'inputs' => $_POST]);
     }
 }
