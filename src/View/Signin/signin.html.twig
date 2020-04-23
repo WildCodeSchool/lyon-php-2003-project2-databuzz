@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Sign in page{% endblock %}
+
+{% block content %}
+    <form class="container" action="" method="POST">
+        <div class="form-group col-10 offset-1">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="{{ inputs.email }}">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small class="form-text text-error">
+                {{ errors.email }}
+            </small>
+        </div>
+        <div class="form-group col-10 offset-1">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+            <small class="form-text text-error">
+                {{ errors.password }}
+            </small>
+        </div>
+        <button type="submit" class="btn btn-primary col-4 offset-4">Sign in</button>
+    </form>
+
+{% endblock %}
