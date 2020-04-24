@@ -15,6 +15,10 @@ class UserController extends AbstractController
      */
     public function show()
     {
-        return $this->twig->render('User/account.html.twig');
+        if (!isset($_SESSION['user'])) {
+            header('location /auth.signin');
+        } else {
+            return $this->twig->render('User/account.html.twig');
+        }
     }
 }
