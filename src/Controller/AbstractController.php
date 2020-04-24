@@ -38,5 +38,7 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+        // Set up super Global accessible in every twig layout
+        $this->twig->addGlobal('session', $_SESSION);
     }
 }

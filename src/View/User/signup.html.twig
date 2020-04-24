@@ -3,12 +3,6 @@
 {% block title %}Sign up page{% endblock %}
 
 {% block content %}
-    {# Sentence to be displayed when successful sign up #}
-    {% if newUser %}
-        <div class="container">
-            <div class="form-group col-10 offset-1"> Welcome to TV DataBuzz {{ newUser }} !</div>
-        </div>
-    {%  endif %}
     {# Form to sign up #}
     <form class="container" action="" method="POST">
         <div class="form-group col-10 offset-1">
@@ -55,6 +49,6 @@
                 {{ errors.password2 }}
             </small>
         </div>
-        <button type="submit" class="btn btn-primary col-4 offset-4">Submit</button>
+        <button type="submit" class="btn btn-primary col-4 offset-4">Sign up</button>
     </form>
 {% endblock %}

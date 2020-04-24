@@ -32,12 +32,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="MostBuzzed">MOST BUZZED</a>
                 </li>
+                {%  if not session.user is defined %}
                 <li class="nav-item">
-                    <a class="nav-link" href="LogIn">LOG IN</a>
+                    <a class="nav-link" href="/auth/LogIn">LOG IN</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="SignUp">SIGN UP</a>
+                    <a class="nav-link" href="auth/signup">SIGN UP</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
