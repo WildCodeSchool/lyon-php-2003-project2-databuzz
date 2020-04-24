@@ -81,7 +81,7 @@ class AuthController extends AbstractController
     public function signin()
     {
         $errors = [];
-        $email = $password= "";
+        $email = $password = "";
 
         if (!empty($_POST)) {
             // Clean input
@@ -107,9 +107,11 @@ class AuthController extends AbstractController
                         $_SESSION['user'] = [
                             "id" => $user['id'],
                             "username" => $user['username'],
+                            "firstname" => $user['firstname'],
+                            "lastname" => $user['lastname'],
                             "email" => $user['email'],
                         ];
-                        header('location: /HomePageVisitor');
+                        header('location: /');
                     } else {
                         $errors['password'] = "Invalid password";
                     }
@@ -121,5 +123,13 @@ class AuthController extends AbstractController
         }
 
         return $this->twig->render('User/signin.html.twig', ['errors' => $errors, 'email' => $email]);
+    }
+
+    public function signout()
+    {
+        if (isset($_SESSION['user'])) {
+            unset($_SESSION['user']);
+            header('location: /');
+        }
     }
 }

@@ -51,9 +51,24 @@
 .navbar-toggler {
     margin-left: auto;
 }
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
 /*//////////////////////    END CSS NAVBAR      //////////////////////*/
 
 /*////////////////////// SIGN UP FORM STYLING //////////////////////*/
 .text-error {
     color: red;
+}
+/*////////////////////// ACCOUNT INFORMATION STYLING //////////////////////*/
+.user-info {
+    background-color: #C4C4C4;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0.6rem;
+}
+.user-info-title {
+    font-weight : bold;
 }
