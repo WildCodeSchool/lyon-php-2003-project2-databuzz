@@ -111,7 +111,7 @@ class AuthController extends AbstractController
                             "lastname" => $user['lastname'],
                             "email" => $user['email'],
                         ];
-                        header('location: /HomePageVisitor');
+                        header('location: /');
                     } else {
                         $errors['password'] = "Invalid password";
                     }
@@ -129,7 +129,7 @@ class AuthController extends AbstractController
     {
         if (isset($_SESSION['user'])) {
             unset($_SESSION['user']);
-            header('location: /HomePageVisitor');
+            header('location: /');
         }
     }
 }
