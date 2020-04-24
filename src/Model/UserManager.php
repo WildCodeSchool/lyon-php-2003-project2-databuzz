@@ -3,7 +3,7 @@
 
 namespace App\Model;
 
-class SignUpManager extends AbstractManager
+class UserManager extends AbstractManager
 {
     /**
      *
@@ -37,6 +37,19 @@ class SignUpManager extends AbstractManager
         $username = $user['username'];
         if ($statement->execute()) {
             return $username;
+        }
+    }
+
+    public function selectOneByEmail(string $email)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE email=:email");
+        $statement->bindValue('email', $email, \PDO::PARAM_INT);
+
+        if ($statement->execute()) {
+            return $statement->fetch();
+        } else {
+            return false;
         }
     }
 }
