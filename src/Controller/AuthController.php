@@ -107,6 +107,8 @@ class AuthController extends AbstractController
                         $_SESSION['user'] = [
                             "id" => $user['id'],
                             "username" => $user['username'],
+                            "firstname" => $user['firstname'],
+                            "lastname" => $user['lastname'],
                             "email" => $user['email'],
                         ];
                         header('location: /HomePageVisitor');
