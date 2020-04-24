@@ -15,7 +15,10 @@ script:
 notifications:
     email:
         - TRAINER@wildcodeschool.fr
-        - STUDENT_MAIL
+        - lucas.marguiron@gmail.com
+        - francois.frk@gmail.com
+        - amina.aitm@gmail.com
+        - geoffrey.delenne@gmail.com
 branches:
     only:
         - master
