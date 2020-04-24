@@ -13,9 +13,9 @@
 {% block on_air %}On air : 23/04/2020{% endblock %}
 {% block buzz %}
     {% if buzzed == 0 %}
-    <a href="/tvshow/buzz/{{ tvshow.id }}/1">BUZZ</a>
+        <a href="/tvshow/buzz/{{ tvshow.id }}/1">BUZZ</a>
     {% else %}
-    <a href="/tvshow/unbuzz/{{ tvshow.id }}/1">UNBUZZ</a>
+        <a href="/tvshow/unbuzz/{{ tvshow.id }}/1">UNBUZZ</a>
     {% endif %}
 {% endblock %}
 {% block tvshowlayoutcontent %}
@@ -40,5 +40,25 @@
                 {% endfor %}
             </div>
         </div>
+        <div class="row">
+            <div class="col-10 offset-1">Seasons</div>
+        </div>
+        {% for season in seasons %}
+            {% if loop.index > 1 %}
+                <a href="/season/index/{{ season.id }}">
+                    <div class="row justify-content-around">
+                        <div class="row col-10 season-block">
+                            <div class="col-3-no-gutters">
+                                <div class="text">Saison {{ season.season_number }}</div>
+                            </div>
+                            <div class="col-12">
+                                <div>{{ season.episode_count }} episodes</div>
+                                <div>{{ season.overview }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
     </main>
 {% endblock %}

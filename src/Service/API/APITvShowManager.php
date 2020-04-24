@@ -18,4 +18,10 @@ class APITvShowManager extends APIAbstractManager
         $credits = $response->toArray();
         return $credits['cast'];
     }
+    public function getSeasons($id)
+    {
+        $response = $this->client->request('GET', $this->baseUrl . $id. $this->apiKey);
+        $seasons = $response->toArray();
+        return $seasons['seasons'];
+    }
 }
