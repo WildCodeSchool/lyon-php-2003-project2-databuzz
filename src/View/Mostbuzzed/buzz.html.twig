@@ -21,7 +21,7 @@
             <div class="card mostbuzzedcard">
                 <img src="{{ buzz.img }}" class="card-img-top" alt="affiche {{ buzz.title }}">
                 <div class="card-body">
-                    <p class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></p>
+                    <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
                 </div>
             </div>
         {% endfor %}
@@ -29,21 +29,18 @@
 
     <div class="mostbuzzed-medium-view">
         <div class="container-fluid">
-            {% for buzz in buzzes %}
-                <div class="card mostbuzzedcard mb-3">
-                    <div class="row no-gutters">
-                        <div class="col-4 col-sm-3">
+            <div class="row no-gutters">
+                {% for buzz in buzzes %}
+                    <div class="col-md-4">
+                        <div class="card mostbuzzedcard">
                             <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
-                        </div>
-                        <div class="col-8 col-sm-9">
                             <div class="card-body">
-                                <p class="card-text"><small class="text-muted">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></small></p>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content..</p>
+                                <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 
@@ -55,8 +52,7 @@
                         <div class="card mostbuzzedcard">
                             <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
                             <div class="card-body">
-                                <p class="card-text"><small class="text-muted">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></small></p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
                             </div>
                         </div>
                     </div>
