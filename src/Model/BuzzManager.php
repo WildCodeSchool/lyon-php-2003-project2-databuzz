@@ -42,5 +42,4 @@ class BuzzManager extends AbstractManager
             ORDER BY nb_buzz DESC
             ")->fetchAll();
     }
-
 }

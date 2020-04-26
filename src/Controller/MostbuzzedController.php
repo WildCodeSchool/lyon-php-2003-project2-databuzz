@@ -7,6 +7,7 @@
  */
 
 namespace App\Controller;
+
 use App\Model\AbstractManager;
 use App\Model\BuzzManager;
 use App\Model\MostbuzzedManager;
@@ -66,5 +67,4 @@ class MostbuzzedController extends AbstractController
 
         return $this->twig->render('Mostbuzzed/index.html.twig', ['buzzes' => $buzzes]);
     }
-
 }
