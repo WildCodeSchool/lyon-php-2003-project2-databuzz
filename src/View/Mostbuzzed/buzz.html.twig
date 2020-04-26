@@ -1,9 +1,11 @@
 {% extends 'layout.html.twig' %}
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/mostbuzzed.css">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/mostbuzzed.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">{% endblock %}
 
 {% block title %}Most buzzed{% endblock %}
 
 {% block content %}
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-11 offset-1">
@@ -12,13 +14,14 @@
         </div>
     </div>
 
+
     <div class="mostbuzzed-small-view">
-        {% for tvshowtest in tvshowtests %}
+
+        {% for buzz in buzzes %}
             <div class="card mostbuzzedcard">
-                <img src="{{ tvshowtest.poster }}" class="card-img-top" alt="affiche {{ tvshowtest.title }}">
+                <img src="{{ buzz.img }}" class="card-img-top" alt="affiche {{ buzz.title }}">
                 <div class="card-body">
-                    <h2>{{ tvshowtest.title }}</h2>
-                    <p class="card-text">{{ tvshowtest.year }} {{ tvshowtest.genre }}
+                    <p class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></p>
                 </div>
             </div>
         {% endfor %}
@@ -26,16 +29,15 @@
 
     <div class="mostbuzzed-medium-view">
         <div class="container-fluid">
-            {% for tvshowtest in tvshowtests %}
+            {% for buzz in buzzes %}
                 <div class="card mostbuzzedcard mb-3">
                     <div class="row no-gutters">
                         <div class="col-4 col-sm-3">
-                            <a href="#"><img src={{ tvshowtest.poster }} class="card-img-top" alt="affiche {{ tvshowtest.title }}"></a>
+                            <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
                         </div>
                         <div class="col-8 col-sm-9">
                             <div class="card-body">
-                                <h5 class="card-title">{{ tvshowtest.title }}</h5>
-                                <p class="card-text"><small class="text-muted">{{ tvshowtest.genre }} - {{ tvshowtest.year }}</small></p>
+                                <p class="card-text"><small class="text-muted">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></small></p>
                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content..</p>
                             </div>
                         </div>
@@ -48,13 +50,12 @@
     <div class="mostbuzzed-large-view">
         <div class="container-fluid">
             <div class="row no-gutters">
-                {% for tvshowtest in tvshowtests %}
+                {% for buzz in buzzes %}
                     <div class="col-md-3">
                         <div class="card mostbuzzedcard">
-                            <a href="#"><img src={{ tvshowtest.poster }} class="card-img-top" alt="affiche {{ tvshowtest.title }}"></a>
+                            <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
                             <div class="card-body">
-                                <h2>{{ tvshowtest.title }}</h2>
-                                <p class="card-text"><small class="text-muted">{{ tvshowtest.genre }} - {{ tvshowtest.year }}</small></p>
+                                <p class="card-text"><small class="text-muted">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></small></p>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>

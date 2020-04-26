@@ -65,6 +65,6 @@ class MostbuzzedController extends AbstractController
         $buzzManager = new BuzzManager();
         $buzzes = $buzzManager->selectNbBuzzed();
 
-        return $this->twig->render('Mostbuzzed/index.html.twig', ['buzzes' => $buzzes]);
+        return $this->twig->render('Mostbuzzed/buzz.html.twig', ['buzzes' => $buzzes]);
     }
 }
