@@ -1,73 +1,135 @@
-﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/vGD8bt
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 
-CREATE TABLE `USER` (
-    `ID_USER` Int  NOT NULL ,
+CREATE TABLE `user` (
+    `id` Int  NOT NULL ,
+    `username` VARCHAR(255)  NOT NULL ,
+    `password` VARCHAR(255)  NOT NULL ,
+    `firstname` VARCHAR(255)  NOT NULL ,
+    `lastname` VARCHAR(255)  NOT NULL ,
+    `email` VARCHAR(320)  NOT NULL ,
     PRIMARY KEY (
-        `ID_USER`
+        `id`
     )
 );
 
-CREATE TABLE `BUZZ` (
-    `ID_USER` Int  NOT NULL ,
-    `API_ID_TVSHOW` Int  NOT NULL ,
+CREATE TABLE `buzz` (
+    `user_id` Int  NOT NULL ,
+    `tvshow_id` Int  NOT NULL ,
     PRIMARY KEY (
-        `ID_USER`,`API_ID_TVSHOW`
+        `user_id`,`tvshow_id`
     )
 );
 
-CREATE TABLE `TVSHOW` (
-    `API_ID_TVSHOW` Int  NOT NULL ,
-    `Title` VARCHAR(255)  NOT NULL ,
-    `Genre` VARCHAR(255)  NOT NULL ,
+CREATE TABLE `tvshow` (
+    `id` Int  NOT NULL ,
+    `img` VARCHAR(255)  NOT NULL ,
+    `title` VARCHAR(255)  NOT NULL ,
+    `synopsis` TEXT  NOT NULL ,
+    `year` INT  NOT NULL ,
     PRIMARY KEY (
-        `API_ID_TVSHOW`
+        `id`
     )
 );
 
-CREATE TABLE `SEASON` (
-    `API_ID_SEASON` Int  NOT NULL ,
-    `API_ID_TVSHOW` Int  NOT NULL ,
-    `NbEpisodes` Int  NOT NULL ,
+CREATE TABLE `season` (
+    `id` Int  NOT NULL ,
+    `tvshow_id` Int  NOT NULL ,
+    `season_number` Int  NOT NULL ,
+    `nbEpisodes` Int  NOT NULL ,
+    `synopsis` Text  NOT NULL ,
+    `img` VARCHAR(255)  NOT NULL ,
     PRIMARY KEY (
-        `API_ID_SEASON`
+        `id`
     )
 );
 
-CREATE TABLE `EPISODE` (
-    `API_ID_EPISODE` Int  NOT NULL ,
-    `API_ID_SEASON` Int  NOT NULL ,
-    `Title` VARCHAR(255)  NOT NULL ,
+CREATE TABLE `episode` (
+    `id` Int  NOT NULL ,
+    `season_id` Int  NOT NULL ,
+    `episode_number` Int  NOT NULL ,
+    `title` VARCHAR(255)  NOT NULL ,
+    `synopsis` TEXT  NOT NULL ,
     PRIMARY KEY (
-        `API_ID_EPISODE`
+        `id`
     )
 );
 
-CREATE TABLE `SEEN` (
-    `ID_USER` Int  NOT NULL ,
-    `API_ID_EPISODE` Int  NOT NULL ,
+CREATE TABLE `seen` (
+    `user_id` Int  NOT NULL ,
+    `episode_id` Int  NOT NULL ,
     PRIMARY KEY (
-        `ID_USER`,`API_ID_EPISODE`
+        `user_id`,`episode_id`
     )
 );
 
-ALTER TABLE `BUZZ` ADD CONSTRAINT `fk_BUZZ_ID_USER` FOREIGN KEY(`ID_USER`)
-REFERENCES `USER` (`ID_USER`);
+CREATE TABLE `friends` (
+    `user_id_1` int  NOT NULL ,
+    `user_id_2` int  NOT NULL ,
+    PRIMARY KEY (
+        `user_id_1`,`user_id_2`
+    )
+);
 
-ALTER TABLE `BUZZ` ADD CONSTRAINT `fk_BUZZ_API_ID_TVSHOW` FOREIGN KEY(`API_ID_TVSHOW`)
-REFERENCES `TVSHOW` (id);
+CREATE TABLE `genre` (
+    `id` Int  NOT NULL ,
+    `name` VARCHAR(255)  NOT NULL ,
+    PRIMARY KEY (
+        `id`
+    )
+);
 
-ALTER TABLE `SEASON` ADD CONSTRAINT `fk_SEASON_API_ID_TVSHOW` FOREIGN KEY(`API_ID_TVSHOW`)
-REFERENCES `TVSHOW` (id);
+CREATE TABLE `genre_tvshow` (
+    `tvshow_id` int  NOT NULL ,
+    `genre_id` int  NOT NULL ,
+    PRIMARY KEY (
+        `tvshow_id`,`genre_id`
+    )
+);
 
-ALTER TABLE `EPISODE` ADD CONSTRAINT `fk_EPISODE_API_ID_SEASON` FOREIGN KEY(`API_ID_SEASON`)
-REFERENCES `SEASON` (`API_ID_SEASON`);
+CREATE TABLE `genre_user` (
+    `user_id` int  NOT NULL ,
+    `genre_id` int  NOT NULL ,
+    PRIMARY KEY (
+        `user_id`,`genre_id`
+    )
+);
 
-ALTER TABLE `SEEN` ADD CONSTRAINT `fk_SEEN_ID_USER` FOREIGN KEY(`ID_USER`)
-REFERENCES `USER` (`ID_USER`);
+ALTER TABLE `buzz` ADD CONSTRAINT `fk_buzz_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`);
 
-ALTER TABLE `SEEN` ADD CONSTRAINT `fk_SEEN_API_ID_EPISODE` FOREIGN KEY(`API_ID_EPISODE`)
-REFERENCES `EPISODE` (`API_ID_EPISODE`);
+ALTER TABLE `buzz` ADD CONSTRAINT `fk_buzz_tvshow_id` FOREIGN KEY(`tvshow_id`)
+REFERENCES `tvshow` (`id`);
+
+ALTER TABLE `season` ADD CONSTRAINT `fk_season_tvshow_id` FOREIGN KEY(`tvshow_id`)
+REFERENCES `tvshow` (`id`);
+
+ALTER TABLE `episode` ADD CONSTRAINT `fk_episode_season_id` FOREIGN KEY(`season_id`)
+REFERENCES `season` (`id`);
+
+ALTER TABLE `seen` ADD CONSTRAINT `fk_seen_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`);
+
+ALTER TABLE `seen` ADD CONSTRAINT `fk_seen_episode_id` FOREIGN KEY(`episode_id`)
+REFERENCES `episode` (`id`);
+
+ALTER TABLE `friends` ADD CONSTRAINT `fk_friends_user_id_1` FOREIGN KEY(`user_id_1`)
+REFERENCES `user` (`id`);
+
+ALTER TABLE `friends` ADD CONSTRAINT `fk_friends_user_id_2` FOREIGN KEY(`user_id_2`)
+REFERENCES `user` (`id`);
+
+ALTER TABLE `genre_tvshow` ADD CONSTRAINT `fk_genre_tvshow_tvshow_id` FOREIGN KEY(`tvshow_id`)
+REFERENCES `tvshow` (`id`);
+
+ALTER TABLE `genre_tvshow` ADD CONSTRAINT `fk_genre_tvshow_genre_id` FOREIGN KEY(`genre_id`)
+REFERENCES `genre` (`id`);
+
+ALTER TABLE `genre_user` ADD CONSTRAINT `fk_genre_user_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`);
+
+ALTER TABLE `genre_user` ADD CONSTRAINT `fk_genre_user_genre_id` FOREIGN KEY(`genre_id`)
+REFERENCES `genre` (`id`);
 

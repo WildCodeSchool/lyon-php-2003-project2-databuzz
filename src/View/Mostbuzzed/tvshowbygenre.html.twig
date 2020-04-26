@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/mostbuzzed.css">{% endblock %}
+
+{% block title %}Most buzzed{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-11 offset-1">
+            <h1>Most popular TV Shows</h1>
+        </div>
+    </div>
+</div>
+
+<div class="mostbuzzed-small-view">
+    {% for tvgenre in tvgenres %}
+    <div class="card mostbuzzedcard">
+        <img src="{{ tvgenre.img }}" class="card-img-top" alt="affiche {{ tvgenre.title }}">
+        <div class="card-body">
+            <h2>{{ tvgenre.title }}</h2>
+            <p class="card-text">{{ tvgenre.year }} {{ tvgenre.name }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="mostbuzzed-medium-view">
+    <div class="container-fluid">
+        {% for tvgenre in tvgenres %}
+        <div class="card mostbuzzedcard mb-3">
+            <div class="row no-gutters">
+                <div class="col-4 col-sm-3">
+                    <a href="#"><img src={{ tvgenre.img }} class="card-img-top" alt="affiche {{ tvgenre.title }}"></a>
+                </div>
+                <div class="col-8 col-sm-9">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ tvgenre.title }}</h5>
+                        <p class="card-text"><small class="text-muted">{{ tvgenre.name }} - {{ tvgenret.year }}</small></p>
+                        <p class="card-text">{{ tvgenre.synopsis }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="mostbuzzed-large-view">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            {% for tvgenre in tvgenres %}
+            <div class="col-md-3">
+                <div class="card mostbuzzedcard">
+                    <a href="#"><img src={{ tvgenre.img }} class="card-img-top" alt="affiche {{ tvgenre.title }}"></a>
+                    <div class="card-body">
+                        <h2>{{ tvgenre.title }}</h2>
+                        <p class="card-text"><small class="text-muted">{{ tvgenre.name }} - {{ tvgenre.year }}</small></p>
+                        <p class="card-text">{{ tvgenre.synopsis }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,6 +1,8 @@
 /***********************  F O R   A L L   V E R S I O N  ***************************/
 .mostbuzzedcard{
     margin: 15px 5% 15px 5%;
+    height: auto;
+    width: auto;
     border: rgb(255,180,0)  solid 1px;
 
 }
@@ -14,11 +16,11 @@
     .mostbuzzed-large-view {
         display: none;
     }
+
 }
 
-
 /*******  M E D I A   Q U E R I E S   :   V U E   M O B I L E   P A Y S A G E  -  T A B L E T T E   P O R T R A I T *****/
-@media screen and (min-width: 470px) {
+@media screen and (min-width: 471px) {
     .mostbuzzed-small-view {
         display: none;
     }
