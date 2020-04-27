@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container userInfo">
+    <header>
+        <div class="row title-header">
+            <div class="col-12"><h1>Account Information</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3 user-info">
+                <div class="user-info-title"">USERNAME</div>
+                <div>{{ session.user.username }}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3 user-info">
+                <div class="user-info-title">FIRSTNAME</div>
+                <div>{{ session.user.firstname }}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3 user-info">
+                <div class="user-info-title">LASTNAME</div>
+                <div>{{ session.user.lastname }}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3 user-info">
+                <div class="user-info-title">EMAIL</div>
+                <div>{{ session.user.email }}</div>
+            </div>
+        </div>
+    </header>
+</div>
+
+{% endblock %}

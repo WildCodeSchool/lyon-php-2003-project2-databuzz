@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Sign up page{% endblock %}
+
+{% block content %}
+    {# Form to sign up #}
+    <form class="container" action="" method="POST">
+        <div class="form-group col-10 offset-1">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" aria-describedby="nameHelp" placeholder="{{ inputs.username }}">
+            {# display error #}
+             <small class="form-text text-error">
+                    {{ errors.username }}
+             </small>
+        </div>
+        <div class="form-group col-10 offset-1">
+            <label for="firstname">Firstname</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" aria-describedby="nameHelp" placeholder="{{ inputs.firstname }}">
+            <small class="form-text text-error">
+                {{ errors.firstname }}
+            </small>
+        </div>
+        <div class="form-group col-10 offset-1">
+            <label for="lastname">Lastname</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" aria-describedby="nameHelp" placeholder="{{ inputs.lastname }}">
+            <small class="form-text text-error">
+                {{ errors.lastname }}
+            </small>
+        </div>
+        <div class="form-group col-10 offset-1">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="{{ inputs.email }}">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small class="form-text text-error">
+                {{ errors.email }}
+            </small>
+        </div>
+        <div class="form-group col-10 offset-1">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+            <small class="form-text text-error">
+                {{ errors.password }}
+            </small>
+        </div>
+        <div class="form-group col-10 offset-1">
+            <label for="password2">Confirm Password</label>
+            <input type="password" class="form-control" id="password2" name="password2">
+            <small class="form-text text-error">
+                {{ errors.password2 }}
+            </small>
+        </div>
+        <button type="submit" class="btn btn-primary col-4 offset-4">Sign up</button>
+    </form>
+{% endblock %}

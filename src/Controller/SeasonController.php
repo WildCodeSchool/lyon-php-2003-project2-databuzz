@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Model\SeasonManager;
+use App\Model\GenreManager;
+
 class SeasonController extends AbstractController
 {
-
     /**
      * Display Season Page
      *
@@ -13,7 +15,7 @@ class SeasonController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
+    public function index($id)
     {
         $episodes = [
             "un" => [
@@ -33,6 +35,12 @@ class SeasonController extends AbstractController
                 impressed with Colbert’s beard and the manly way he pretends to smoke a pipe.",
             ]
         ];
-        return $this->twig->render('Season/season.html.twig', ['episodes' => $episodes]);
+        $seasonManager = new SeasonManager();
+        $season = $seasonManager->selectOneById($id);
+        $tvshow = $seasonManager->getShowBySeason($id);
+        $genreManager = new GenreManager();
+        $genres = $genreManager->getGenresBySeason($id);
+        return $this->twig->render('Season/season.html.twig', ['season' => $season,
+            'genres' => $genres, 'episodes' => $episodes, 'tvshow' => $tvshow]);
     }
 }
