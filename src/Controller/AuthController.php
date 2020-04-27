@@ -129,7 +129,7 @@ class AuthController extends AbstractController
     {
         if (isset($_SESSION['user'])) {
             unset($_SESSION['user']);
-            header('location: /');
         }
+        header('location: /');
     }
 }

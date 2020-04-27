@@ -39,7 +39,7 @@ class SeasonController extends AbstractController
         $season = $seasonManager->selectOneById($id);
         $tvshow = $seasonManager->getShowBySeason($id);
         $genreManager = new GenreManager();
-        $genres = $genreManager->getGenreBySeason($id);
+        $genres = $genreManager->getGenresBySeason($id);
         return $this->twig->render('Season/season.html.twig', ['season' => $season,
             'genres' => $genres, 'episodes' => $episodes, 'tvshow' => $tvshow]);
     }
