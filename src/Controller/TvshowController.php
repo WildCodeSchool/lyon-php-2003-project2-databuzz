@@ -38,7 +38,7 @@ class TvshowController extends AbstractController
         $tvshowManager = new TvshowManager();
         $tvshow = $tvshowManager->selectOneById($id);
         $genresManager = new genreManager();
-        $genres = $genresManager->getGenreByShow($id);
+        $genres = $genresManager->getGenresByShow($id);
         $isBuzzed = $tvshowManager->isBuzzed($id, 1);
         $api = new APITvShowManager();
         $actors = $api->getActors($id);
