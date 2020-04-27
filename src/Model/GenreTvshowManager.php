@@ -28,20 +28,18 @@ class GenreTvshowManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    /** METHODE MANAGER POUR AFFICHER LES SERIES PAR GENRE A PARTIR DU DB*/
     /**
      * Get all row from database.
      *
      * @return array
      */
-    public function selectByGenre(): array
+    public function selectOrderByGenre(): array
     {
         // prepared request
         return $this->pdo->query("
-            SELECT tvshow.img, tvshow.title, tvshow.year, tvshow.synopsis, genre.name
+            SELECT DISTINCT genre.name, genre.id, tvshow.id
             FROM $this->table
-            JOIN genre ON genre.id = genre_tvshow.genre_id
             JOIN tvshow ON tvshow.id = genre_tvshow.tvshow_id
-            ORDER BY genre.name")->fetchAll();
+            JOIN genre ON genre.id = genre_tvshow.genre_id")->fetchAll();
     }
 }

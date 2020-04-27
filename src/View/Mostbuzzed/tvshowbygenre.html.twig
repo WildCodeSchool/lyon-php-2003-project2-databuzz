@@ -1,66 +1,65 @@
 {% extends 'layout.html.twig' %}
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/mostbuzzed.css">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/mostbuzzed.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">{% endblock %}
 
 {% block title %}Most buzzed{% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-11 offset-1">
-            <h1>Most popular TV Shows</h1>
-        </div>
-    </div>
-</div>
-
-<div class="mostbuzzed-small-view">
-    {% for tvgenre in tvgenres %}
-    <div class="card mostbuzzedcard">
-        <img src="{{ tvgenre.img }}" class="card-img-top" alt="affiche {{ tvgenre.title }}">
-        <div class="card-body">
-            <h3>{{ tvgenre.title }}</h3>
-            <p class="card-text">{{ tvgenre.year }} {{ tvgenre.name }}</p>
-        </div>
-    </div>
-    {% endfor %}
-</div>
-
-<div class="mostbuzzed-medium-view">
     <div class="container-fluid">
-        {% for tvgenre in tvgenres %}
-        <div class="card mostbuzzedcard mb-3">
-            <div class="row no-gutters">
-                <div class="col-4 col-sm-3">
-                    <a href="#"><img src={{ tvgenre.img }} class="card-img-top" alt="affiche {{ tvgenre.title }}"></a>
-                </div>
-                <div class="col-8 col-sm-9">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ tvgenre.title }}</h5>
-                        <p class="card-text"><small class="text-muted">{{ tvgenre.name }} - {{ tvgenret.year }}</small></p>
-                        <p class="card-text">{{ tvgenre.synopsis }}</p>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-11 offset-1">
+                <h1>Most popular TV Shows</h1>
             </div>
         </div>
+    </div>
+
+    <div class="mostbuzzed-small-view">
+        {% for genre in genres %}
+            <div>{{ genre.name }}</div>
+
+        {% for buzz in buzzes %}
+            <div class="card mostbuzzedcard">
+                <img src="{{ buzz.img }}" class="card-img-top" alt="affiche {{ buzz.title }}">
+                <div class="card-body">
+                    <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+                    <span class="card-text">{{ genre.name }}</span>
+                </div>
+            </div>
+        {% endfor %}
         {% endfor %}
     </div>
-</div>
 
-<div class="mostbuzzed-large-view">
-    <div class="container-fluid">
-        <div class="row no-gutters">
-            {% for tvgenre in tvgenres %}
-            <div class="col-md-3">
-                <div class="card mostbuzzedcard">
-                    <a href="#"><img src={{ tvgenre.img }} class="card-img-top" alt="affiche {{ tvgenre.title }}"></a>
-                    <div class="card-body">
-                        <h2>{{ tvgenre.title }}</h2>
-                        <p class="card-text"><small class="text-muted">{{ tvgenre.name }} - {{ tvgenre.year }}</small></p>
-                        <p class="card-text">{{ tvgenre.synopsis }}</p>
+    <div class="mostbuzzed-medium-view">
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                {% for buzz in buzzes %}
+                    <div class="col-md-4">
+                        <div class="card mostbuzzedcard">
+                            <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
+                            <div class="card-body">
+                                <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
-</div>
+
+    <div class="mostbuzzed-large-view">
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                {% for buzz in buzzes %}
+                    <div class="col-md-3">
+                        <div class="card mostbuzzedcard">
+                            <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
+                            <div class="card-body">
+                                <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
