@@ -8,8 +8,8 @@
 
 namespace App\Controller;
 
-use App\Model\TvshowManager;
 use App\Model\GenreManager;
+use App\Model\TvshowManager;
 use App\Service\API\APITvShowManager;
 
 class TvshowController extends AbstractController
@@ -33,34 +33,42 @@ class TvshowController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
+
     public function show(int $id)
     {
         $tvshowManager = new TvshowManager();
         $tvshow = $tvshowManager->selectOneById($id);
         $genresManager = new genreManager();
         $genres = $genresManager->getGenresByShow($id);
-        $isBuzzed = $tvshowManager->isBuzzed($id, 1);
+        $isBuzzed = $tvshowManager->isBuzzed($id, !empty($_SESSION) ? $_SESSION['user']['id'] : 0);
         $api = new APITvShowManager();
         $actors = $api->getActors($id);
         $seasons = $api->getSeasons($id);
 
         return $this->twig->render(
             'Tvshow/tvshow.html.twig',
-            ['tvshow' => $tvshow, 'genres' => $genres, 'buzzed' => $isBuzzed, 'actors'=>$actors, 'seasons'=>$seasons]
+            [
+                'tvshow' => $tvshow,
+                'genres' => $genres,
+                'buzzed' => $isBuzzed,
+                'actors' => $actors,
+                'seasons' => $seasons,
+                'sessions' => $_SESSION
+            ]
         );
     }
 
-    public function buzz(int $showid, int $userid)
+    public function buzz(int $showid)
     {
         $tvshowManager = new TvshowManager();
-        $tvshowManager->buzzTvShow($showid, $userid);
+        $tvshowManager->buzzTvShow($showid, $_SESSION['user']['id']);
         header('Location: /tvshow/show/' . $showid);
     }
 
-    public function unbuzz(int $showid, int $userid)
+    public function unbuzz(int $showid)
     {
         $tvshowManager = new TvshowManager();
-        $tvshowManager->unbuzzTvShow($showid, $userid);
+        $tvshowManager->unbuzzTvShow($showid, $_SESSION['user']['id']);
         header('Location: /tvshow/show/' . $showid);
     }
 }
