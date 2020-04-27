@@ -27,7 +27,6 @@ class BuzzManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-
     /**
      * Get all row from database.
      *
