@@ -27,7 +27,5 @@ class MostbuzzedController extends AbstractController
         $buzzes = $buzzManager->selectNbBuzzed();
 
         return $this->twig->render('Mostbuzzed/buzz.html.twig', ['buzzes' => $buzzes]);
-
     }
-
 }
