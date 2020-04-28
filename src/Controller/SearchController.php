@@ -34,6 +34,9 @@ class SearchController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Search/index.html.twig');
+        $string = $_POST['search'];
+        $search = new TvshowManager();
+        $searchResults = $search->searchTvShow($string);
+        return $this->twig->render('Search/index.html.twig', ['search'=>$searchResults]);
     }
 }
