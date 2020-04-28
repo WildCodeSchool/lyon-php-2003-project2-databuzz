@@ -12,10 +12,14 @@
 {% block next_episode %}S03E03{% endblock %}
 {% block on_air %}On air : 23/04/2020{% endblock %}
 {% block buzz %}
-    {% if buzzed == 0 %}
-        <a href="/tvshow/buzz/{{ tvshow.id }}/1">BUZZ</a>
+    {% if sessions != null %}
+        {% if buzzed == 0 %}
+            <a href="/tvshow/buzz/{{ tvshow.id }}">BUZZ</a>
+        {% else %}
+            <a href="/tvshow/unbuzz/{{ tvshow.id }}">UNBUZZ</a>
+        {% endif %}
     {% else %}
-        <a href="/tvshow/unbuzz/{{ tvshow.id }}/1">UNBUZZ</a>
+        Want to buzz {{ tvshow.title }} ? <a href="/auth/signin">Sign in !</a>
     {% endif %}
 {% endblock %}
 {% block tvshowlayoutcontent %}
