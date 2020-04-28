@@ -1,7 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div class="container-fluid h-100">
+    <div class="container-fluid">
+        <header class="col-12 home">
+            <div class="row justify-content-around row-header-home">
+                <div class="col-8 ">
+                    <h1>You like it, BUZZ IT !</h1>
+                </div>
+                <div class="col-8 search-div">
+                    <form action="" method="post">
+                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+            </div>
+        </header>
         <div class="col-10 offset-1 h-100">
             <img src="/assets/images/tvdbHomePageVisitor.png" class="home_page_visitor_image">
         </div>

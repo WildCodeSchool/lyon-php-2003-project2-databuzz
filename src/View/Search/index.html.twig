@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/mostbuzzed.css">{% endblock %}
+
+{% block title %}Search results{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-11 offset-1">
+                <h1>Search results</h1>
+            </div>
+        </div>
+    </div>
+        <div class="container-fluid">
+            <div class="card mostbuzzedcard">
+                <a href="#"><img src="/assets/images/walkingdead.jpg" class="card-img-top" alt="walkingdead"></a>
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+        </div>
+{% endblock %}
