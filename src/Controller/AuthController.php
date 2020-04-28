@@ -19,38 +19,22 @@ class AuthController extends AbstractController
      */
     public function signup()
     {
+        $formValidator = new FormValidator();
         $errors = [];
-        $cleanedInput = [];
 
         if (!empty($_POST)) {
-            $formValidator = new FormValidator();
-
-            // Validate each input after another and store the errors or the cleaned input in an array
-            // Switch verifies type of input
-            // by default, manager si set as VARCHAR 255
-            // email has VARCHAR 320 so we modify the constaint array of the validateInput function
-            foreach ($_POST as $type => $input) {
-                switch ($type) {
-                    case 'email':
-                        if (!$formValidator->validateInput($input, ['required' => true, 'maxLength' => 320])) {
-                            $errors[$type] = $formValidator->getErrors();
-                        }
-                        break;
-                    default:
-                        if (!$formValidator->validateInput($input)) {
-                            $errors[$type] = $formValidator->getErrors();
-                        }
-                        break;
-                }
-                $cleanedInput[$type] = $formValidator->getCleanedInput();
-            }
-
             // Check if both passwords are matching, if not, add error to array
             if (!$formValidator->matchingPasswords($_POST['password'], $_POST['password2'])) {
-                $errors['password2'] = $formValidator->getErrors();
+                $errors = $formValidator->getErrors();
+            } else {
+                // call to validateInput function that checks the input and return true if no errors, false if errors
+                $formValidator->validateInput($_POST);
             }
+            // get the errors and cleanedInput arrays from formValidator Object
+            $errors = $formValidator->getErrors();
+            $cleanedInput = $formValidator->getCleanedInput();
 
-            // If no errors, the input is sent to the UserManager
+            // If no errors, the cleaned input is sent to the UserManager
             if (empty($errors)) {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $userManager = new UserManager();
@@ -83,6 +67,7 @@ class AuthController extends AbstractController
         $errors = [];
         $email = $password = "";
 
+        // Checks validity of input given
         if (!empty($_POST)) {
             // Clean input
             $email = trim($_POST['email']);
@@ -103,7 +88,8 @@ class AuthController extends AbstractController
                     $errors['email'] = "Email does not match any email in our user list";
                 } else {
                     // If password matches, user is signed in and user info is stored in S_SESSION
-                    if ($password === $user['password']) {
+                    // password_verify is used to check an input pwd and a hashed password
+                    if (password_verify($password, $user['password'])) {
                         $_SESSION['user'] = [
                             "id" => $user['id'],
                             "username" => $user['username'],
@@ -114,6 +100,7 @@ class AuthController extends AbstractController
                         header('location: /');
                     } else {
                         $errors['password'] = "Invalid password";
+                        var_dump($user);
                     }
                 }
             }
