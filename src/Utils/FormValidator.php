@@ -6,36 +6,52 @@ namespace App\Utils;
 class FormValidator
 {
     /**
-     * @var string
+     * @var array
      */
-    private $errors = "";
+    private $errors = [];
     /**
-     * @var string
+     * @var array
      */
-    private $cleanedInput = "";
+    private $cleanedInput = [];
 
-    public function validateInput(string $input, array $constraints = ['required' => true, 'maxLength' => 255])
+    public function validateInput(array $inputs)
     {
-        $errors = "";
-        // Clean input of spaces before and after and store it in variable
-        $cleanedInput = trim($input);
-        $this->cleanedInput = $cleanedInput;
-
-        // if input is required (true by default), and $cleanedImput empty, add an error
-        // then if length of input superior to VARCHAR length in database, add an error
-        // by default, VARCHAR 255, should be modified in the $constraints table when necessary
-        if ($constraints['required'] === true &&  !$cleanedInput) {
-            $errors = "This field cannot be empty";
-        } elseif (strlen($input) > $constraints['maxLength']) {
-            $errors = "This field cannot be more than " . $constraints['maxLength'] . " characters";
+        // Foreach input, we check if not empty, we trim it and check its length
+        foreach ($inputs as $type => $input) {
+            if (!$input) {
+                $this->errors[$type] = "This field cannot be empty";
+            } else {
+                switch ($type) {
+                    case "password":
+                        // Check length and hash
+                        if (strlen($input) > 255) {
+                            $this->errors[$type] = "This field cannot be more than 255 characters";
+                        } else {
+                            $input = $this->securePassword($input);
+                        }
+                        break;
+                    case "email":
+                        $input = trim($input);
+                        // Check length
+                        if (strlen($input) > 320) {
+                            $this->errors[$type] = "This field cannot be more than 320 characters";
+                        }
+                        break;
+                    default:
+                        $input = trim($input);
+                        // check default length
+                        if (strlen($input) > 255) {
+                            $this->errors[$type] = "This field cannot be more than 255 characters";
+                        }
+                        break;
+                }
+                // if no errors, clean input is stored in cleanedInput var
+                $this->cleanedInput[$type] = $input;
+            }
         }
-
-        // Store the errors given by the function in the variable
-        $this->errors = $errors;
-
         // If no errors, the function returns true, if errors, the function returns false
         // the controller then tests the return value of this function and decides what to do
-        if (empty($errors)) {
+        if (empty($this->errors)) {
             return true;
         } else {
             return false;
@@ -60,12 +76,16 @@ class FormValidator
     {
         if ($password1 !== $password2) {
             $errors = "Passwords should match";
-             $this->errors = $errors;
+             $this->errors['password'] = $errors;
         }
         if (empty($errors)) {
             return true;
         } else {
             return false;
         }
+    }
+    public function securePassword($password): string
+    {
+        return password_hash($password, PASSWORD_DEFAULT);
     }
 }

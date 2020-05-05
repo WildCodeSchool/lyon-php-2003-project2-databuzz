@@ -44,7 +44,7 @@ class UserManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE email=:email");
-        $statement->bindValue('email', $email, \PDO::PARAM_INT);
+        $statement->bindValue('email', $email, \PDO::PARAM_STR);
 
         if ($statement->execute()) {
             return $statement->fetch();
