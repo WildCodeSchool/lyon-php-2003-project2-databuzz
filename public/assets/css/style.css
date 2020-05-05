@@ -90,6 +90,19 @@ h1{
 .container-fluid{
     padding: 0;
 }
+
+/*////////////////////// SEARCH //////////////////////*/
+.card.searchcard{
+    height: 100%;
+}
+
+.search-results{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+
 /*////////////////////// TVSHOW //////////////////////*/
 .container.tvshow{
     padding: 0;

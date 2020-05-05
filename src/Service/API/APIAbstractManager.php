@@ -13,10 +13,9 @@ class APIAbstractManager
 
     protected $apiKey = "?api_key=" . API_KEY;
 
-    public function __construct(string $resource)
+    public function __construct()
     {
         $this->client = HttpClient::create();
-        $this->baseUrl .= $resource;
     }
 
     public function getOneById(int $id)
