@@ -36,12 +36,20 @@ class TvshowController extends AbstractController
 
     public function show(int $id)
     {
+        // Check if tvshow($id) is already in DB
         $tvshowManager = new TvshowManager();
         $tvshow = $tvshowManager->selectOneById($id);
+        // If no, use API to get info and insert it in DB
+        $api = new APITvShowManager();
+        if (!$tvshow) {
+            $inputs = $api->getOneById($id);
+            $tvshowManager->insert($inputs);
+            $tvshow = $tvshowManager->selectOneById($id);
+        }
+        // Then, send data from db to view
         $genresManager = new genreManager();
         $genres = $genresManager->getGenresByShow($id);
         $isBuzzed = $tvshowManager->isBuzzed($id, !empty($_SESSION) ? $_SESSION['user']['id'] : 0);
-        $api = new APITvShowManager();
         $actors = $api->getActors($id);
         $seasons = $api->getSeasons($id);
 
