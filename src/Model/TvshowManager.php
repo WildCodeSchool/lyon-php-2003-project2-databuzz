@@ -57,4 +57,12 @@ class TvshowManager extends AbstractManager
             return 0;
         }
     }
+
+    public function searchTvShow(string $search)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM tvshow WHERE title LIKE '%$search%'");
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
 }

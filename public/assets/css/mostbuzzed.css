@@ -50,6 +50,7 @@
         display: none;
     }
 }
+
 /*******  M E D I A   Q U E R I E S   :   V U E   T A B L E T T E   P A Y S A G E  -  D E S K T O P *****/
 @media screen and (min-width: 960px) {
     .mostbuzzed-medium-view {
