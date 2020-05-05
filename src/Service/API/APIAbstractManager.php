@@ -3,7 +3,9 @@
 
 namespace App\Service\API;
 
-use Symfony\Component\HttpClient\HttpClient; /* Appel de la classe HTTP Client de Symfony */
+use Symfony\Component\HttpClient\HttpClient;
+
+/* Appel de la classe HTTP Client de Symfony */
 
 class APIAbstractManager
 {
@@ -20,7 +22,7 @@ class APIAbstractManager
 
     public function getOneById(int $id)
     {
-        $response = $this->client->request('GET', $this->baseUrl . $id . $this->apiKey);
+        $response = $this->client->request('GET', $this->baseUrl . 'tv/' . $id . $this->apiKey);
 
         $result = $response->toArray();
         return $result;
