@@ -23,31 +23,35 @@ class AuthController extends AbstractController
         $errors = [];
 
         if (!empty($_POST)) {
-            // Check if both passwords are matching, if not, add error to array
-            if (!$formValidator->matchingPasswords($_POST['password'], $_POST['password2'])) {
-                $errors = $formValidator->getErrors();
+            // Check if email is already used
+            $userManager = new UserManager();
+            if (!$userManager->selectOneByEmail(trim($_POST['email']))) {
+                $errors['email'] = "This email is already used";
             } else {
-                // call to validateInput function that checks the input and return true if no errors, false if errors
-                $formValidator->validateInput($_POST);
-            }
-            // get the errors and cleanedInput arrays from formValidator Object
-            $errors = $formValidator->getErrors();
-            $cleanedInput = $formValidator->getCleanedInput();
+                // Check if both passwords are matching, if not, add error to array
+                if (!$formValidator->matchingPasswords($_POST['password'], $_POST['password2'])) {
+                    $errors = $formValidator->getErrors();
+                } else {
+                    // call to validateInput function to checks input and return true if no errors, false if errors
+                    $formValidator->validateInput($_POST);
+                }
+                // get the errors and cleanedInput arrays from formValidator Object
+                $errors = $formValidator->getErrors();
+                $cleanedInput = $formValidator->getCleanedInput();
 
-            // If no errors, the cleaned input is sent to the UserManager
-            if (empty($errors)) {
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $userManager = new UserManager();
-                    $user = [
-                        'username' => $cleanedInput['username'],
-                        'firstname' => $cleanedInput['firstname'],
-                        'lastname' => $cleanedInput['lastname'],
-                        'email' => $cleanedInput['email'],
-                        'password' => $cleanedInput['password'],
-                    ];
-                    $username = $userManager->insert($user);
-
-                    header("location: /Auth/signin/?username=$username");
+                // If no errors, the cleaned input is sent to the UserManager
+                if (empty($errors)) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $user = [
+                            'username' => $cleanedInput['username'],
+                            'firstname' => $cleanedInput['firstname'],
+                            'lastname' => $cleanedInput['lastname'],
+                            'email' => $cleanedInput['email'],
+                            'password' => $cleanedInput['password'],
+                        ];
+                        $username = $userManager->insert($user);
+                        header("location: /Auth/signin/?username=$username");
+                    }
                 }
             }
         }
