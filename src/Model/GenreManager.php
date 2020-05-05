@@ -17,7 +17,7 @@ class GenreManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function getGenreByShow(int $id)
+    public function getGenresByShow(int $id)
     {
         // prepared request
         $statement = $this->pdo->prepare("
@@ -31,7 +31,7 @@ class GenreManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function getGenreBySeason(int $id)
+    public function getGenresBySeason(int $id)
     {
         $statement = $this->pdo->prepare("
             SELECT name FROM $this->table 
