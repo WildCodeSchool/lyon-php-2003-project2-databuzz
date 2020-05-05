@@ -42,4 +42,25 @@ class BuzzManager extends AbstractManager
             ORDER BY nb_buzz DESC
             ")->fetchAll();
     }
+
+    /**
+     * Get one row from database by ID.
+     *
+     * @param  int $id
+     *
+     * @return array
+     */
+    public function selectTvshowByGenre($id): array
+    {
+        $statement = $this->pdo->prepare("SELECT tvshow.img, COUNT(buzz.tvshow_id) AS nb_buzz
+            FROM $this->table
+            RIGHT JOIN tvshow ON tvshow.id = buzz.tvshow_id
+            JOIN genre_tvshow ON genre_tvshow.tvshow_id = tvshow.id AND genre_tvshow.genre_id = :id
+            GROUP BY tvshow.id
+            ORDER BY nb_buzz DESC");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }
