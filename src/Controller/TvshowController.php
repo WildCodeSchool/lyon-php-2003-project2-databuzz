@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Model\BuzzManager;
 use App\Model\GenreManager;
 use App\Model\TvshowManager;
 use App\Service\API\APITvShowManager;
@@ -41,14 +42,19 @@ class TvshowController extends AbstractController
         $genresManager = new genreManager();
         $genres = $genresManager->getGenresByShow($id);
         $isBuzzed = $tvshowManager->isBuzzed($id, !empty($_SESSION) ? $_SESSION['user']['id'] : 0);
+        $buzzs = new BuzzManager();
+        $nbBuzzs = $buzzs->getBuzzTvShow($id);
         $api = new APITvShowManager();
         $actors = $api->getActors($id);
         $seasons = $api->getSeasons($id);
+        $tvShowInfos = $api->getOneById($id);
 
         return $this->twig->render(
             'Tvshow/tvshow.html.twig',
             [
                 'tvshow' => $tvshow,
+                'tvShowInfos' => $tvShowInfos,
+                'nbBuzzs' => $nbBuzzs,
                 'genres' => $genres,
                 'buzzed' => $isBuzzed,
                 'actors' => $actors,

@@ -19,8 +19,8 @@
         {% for buzz in buzzes %}
             <div class="card mostbuzzedcard">
                 <img src="{{ buzz.img }}" class="card-img-top" alt="affiche {{ buzz.title }}">
-                <div class="card-body">
-                    <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+                <div class="mostbuzzed card-body">
+                    <span class="mostbuzzed card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
                 </div>
             </div>
         {% endfor %}

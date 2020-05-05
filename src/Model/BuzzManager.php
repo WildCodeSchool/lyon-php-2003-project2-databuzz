@@ -63,4 +63,15 @@ class BuzzManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function getBuzzTvShow($id): array
+    {
+        $statement = $this->pdo->prepare("SELECT COUNT(buzz.tvshow_id) AS nb_buzz
+            FROM $this->table
+            WHERE buzz.tvshow_id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }
