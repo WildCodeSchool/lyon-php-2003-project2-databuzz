@@ -22,7 +22,9 @@
         <select class="season-select" id="season-select">
             <option value="" disabled selected hidden>Choose a season</option>
             {% for tvshowSeason in tvshowSeasons %}
-                <option value="/season/index/{{ tvshowSeason.season_number }}">Season {{ tvshowSeason.season_number }}</option>
+                {% if tvshowSeason.season_number > 0 %}
+                <option value="/season/index/{{ tvshowSeason.id }}">Season {{ tvshowSeason.season_number }}</option>
+                {% endif %}
             {% endfor %}
         </select>
     </div>

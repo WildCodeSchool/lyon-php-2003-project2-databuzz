@@ -16,19 +16,24 @@ class SeasonController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index(int $tvshowId, int $seasonId, int $seasonNumber, int $episodeCount)
+
+    // uniquement seasonId en param
+    public function index(int $seasonId)
     {
         $apiTvShow = new APITvShowManager();
+
+        // Check if season is stored in DB and store it in $season variable
+        $seasonManager = new SeasonManager();
+        $season = $seasonManager->selectOneById($seasonId);
+        $seasonNumber = $season['season_number'];
+        $tvshowId = $season['tvshow_id'];
 
         // Get episodes array from API (with season info and episodes infos)
         // id, synopsis, season number, year...
         $seasonAndEpisodes = $apiTvShow->getEpisodes($tvshowId, $seasonNumber);
 
-        // Check if season is stored in DB and store it in $season variable
-        $seasonManager = new SeasonManager();
-        $season = $seasonManager->selectOneById($seasonAndEpisodes['id']);
-
         // If season is not stored in DB, retrieve data from API
+        /*
         if (!$season) {
             // Then, insert it into DB - $episodes has all the data of the season
             $seasonManager->insert($seasonAndEpisodes, $episodeCount, $tvshowId);
@@ -36,6 +41,9 @@ class SeasonController extends AbstractController
             // Then, retrieve season info from DB in $season variable
             $season = $seasonManager->selectOneById($seasonId);
         }
+        */
+
+        $numberOfSeasons = $apiTvShow->getNbOfSeasonsByShow($tvshowId);
 
         $tvshowSeasons = $seasonManager->getSeasonsByShow($tvshowId);
         $tvshow = $seasonManager->getShowBySeason($seasonId);
@@ -49,7 +57,8 @@ class SeasonController extends AbstractController
                 'genres' => $genres,
                 'episodes' => $seasonAndEpisodes,
                 'tvshow' => $tvshow,
-                'tvshowSeasons' => $tvshowSeasons
+                'tvshowSeasons' => $tvshowSeasons,
+                'numberOfSeasons' => $numberOfSeasons
             ]
         );
     }

@@ -24,6 +24,15 @@ class APITvShowManager extends APIAbstractManager
         $seasons = $response->toArray();
         return $seasons['seasons'];
     }
+
+    public function getNbOfSeasonsByShow($tvshowId)
+    {
+        $response = $this->client->request('GET', $this->baseUrl . 'tv/' . $tvshowId. $this->apiKey);
+        $seasons = $response->toArray();
+        return $seasons['number_of_seasons'];
+    }
+
+
     public function getEpisodes(int $tvShowId, int $seasonId)
     {
         $response =
