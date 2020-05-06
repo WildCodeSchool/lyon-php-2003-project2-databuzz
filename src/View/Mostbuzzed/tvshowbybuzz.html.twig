@@ -1,6 +1,9 @@
 {% extends 'layout.html.twig' %}
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/mostbuzzed.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/mostbuzzed.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+          crossorigin="anonymous">{% endblock %}
 
 {% block title %}Most buzzed{% endblock %}
 
@@ -15,14 +18,16 @@
     </div>
 
     <div class="mostbuzzed-small-view">
-
         {% for buzz in buzzes %}
-            <div class="card mostbuzzedcard">
-                <img src="{{ buzz.img }}" class="card-img-top" alt="affiche {{ buzz.title }}">
-                <div class="mostbuzzed card-body">
-                    <span class="mostbuzzed card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+            <a href="/tvshow/show/{{ buzz.id }}">
+                <div class="card mostbuzzedcard">
+                    <img src="{{ buzz.img }}" class="card-img-top" alt="affiche {{ buzz.title }}">
+                    <div class="mostbuzzed card-body">
+                        <span class="mostbuzzed card-text">{{ buzz.nb_buzz }} <i
+                                    class="fas fa-concierge-bell"></i></span>
+                    </div>
                 </div>
-            </div>
+            </a>
         {% endfor %}
     </div>
 
@@ -30,14 +35,17 @@
         <div class="container-fluid">
             <div class="row no-gutters">
                 {% for buzz in buzzes %}
-                    <div class="col-md-4">
-                        <div class="card mostbuzzedcard">
-                            <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
-                            <div class="card-body">
-                                <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+                    <a href="/tvshow/show/{{ buzz.id }}">
+                        <div class="col-md-4">
+                            <div class="card mostbuzzedcard">
+                                <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
+                                <div class="card-body">
+                                    <span class="card-text">{{ buzz.nb_buzz }} <i
+                                                class="fas fa-concierge-bell"></i></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>
@@ -47,6 +55,7 @@
         <div class="container-fluid">
             <div class="row no-gutters">
                 {% for buzz in buzzes %}
+                <a href="/tvshow/show/{{ buzz.id }}">
                     <div class="col-md-3">
                         <div class="card mostbuzzedcard">
                             <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
@@ -55,6 +64,7 @@
                             </div>
                         </div>
                     </div>
+                </a>
                 {% endfor %}
             </div>
         </div>
