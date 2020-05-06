@@ -1,40 +1,36 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div class="container tvshow">
-        <header>
-            <div class="row img-header">
-                <div class="col-10 offset-1"><img
-                            src="{% block img_header %}{% endblock %}"
-                            alt="{% block alt_img %}{% endblock %}" class="img-fluid"></div>
+    <header>
+        <div class="row img-header">
+            <div class="col-10 offset-1 img-header img-container"><img
+                        src="{% block img_header %}{% endblock %}"
+                        alt="{% block alt_img %}{% endblock %}" class="img-fluid"></div>
+            <div class="col-12 center"><h1>{% block serietitle %}{% endblock %}</h1></div>
+        </div>
+        <div class="row rating-or-season-header">
+            <div class="col-12">{% block rating_season %}{% endblock %}</div>
+        </div>
+        <div class="row synopsis-header">
+            <div class="col-10 offset-1">{% block synopsis %}{% endblock %}</div>
+        </div>
+        <div class="row informations-header">
+            <div class="col-3 offset-1">{% block genre %}{% endblock %}</div>
+            <div class="col-1">{% block year %}{% endblock %}</div>
+        </div>
+        <div class="row watched-header">
+            <div class="col-6 offset-1">{% block friends_watched %}{% endblock %}</div>
+            <div class="col-4 watched">{% block watched %}{% endblock %}</div>
+        </div>
+        <div class="row justify-content-around buzz-episodes-informations-header">
+            <div class="col-4 buzzer">
+                <div>{% block buzz %}{% endblock %}</div>
             </div>
-            <div class="row title-header">
-                <div class="col-12"><h1>{% block serietitle %}{% endblock %}</h1></div>
+            <div class="col-4 watched">
+                <div>{% block next_episode %}{% endblock %}</div>
+                <div>{% block on_air %}{% endblock %}</div>
             </div>
-            <div class="row rating-or-season-header">
-                <div class="col-12">{% block rating_season %}{% endblock %}</div>
-            </div>
-            <div class="row synopsis-header">
-                <div class="col-10 offset-1">{% block synopsis %}{% endblock %}</div>
-            </div>
-            <div class="row informations-header">
-                <div class="col-3 offset-1">{% block genre %}{% endblock %}</div>
-                <div class="col-1">{% block year %}{% endblock %}</div>
-            </div>
-            <div class="row watched-header">
-                <div class="col-6 offset-1">{% block friends_watched %}{% endblock %}</div>
-                <div class="col-4 watched">{% block watched %}{% endblock %}</div>
-            </div>
-            <div class="row justify-content-around buzz-episodes-informations-header">
-                <div class="col-4 buzzer">
-                    <div>{% block buzz %}{% endblock %}</div>
-                </div>
-                <div class="col-4 watched">
-                    <div>{% block next_episode %}{% endblock %}</div>
-                    <div>{% block on_air %}{% endblock %}</div>
-                </div>
-            </div>
-        </header>
-        {% block tvshowlayoutcontent %}{% endblock %}
-    </div>
+        </div>
+    </header>
+    {% block tvshowlayoutcontent %}{% endblock %}
 {% endblock %}

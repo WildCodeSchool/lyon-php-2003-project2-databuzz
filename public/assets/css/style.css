@@ -114,6 +114,23 @@ header{
     height: 100vh;
 }
 
+.img-header > img{
+    opacity: 0.8;
+    border-radius: 20px;
+}
+
+.img-container{
+    position: relative;
+    justify-content: center;
+}
+
+.center > h1 {
+    position: relative;
+    top: -50%;
+    font-size: 50px;
+    margin-bottom: -10px;
+}
+
 .row.title-header{
     text-align: center;
 }
