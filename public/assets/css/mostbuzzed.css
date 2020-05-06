@@ -1,8 +1,32 @@
 /***********************  F O R   A L L   V E R S I O N  ***************************/
 .mostbuzzedcard{
     margin: 15px 5% 15px 5%;
+    height: auto;
+    width: auto;
     border: rgb(255,180,0)  solid 1px;
+}
 
+.card-text{
+    border: rgb(255,180,0)  solid 1px;
+    border-radius: 50%;
+    background-color: rgba(255,180,0,0.7);
+    padding: 20px 15px;
+}
+
+.mostbuzzedcard:hover .card-text {
+    border: rgb(255,180,0)  solid 1px;
+    border-radius: 50%;
+    background: rgb(255,180,0);
+    padding: 20px 15px;
+    text-shadow: 0 0 1px black;
+    box-shadow: 0 0 5px #FFB400;
+}
+
+.card-body{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding-left: 0;
 }
 
 /***********************  M O B I L E   F I R S T   :   V U E   M O B I L E   P O R T R A I T  ***************************/
@@ -14,11 +38,11 @@
     .mostbuzzed-large-view {
         display: none;
     }
+
 }
 
-
 /*******  M E D I A   Q U E R I E S   :   V U E   M O B I L E   P A Y S A G E  -  T A B L E T T E   P O R T R A I T *****/
-@media screen and (min-width: 470px) {
+@media screen and (min-width: 471px) {
     .mostbuzzed-small-view {
         display: none;
     }
@@ -26,6 +50,7 @@
         display: none;
     }
 }
+
 /*******  M E D I A   Q U E R I E S   :   V U E   T A B L E T T E   P A Y S A G E  -  D E S K T O P *****/
 @media screen and (min-width: 960px) {
     .mostbuzzed-medium-view {

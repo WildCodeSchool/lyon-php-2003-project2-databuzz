@@ -45,7 +45,7 @@ class SeasonManager extends AbstractManager
         $statement->bindValue('synopsis', $seasonInfo['overview'], \PDO::PARAM_STR);
         $statement->bindValue(
             'img',
-            "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/".$seasonInfo['poster_path'],
+            "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/" . $seasonInfo['poster_path'],
             \PDO::PARAM_STR
         );
         $statement->bindValue('year', substr($seasonInfo['air_date'], 0, 4), \PDO::PARAM_INT);
@@ -55,5 +55,20 @@ class SeasonManager extends AbstractManager
         } else {
             return false;
         }
+    }
+
+    public function getSeasonsByShow(int $id)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("
+            SELECT id, tvshow_id, season_number, nbEpisodes, synopsis, img, year FROM $this->table
+            WHERE tvshow_id = :id
+            ORDER BY season_number;
+            ");
+
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }

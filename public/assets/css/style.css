@@ -72,3 +72,155 @@
 .user-info-title {
     font-weight : bold;
 }
+
+/*//////////////////////    CSS SEASON-SELECT BOX      //////////////////////*/
+.season-select-div {
+    padding: 25px 0px 25px 10px;
+}
+
+.season-select {
+    background-image:
+            linear-gradient(45deg, transparent 50%, #204051 50%),
+            linear-gradient(135deg, #204051 50%, transparent 50%),
+            radial-gradient(#db9b00 70%, transparent 72%);
+    background-position:
+            calc(100% - 20px) calc(1em + 2px),
+            calc(100% - 15px) calc(1em + 2px),
+            calc(100% - .5em) .5em;
+    background-size:
+            5px 5px,
+            5px 5px,
+            1.5em 1.5em;
+    -webkit-appearance: none;
+    background-repeat: no-repeat;
+    background-color: #FFB400;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+}
+/*//////////////////////    END CSS SEASON-SELECT BOX      //////////////////////*/
+
+/*////////////////////// HOME //////////////////////*/
+
+header.home{
+    background-color: #FFB400;
+    padding-top: 20px;
+    height: 20vh;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+h1{
+    text-align: center;
+}
+
+.container-fluid{
+    padding: 0;
+}
+
+/*////////////////////// SEARCH //////////////////////*/
+.card.searchcard{
+    height: 100%;
+}
+
+.search-results{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+
+/*////////////////////// TVSHOW //////////////////////*/
+.container.tvshow{
+    padding: 0;
+}
+
+header{
+    background-color: #FFB400;
+    padding-top: 20px;
+    height: 100vh;
+}
+
+.row.title-header{
+    text-align: center;
+}
+
+.row.rating-or-season-header{
+    text-align: center;
+}
+
+.buzzer{
+    display: flex;
+    align-items: center;
+}
+
+.actors{
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.card{
+    width: 12rem;
+    height: 22rem;
+}
+
+.season-block{
+    background-color: #FFB400;
+    display: flex;
+    align-items: center;
+    margin : 0.5rem;
+    color: black;
+}
+
+@media screen and (min-width: 640px) {
+    header{
+        height: 100%;
+    }
+    .watched {
+        text-align: right;
+    }
+}
+
+/***********************  F O R   A L L   V E R S I O N  ***************************/
+.mostbuzzedcard{
+    margin: 15px 5% 15px 5%;
+    border: rgb(255,180,0)  solid 1px;
+
+}
+
+/*////////////////////// MOSTBUZZED //////////////////////*/
+
+/***********************  M O B I L E   F I R S T   :   V U E   M O B I L E   P O R T R A I T  ***************************/
+@media screen and (max-width: 470px) {
+    .mostbuzzed-medium-view {
+        display: none;
+    }
+
+    .mostbuzzed-large-view {
+        display: none;
+    }
+}
+
+
+/*******  M E D I A   Q U E R I E S   :   V U E   M O B I L E   P A Y S A G E  -  T A B L E T T E   P O R T R A I T *****/
+@media screen and (min-width: 470px) {
+    .mostbuzzed-small-view {
+        display: none;
+    }
+    .mostbuzzed-large-view {
+        display: none;
+    }
+}
+/*******  M E D I A   Q U E R I E S   :   V U E   T A B L E T T E   P A Y S A G E  -  D E S K T O P *****/
+@media screen and (min-width: 960px) {
+    .mostbuzzed-medium-view {
+        display: none;
+    }
+    .mostbuzzed-large-view {
+        display: initial;
+    }
+}
