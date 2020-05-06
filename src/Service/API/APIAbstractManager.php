@@ -13,15 +13,14 @@ class APIAbstractManager
 
     protected $apiKey = "?api_key=" . API_KEY;
 
-    public function __construct(string $resource)
+    public function __construct()
     {
         $this->client = HttpClient::create();
-        $this->baseUrl .= $resource;
     }
 
     public function getOneById(int $id)
     {
-        $response = $this->client->request('GET', $this->baseUrl . $id . $this->apiKey);
+        $response = $this->client->request('GET', $this->baseUrl . 'tv/'  . $id . $this->apiKey);
 
         $result = $response->toArray();
         return $result;
