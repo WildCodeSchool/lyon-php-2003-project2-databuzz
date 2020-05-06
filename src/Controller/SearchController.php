@@ -8,8 +8,7 @@
 
 namespace App\Controller;
 
-use App\Model\TvshowManager;
-use App\Model\GenreManager;
+use App\Model\BuzzManager;
 use App\Service\API\APITvShowManager;
 
 class SearchController extends AbstractController
@@ -37,6 +36,12 @@ class SearchController extends AbstractController
         $string = $_POST['search'];
         $searchAPI = new APITvShowManager();
         $searchResultsAPI = $searchAPI->searchTvShow($string);
-        return $this->twig->render('Search/index.html.twig', ['searchAPI'=>$searchResultsAPI]);
+        $buzzs = new BuzzManager();
+        $index = 0;
+        foreach ($searchResultsAPI['results'] as $singleResult) {
+            $searchResultsAPI['results'][$index]['buzzs'] = $buzzs->getBuzzTvShow($singleResult['id']);
+            $index++;
+        }
+        return $this->twig->render('Search/index.html.twig', ['searchAPI' => $searchResultsAPI]);
     }
 }
