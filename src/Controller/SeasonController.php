@@ -32,17 +32,6 @@ class SeasonController extends AbstractController
         // id, synopsis, season number, year...
         $seasonAndEpisodes = $apiTvShow->getEpisodes($tvshowId, $seasonNumber);
 
-        // If season is not stored in DB, retrieve data from API
-        /*
-        if (!$season) {
-            // Then, insert it into DB - $episodes has all the data of the season
-            $seasonManager->insert($seasonAndEpisodes, $episodeCount, $tvshowId);
-
-            // Then, retrieve season info from DB in $season variable
-            $season = $seasonManager->selectOneById($seasonId);
-        }
-        */
-
         $numberOfSeasons = $apiTvShow->getNbOfSeasonsByShow($tvshowId);
 
         $tvshowSeasons = $seasonManager->getSeasonsByShow($tvshowId);
