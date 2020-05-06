@@ -25,7 +25,8 @@ class AuthController extends AbstractController
         if (!empty($_POST)) {
             // Check if email is already used
             $userManager = new UserManager();
-            if (!$userManager->selectOneByEmail(trim($_POST['email']))) {
+            $user = $userManager->selectOneByEmail(trim($_POST['email']));
+            if ($user != false) {
                 $errors['email'] = "This email is already used";
             } else {
                 // Check if both passwords are matching, if not, add error to array
@@ -104,7 +105,6 @@ class AuthController extends AbstractController
                         header('location: /');
                     } else {
                         $errors['password'] = "Invalid password";
-                        var_dump($user);
                     }
                 }
             }
