@@ -22,7 +22,9 @@
         <select class="season-select" id="season-select">
             <option value="" disabled selected hidden>Choose a season</option>
             {% for tvshowSeason in tvshowSeasons %}
-                <option value="/season/index/{{ tvshowSeason.season_number }}">Season {{ tvshowSeason.season_number }}</option>
+                {% if tvshowSeason.season_number > 0 %}
+                <option value="/season/index/{{ tvshowSeason.id }}">Season {{ tvshowSeason.season_number }}</option>
+                {% endif %}
             {% endfor %}
         </select>
     </div>
@@ -30,7 +32,7 @@
 
     <div id="accordion">
         {# Display one dropdown menu per episodes #}
-        {% for episode in episodes %}
+        {% for episode in episodes.episodes %}
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
@@ -38,12 +40,13 @@
                                 aria-expanded="true" aria-controls="collapseOne">
                             <div class="row">
                                 <div class="col-3">
-                                    Image from API
+                                    <img src="https://image.tmdb.org/t/p/w200/{{ episode.still_path }}"
+                                         class="card-img-top" alt="...">
                                 </div>
                                 <div class="col-3">
                                     <p>Episode {{ episode.episode_number }}</p>
                                     <br>
-                                    <p>Aired on the {{ episode.air_date }}</p>
+                                    <p>Air date: {{ episode.air_date }}</p>
                                 </div>
                                 <div class="col">
                                     <p>{{ episode.name }}</p>
