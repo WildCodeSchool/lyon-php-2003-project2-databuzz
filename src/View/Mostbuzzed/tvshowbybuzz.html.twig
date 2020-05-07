@@ -55,16 +55,18 @@
         <div class="container-fluid">
             <div class="row no-gutters">
                 {% for buzz in buzzes %}
-                <a href="/tvshow/show/{{ buzz.id }}">
                     <div class="col-md-3">
-                        <div class="card mostbuzzedcard">
-                            <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
-                            <div class="card-body">
-                                <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+                        <a href="/tvshow/show/{{ buzz.id }}">
+                            <div class="card mostbuzzedcard">
+                                <img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}">
+                                <div class="card-body">
+                                    <span class="card-text">{{ buzz.nb_buzz }} <i
+                                                class="fas fa-concierge-bell"></i></span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </a>
+
                 {% endfor %}
             </div>
         </div>
