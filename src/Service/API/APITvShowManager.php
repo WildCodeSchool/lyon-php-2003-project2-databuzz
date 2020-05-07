@@ -22,6 +22,15 @@ class APITvShowManager extends APIAbstractManager
     {
         $response = $this->client->request('GET', $this->baseUrl . $id. $this->apiKey);
         $seasons = $response->toArray();
+        var_dump($seasons);
         return $seasons['seasons'];
+    }
+    public function getRecommendations($id)
+    {
+        $response = $this->client->request('GET', $this->baseUrl . $id . '/recommendations' . $this->apiKey);
+        $recommendations = $response->toArray();
+        var_dump($recommendations);
+        die();
+        return $recommendations['recommendations'];
     }
 }

@@ -44,6 +44,7 @@ class TvshowController extends AbstractController
         $api = new APITvShowManager();
         $actors = $api->getActors($id);
         $seasons = $api->getSeasons($id);
+        $recommendations = $api->getRecommendations($id);
 
         return $this->twig->render(
             'Tvshow/tvshow.html.twig',
@@ -53,6 +54,7 @@ class TvshowController extends AbstractController
                 'buzzed' => $isBuzzed,
                 'actors' => $actors,
                 'seasons' => $seasons,
+                'recommendations' => $recommendations,
                 'sessions' => $_SESSION
             ]
         );
