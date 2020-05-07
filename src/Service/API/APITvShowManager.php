@@ -5,7 +5,6 @@ namespace App\Service\API;
 
 class APITvShowManager extends APIAbstractManager
 {
-    const RESOURCE = "tv/";
 
     public function __construct()
     {
@@ -21,9 +20,24 @@ class APITvShowManager extends APIAbstractManager
 
     public function getSeasons($id)
     {
-        $response = $this->client->request('GET', $this->baseUrl . 'tv/' . $id . $this->apiKey);
+        $response = $this->client->request('GET', $this->baseUrl . 'tv/' . $id. $this->apiKey);
         $seasons = $response->toArray();
         return $seasons['seasons'];
+    }
+
+    public function getNbOfSeasonsByShow($tvshowId)
+    {
+        $response = $this->client->request('GET', $this->baseUrl . 'tv/' . $tvshowId. $this->apiKey);
+        $seasons = $response->toArray();
+        return $seasons['number_of_seasons'];
+    }
+
+
+    public function getEpisodes(int $tvShowId, int $seasonId)
+    {
+        $response =
+            $this->client->request('GET', $this->baseUrl . 'tv/' . $tvShowId . "/season/" . $seasonId . $this->apiKey);
+        return $response->toArray();
     }
 
     public function searchTvShow($query)

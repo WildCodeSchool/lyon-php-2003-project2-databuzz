@@ -35,10 +35,10 @@ class BuzzManager extends AbstractManager
     public function selectNbBuzzed(): array
     {
         return $this->pdo->query("
-            SELECT tvshow.img, COUNT(buzz.tvshow_id) AS nb_buzz
+            SELECT tvshow.img, tvshow.id, COUNT(buzz.tvshow_id) AS nb_buzz
             FROM $this->table
             RIGHT JOIN tvshow ON tvshow.id = buzz.tvshow_id
-            GROUP BY tvshow.img
+            GROUP BY tvshow.id
             ORDER BY nb_buzz DESC
             ")->fetchAll();
     }
@@ -62,5 +62,16 @@ class BuzzManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+
+    public function getBuzzTvShow($id): array
+    {
+        $statement = $this->pdo->prepare("SELECT COUNT(buzz.tvshow_id) AS nb_buzz
+            FROM $this->table
+            WHERE buzz.tvshow_id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
     }
 }

@@ -27,6 +27,31 @@ class TvshowManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    // Function use to insert Tvshow data into the DB from the API
+    public function insert(array $inputs)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("INSERT INTO $this->table
+                                (`id`, `img`,`title`,`synopsis`,`year`)
+                                 VALUES (:id, :img, :title, :synopsis, :year)");
+        $statement->bindValue('id', $inputs['id'], \PDO::PARAM_INT);
+        $statement->bindValue(
+            'img',
+            "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/".$inputs['poster_path'],
+            \PDO::PARAM_STR
+        );
+        $statement->bindValue('title', $inputs['original_name'], \PDO::PARAM_STR);
+        $statement->bindValue('synopsis', $inputs['overview'], \PDO::PARAM_STR);
+        $statement->bindValue('year', substr($inputs['first_air_date'], 0, 4), \PDO::PARAM_INT);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     public function buzzTvShow(int $showId, int $userId)
     {
         $statement = $this->pdo->prepare("INSERT INTO buzz VALUES (:userid,:showid);");
