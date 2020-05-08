@@ -64,12 +64,12 @@
                 </a>
             {% endif %}
         {% endfor %}
-       <!-- <div class="row">
+       <div class="row">
             <div class="col-10">Recommendations</div>
         </div>
         <div class="row">
             <div class="col-12 recommendations">
-                {% for recommendation in recommendations['results'] %}
+                {% for recommendation in recommendations %}
                     <div class="col-6 col-sm-2">
                         {% if not(recommendation.poster_path) %}
                             <img src="/assets/images/no-image.jpg"
@@ -81,6 +81,6 @@
                     </div>
                 {% endfor %}
             </div>
-        </div>-->
+        </div>
     </main>
 {% endblock %}
