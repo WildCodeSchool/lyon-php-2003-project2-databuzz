@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\SeasonManager;
 use App\Model\GenreManager;
+use App\Service\API\APITvShowManager;
 
 class SeasonController extends AbstractController
 {
@@ -40,7 +41,9 @@ class SeasonController extends AbstractController
         $tvshow = $seasonManager->getShowBySeason($id);
         $genreManager = new GenreManager();
         $genres = $genreManager->getGenresBySeason($id);
+        $api = new APITvShowManager();
+        $recommendations = $api->getRecommendations($id);
         return $this->twig->render('Season/season.html.twig', ['season' => $season,
-            'genres' => $genres, 'episodes' => $episodes, 'tvshow' => $tvshow]);
+            'genres' => $genres, 'episodes' => $episodes, 'tvshow' => $tvshow, 'recommendations' => $recommendations]);
     }
 }

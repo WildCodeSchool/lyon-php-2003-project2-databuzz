@@ -28,7 +28,6 @@ class APITvShowManager extends APIAbstractManager
     {
         $response = $this->client->request('GET', $this->baseUrl . $id . '/recommendations' . $this->apiKey);
         $recommendations = $response->toArray();
-
         return $recommendations['results'];
     }
 }

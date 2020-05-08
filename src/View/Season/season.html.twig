@@ -56,4 +56,22 @@
             </div>
         {% endfor %}
     </div>
+    <div class="row">
+        <div class="col-10">Recommendations</div>
+    </div>
+    <div class="row">
+        <div class="col-12 recommendations">
+            {% for recommendation in recommendations %}
+                <div class="col-6 col-sm-2">
+                    {% if not(recommendation.poster_path) %}
+                        <img src="/assets/images/no-image.jpg"
+                             class="card-img-top" alt="{{ recommendation.name }}">
+                    {% else %}
+                        <img src="https://image.tmdb.org/t/p/w500{{ recommendation.poster_path }}"
+                             class="card-img-top" alt="{{ recommendation.name }}">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
