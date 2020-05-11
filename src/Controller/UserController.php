@@ -15,7 +15,6 @@ class UserController extends AbstractController
      */
     public function index()
     {
-        var_dump($_SESSION);
         if (!isset($_SESSION['user'])) {
             header('location /auth/signin');
         } else {
