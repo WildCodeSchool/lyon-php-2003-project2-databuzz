@@ -32,7 +32,6 @@ class APITvShowManager extends APIAbstractManager
         return $seasons['number_of_seasons'];
     }
 
-
     public function getEpisodes(int $tvShowId, int $seasonId)
     {
         $response =
@@ -45,5 +44,12 @@ class APITvShowManager extends APIAbstractManager
         $response = $this->client->request('GET', $this->baseUrl . 'search/tv' . $this->apiKey . '&query=' . $query);
         $results = $response->toArray();
         return $results;
+    }
+  
+    public function getRecommendations($id)
+    {
+        $response = $this->client->request('GET', $this->baseUrl . $id . '/recommendations' . $this->apiKey);
+        $recommendations = $response->toArray();
+        return $recommendations['results'];
     }
 }
