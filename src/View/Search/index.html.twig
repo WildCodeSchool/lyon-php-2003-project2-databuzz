@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/mostbuzzed.css">{% endblock %}
+
+{% block title %}Search results{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-11 offset-1">
+                <h1>Search results</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for resultsAPI in searchAPI %}
+                {% for resultAPI in resultsAPI %}
+                    <div class="col-12 col-xl-3 search-results">
+                        <div class="card searchcard">
+                            <a href="/tvshow/show/{{ resultAPI.id }}">
+                                <img src=
+                                     {% if resultAPI.poster_path is empty %}
+                                     "/assets/images/no-img.png"
+                                    {% else %}
+                                        "https://image.tmdb.org/t/p/w500{{ resultAPI.poster_path }}"
+                                    {% endif %}
+                                class="card-img-top"
+                                alt="{{ resultAPI.original_name }}"></a>
+                            <div class="card-body">
+                                <p class="card-text">{{ resultAPI.original_name }}</p>
+                                <span class="card-text">{{ resultAPI.buzzs.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

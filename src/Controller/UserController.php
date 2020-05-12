@@ -13,10 +13,10 @@ class UserController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function show()
+    public function index()
     {
         if (!isset($_SESSION['user'])) {
-            header('location /auth.signin');
+            header('location /auth/signin');
         } else {
             return $this->twig->render('User/account.html.twig');
         }

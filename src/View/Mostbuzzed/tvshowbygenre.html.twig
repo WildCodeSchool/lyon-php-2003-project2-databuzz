@@ -14,30 +14,25 @@
     </div>
 
     <div class="mostbuzzed-small-view">
-        {% for genre in genres %}
-            <div>{{ genre.name }}</div>
-
-        {% for buzz in buzzes %}
+       {% for genre in genres %}
             <div class="card mostbuzzedcard">
-                <img src="{{ buzz.img }}" class="card-img-top" alt="affiche {{ buzz.title }}">
+                <img src="{{ genre.img }}" class="card-img-top" alt="affiche {{ genre.title }}">
                 <div class="card-body">
-                    <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
-                    <span class="card-text">{{ genre.name }}</span>
+                    <span class="card-text">{{ genre.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
                 </div>
             </div>
-        {% endfor %}
         {% endfor %}
     </div>
 
     <div class="mostbuzzed-medium-view">
         <div class="container-fluid">
             <div class="row no-gutters">
-                {% for buzz in buzzes %}
+                {% for genre in genres %}
                     <div class="col-md-4">
                         <div class="card mostbuzzedcard">
-                            <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
+                            <a href="#"><img src={{ genre.img }} class="card-img-top" alt="affiche {{ genre.title }}"></a>
                             <div class="card-body">
-                                <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+                                <span class="card-text">{{ genre.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
                             </div>
                         </div>
                     </div>
@@ -49,12 +44,12 @@
     <div class="mostbuzzed-large-view">
         <div class="container-fluid">
             <div class="row no-gutters">
-                {% for buzz in buzzes %}
+                {% for genre in genres %}
                     <div class="col-md-3">
                         <div class="card mostbuzzedcard">
-                            <a href="#"><img src={{ buzz.img }} class="card-img-top" alt="affiche {{ buzz.title }}"></a>
+                            <a href="#"><img src={{ genre.img }} class="card-img-top" alt="affiche {{ genre.title }}"></a>
                             <div class="card-body">
-                                <span class="card-text">{{ buzz.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+                                <span class="card-text">{{ genre.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
                             </div>
                         </div>
                     </div>
