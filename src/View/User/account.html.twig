@@ -8,6 +8,15 @@
         </div>
         <div class="row">
             <div class="col-6 offset-3 user-info">
+                <div class="user-info-title"">USER ID
+                <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right"
+                    title="Give this ID to your friends to see their buzz!"></i>
+                </div>
+                <div>{{ session.user.id }}</div>
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-6 offset-3 user-info">
                 <div class="user-info-title"">USERNAME</div>
                 <div>{{ session.user.username }}</div>
             </div>
