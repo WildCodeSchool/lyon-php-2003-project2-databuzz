@@ -33,30 +33,29 @@
     <div id="accordion">
         {# Display one dropdown menu per episodes #}
         {% for episode in episodes.episodes %}
-            <div class="card">
+            <div class="card episodes">
                 <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ loop.index }}"
-                                aria-expanded="true" aria-controls="collapseOne">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="https://image.tmdb.org/t/p/w200/{{ episode.still_path }}"
+                        <button class="btn btn-link collasped" data-toggle="collapse" data-target="#collapse{{ loop.index }}"
+                                aria-expanded="false" aria-controls="collapseOne">
+                            <div class="row infos-episodes">
+                                <div class="col-12 col-xl-3">
+                                    <img src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces{{ episode.still_path }}"
                                          class="card-img-top" alt="...">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-12 col-xl-3">
                                     <p>Episode {{ episode.episode_number }}</p>
-                                    <br>
-                                    <p>Air date: {{ episode.air_date }}</p>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-xl-3">
                                     <p>{{ episode.name }}</p>
+                                </div>
+                                <div class="col-12 col-xl-3">
+                                    <p>Air date: {{ episode.air_date }}</p>
                                 </div>
                             </div>
                         </button>
-                    </h5>
                 </div>
 
-                <div id="collapse{{ loop.index }}" class="collapse show" aria-labelledby="headingOne"
+                <div id="collapse{{ loop.index }}" class="collapse" aria-labelledby="headingOne"
                      data-parent="#accordion">
                     <div class="card-body">
                         <p>{{ episode.overview }}</p>
