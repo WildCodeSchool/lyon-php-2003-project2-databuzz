@@ -37,7 +37,7 @@ class SeasonController extends AbstractController
         $tvshowSeasons = $seasonManager->getSeasonsByShow($tvshowId);
         $tvshow = $seasonManager->getShowBySeason($seasonId);
         $genreManager = new GenreManager();
-        $recommendations = $api->getRecommendations($tvshowId);
+        $recommendations = $apiTvShow->getRecommendations($tvshowId);
         $genres = $genreManager->getGenresBySeason($seasonId);
 
         return $this->twig->render(
