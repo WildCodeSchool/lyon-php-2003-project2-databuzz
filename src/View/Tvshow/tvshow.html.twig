@@ -22,62 +22,64 @@
 {% endblock %}
 {% block tvshowlayoutcontent %}
     <main>
-        <div class="row">
-            <div class="col-10">Distribution</div>
-        </div>
-        <div class="row">
-            <div class="col-12 actors">
-                {% for actor in actors %}
-                    <div class="col-6 col-sm-2">
-                        <div class="card">
-                            <img src="https://image.tmdb.org/t/p/w138_and_h175_face/{{ actor.profile_path }}"
-                                 class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ actor.name }}</h5>
-                                <p class="card-text">{{ actor.character }}</p>
-                            </div>
-                        </div>
-
-                    </div>
-                {% endfor %}
+        <div class="container">
+            <div class="row">
+                <div class="col-10">Distribution</div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-10 offset-1">Seasons</div>
-        </div>
-        {% for season in seasons %}
-            {% if season.season_number > 0  %}
-                <a href="/season/index/{{ season.id }}">
-                    <div class="row justify-content-around">
-                        <div class="row col-10 season-block">
-                            <div class="col-3-no-gutters">
-                                <div class="text">Saison {{ season.season_number }}</div>
+            <div class="row actors">
+                <div class="col-12 actors">
+                    {% for actor in actors %}
+                        <div class="col-6 col-xl-2">
+                            <div class="card">
+                                <img src="https://image.tmdb.org/t/p/w138_and_h175_face/{{ actor.profile_path }}"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ actor.name }}</h5>
+                                    <p class="card-text">{{ actor.character }}</p>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <div>{{ season.episode_count }} episodes</div>
-                                <div>{{ season.overview }}</div>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10 offset-1">Seasons</div>
+            </div>
+            {% for season in seasons %}
+                {% if season.season_number > 0 %}
+                    <a href="/season/index/{{ season.id }}">
+                        <div class="row justify-content-around">
+                            <div class="row col-11 offset-1 col-xl-12 season-block">
+                                <div class="col-3-no-gutters">
+                                    <div class="text">Saison {{ season.season_number }}</div>
+                                </div>
+                                <div class="col-12">
+                                    <div>{{ season.episode_count }} episodes</div>
+                                    <div>{{ season.overview }}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            {% endif %}
-        {% endfor %}
-       <div class="row">
-            <div class="col-10">Recommendations</div>
-        </div>
-        <div class="row">
-            <div class="col-12 recommendations">
-                {% for recommendation in recommendations %}
-                    <div class="col-6 col-sm-2">
-                        {% if not(recommendation.poster_path) %}
-                            <img src="/assets/images/no-image.jpg"
-                                 class="card-img-top" alt="{{ recommendation.name }}">
-                        {% else %}
-                            <img src="https://image.tmdb.org/t/p/w500{{ recommendation.poster_path }}"
-                                 class="card-img-top" alt="{{ recommendation.name }}">
-                        {% endif %}
-                    </div>
-                {% endfor %}
+                    </a>
+                {% endif %}
+            {% endfor %}
+            <div class="row">
+                <div class="col-10">Recommendations</div>
+            </div>
+            <div class="row">
+                <div class="col-12 recommendations">
+                    {% for recommendation in recommendations %}
+                        <div class="col-6 col-sm-2">
+                            {% if not(recommendation.poster_path) %}
+                                <img src="/assets/images/no-image.jpg"
+                                     class="card-img-top" alt="{{ recommendation.name }}">
+                            {% else %}
+                                <img src="https://image.tmdb.org/t/p/w500{{ recommendation.poster_path }}"
+                                     class="card-img-top" alt="{{ recommendation.name }}">
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </main>
