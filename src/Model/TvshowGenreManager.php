@@ -20,7 +20,6 @@ class TvshowGenreManager extends AbstractManager
 
     public function insert(array $data)
     {
-        echo "<pre>", print_r($data['genres'][0]['id']), "</pre>";
         // prepared request
         foreach ($data['genres'] as $genreId) {
             $statement = $this->pdo->prepare("INSERT INTO $this->table
