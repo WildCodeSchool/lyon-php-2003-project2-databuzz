@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use App\Model\BuzzManager;
 use App\Model\GenreManager;
+use App\Model\TvshowGenreManager;
 use App\Model\TvshowManager;
 use App\Model\SeasonManager;
 use App\Service\API\APITvShowManager;
@@ -41,6 +42,7 @@ class TvshowController extends AbstractController
         // Check if tvshow($id) is already in DB
         $tvshowManager = new TvshowManager();
         $tvshow = $tvshowManager->selectOneById($id);
+        $genreManager = new TvshowGenreManager();
 
         // If no, use API to get info and insert it in DB
         $api = new APITvShowManager();
@@ -48,6 +50,7 @@ class TvshowController extends AbstractController
             $inputs = $api->getOneById($id);
 
             $tvshowManager->insert($inputs);
+            $genreManager->insert($inputs);
             $tvshow = $tvshowManager->selectOneById($id);
         }
 
