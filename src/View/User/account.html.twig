@@ -1,99 +1,55 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <header class="user-header">
+    <header class="account-header">
         <div class=""><h1>Account Information</h1></div>
-        <table>
+        <table class="userInfo container">
             <tr>
-                <th>USER ID:</th>
-                    <td>{{ session.user.id }} &nbsp; <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right"
-                                                 title="Give this ID to your friends to see their buzz!"></i></td>
+                <th class="col-4">USER ID:</th>
+                <td class="col-4">{{ session.user.id }} &nbsp; <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right"
+                                                 title="Give this ID to your friends so they can see your buzz!"></i></td>
             </tr>
             <tr>
-                <th>USERNAME:</th>
-                <td>{{ session.user.username }}</td>
+                <th class="col-4">USERNAME:</th>
+                <td class="col-4">{{ session.user.username }}</td>
             </tr>
             <tr>
-                <th>FIRSTNAME:</th>
-                <td>{{ session.user.firstname }}</td>
+                <th class="col-4">FIRSTNAME:</th>
+                <td class="col-4">{{ session.user.firstname }}</td>
             </tr>
             <tr>
-                <th>LASTNAME:</th>
-                <td>{{ session.user.lastname }}</td>
+                <th class="col-4">LASTNAME:</th>
+                <td class="col-4">{{ session.user.lastname }}</td>
             </tr>
             <tr>
-                <th>EMAIL:</th>
-                <td>{{ session.user.email }}</td>
+                <th class="col-4">EMAIL:</th>
+                <td class="col-4">{{ session.user.email }}</td>
             </tr>
         </table>
     </header>
 
-
-    {#
-    <div class="container userInfo">
-        <div class="user-header">
-            <div class="row">
-                <div class="col-12"><h1>Account Information</h1></div>
-            </div>
-            <div class="">
-                <div class="o">
-                    <div class="user-info-title">USER ID
-                        <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right"
-                           title="Give this ID to your friends to see their buzz!"></i>
-                    </div>
-                    <div>{{ session.user.id }}</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 offset-3 user-info">
-                    <div class="user-info-title">USERNAME</div>
-                    <div>{{ session.user.username }}</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 offset-3 user-info">
-                    <div class="user-info-title">FIRSTNAME</div>
-                    <div>{{ session.user.firstname }}</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 offset-3 user-info">
-                    <div class="user-info-title">LASTNAME</div>
-                    <div>{{ session.user.lastname }}</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 offset-3 user-info">
-                    <div class="user-info-title">EMAIL</div>
-                    <div>{{ session.user.email }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    #}
-
     {# Add a friend feature #}
-    <div>
+    <div class="container add-friend-form">
         <form action="" method="POST">
             <div class="form-group row">
-                <label class="col-2 offset-1 col-form-label" for="addFriend">Add a friend</label>
-                <input class="col-3" type="text" class="form-control" id="addFriend" name="addFriend">
-                <small class="form-text text-error">
-                    {{ errors.friendID }}
-                </small>
-                <button type="submit" class="col-2 offset-1 btn btn-primary">Add</button>
+                <input class="col-4 offset-4" type="text" class="form-control" id="addFriend" name="addFriend"
+                       placeholder="Insert your friend's ID here">
             </div>
+            <small class="form-text text-error col-4 offset-4">
+                {{ errors.friendID }}
+            </small>
+            <button type="submit" class="col-2 offset-5 btn user-buttons">Add</button>
         </form>
     </div>
     {# Display table of friends #}
-    <h1>Your Friends :</h1>
+    <h1>Your Friends</h1>
 
-    <table class="table">
+    <table class="table friends-list">
         <thead>
         <tr>
-            <th scope="col">id</th>
-            <th scope="col">Username</th>
-            <th scope="col">His Buzz!</th>
+            <th scope="col">ID</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">HIS BUZZ!</th>
         </tr>
         </thead>
         <tbody>
