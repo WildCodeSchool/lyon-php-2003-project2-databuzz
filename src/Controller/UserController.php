@@ -26,7 +26,6 @@ class UserController extends AbstractController
 
             // Retrieve list of friends from DataBase
             $friendManager = new FriendManager();
-            var_dump($_POST);
             // if $_Post is set, addFriend has been used and should be added to DB
             // need 2 $id, one for current user $_SESSION['user']['id'], and friend's one $_POST['addFriend']
             if (!empty($_POST)) {
@@ -35,7 +34,10 @@ class UserController extends AbstractController
                         $errors['friendID'] = "Your friend's ID is required";
                 } else {
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        $friendManager->addFriendToDB($_SESSION['user']['id'], $friendID);
+                        $addedFriend = $friendManager->addFriendToDB($_SESSION['user']['id'], $friendID);
+                        if ($addedFriend === false) {
+                            $errors['friendID'] = "Friend #".$_POST['addFriend']." is already your friend";
+                        }
                     }
                 }
             }

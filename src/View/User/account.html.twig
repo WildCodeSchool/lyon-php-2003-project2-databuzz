@@ -47,7 +47,10 @@
         <form action="" method="POST">
             <div class="form-group row">
                 <label class="col-2 offset-1 col-form-label" for="addFriend">Add a friend</label>
-                <input class="col-4" type="text" class="form-control" id="addFriend" name="addFriend">
+                <input class="col-3" type="text" class="form-control" id="addFriend" name="addFriend">
+                <small class="form-text text-error">
+                    {{ errors.friendID }}
+                </small>
                 <button type="submit" class="col-2 offset-1 btn btn-primary">Add</button>
             </div>
         </form>
