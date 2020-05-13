@@ -2,34 +2,36 @@
 
 {% block content %}
     <header>
-        <div class="row img-header">
-            <div class="col-10 offset-1 img-header img-container"><img
+        <div class="row no-gutters img-header">
+            <div class="col-10 offset-1 col-xl-10 img-header img-container"><img
                         src="{% block img_header %}{% endblock %}"
                         alt="{% block alt_img %}{% endblock %}" class="img-fluid"></div>
-            <div class="col-12 center"><h1>{% block serietitle %}{% endblock %}</h1></div>
         </div>
-        <div class="row rating-or-season-header">
-            <div class="col-12">{% block rating_season %}{% endblock %}</div>
+        <div class="row no-gutters">
+            <div class="col-11 offset-1 col-xl-10 tvshow-title">
+                <h1>{% block serietitle %}{% endblock %}</h1>
+            </div>
         </div>
-        <div class="row synopsis-header">
-            <div class="col-10 offset-1">{% block synopsis %}{% endblock %}</div>
+        <div class="row no-gutters rating-or-season-header">
+            <div class="col-12"><h2>{% block rating_season %}{% endblock %}</h2></div>
         </div>
-        <div class="row informations-header">
-            <div class="col-3 offset-1">{% block genre %}{% endblock %}</div>
-            <div class="col-1">{% block year %}{% endblock %}</div>
-        </div>
-        <div class="row watched-header">
-            <div class="col-6 offset-1">{% block friends_watched %}{% endblock %}</div>
-            <div class="col-4 watched">{% block watched %}{% endblock %}</div>
-        </div>
-        <div class="row justify-content-around buzz-episodes-informations-header">
-            <div class="col-4 buzzer">
+        <div class="row no-gutters">
+            <div class="col-12 buzzer">
                 <div>{% block buzz %}{% endblock %}</div>
             </div>
-            <div class="col-4 watched">
+        </div>
+        <div class="row synopsis-header">
+            <div class="col-11 col-xl-7 offset-1">{% block synopsis %}{% endblock %}</div>
+            <div class="col-12 offset-1 offset-lg-0 col-xl-3 watched">
                 <div>{% block next_episode %}{% endblock %}</div>
                 <div>{% block on_air %}{% endblock %}</div>
             </div>
+        </div>
+        <div class="row informations-header">
+        </div>
+        <div class="row">
+            <div class="col-11 offset-1 col-xl-1 year">{% block year %}{% endblock %}</div>
+            <div class="col-12 col-xl-3 offset-1 offset-lg-0 genre">{% block genre %}{% endblock %}</div>
         </div>
     </header>
     {% block tvshowlayoutcontent %}{% endblock %}

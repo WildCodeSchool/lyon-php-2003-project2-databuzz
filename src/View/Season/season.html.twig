@@ -7,11 +7,10 @@
 {% block rating_season %}Season {{season.season_number}}{% endblock %}
 {% block synopsis %}{{ season.synopsis }}{% endblock %}
 {% block genre %}Genre : {% for genre in genres %}{{ genre.name }}  {% endfor %}{% endblock %}
-{% block year %}Year {{ season.year }}{% endblock %}
+{% block year %}Year : {{ season.year }}{% endblock %}
 {% block friends_watched %}Lucas, Jeff and François have watched it{% endblock %}
 {% block watched %}Watched or not ?{% endblock %}
-{% block next_episode %}S03E03{% endblock %}
-{% block on_air %}On air : 23/04/2020{% endblock %}
+{% block next_episode %}{{ season.nbEpisodes }} episodes{% endblock %}
 {% block buzz %}{% endblock %}
 
 {% block serietitle %}{{ tvshow.title }}{% endblock %}
@@ -28,7 +27,6 @@
             {% endfor %}
         </select>
     </div>
-
 
     <div id="accordion">
         {# Display one dropdown menu per episodes #}
