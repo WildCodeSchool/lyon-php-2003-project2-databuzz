@@ -22,6 +22,7 @@ class UserController extends AbstractController
             header('location /auth/signin');
         } else {
             $errors = [];
+            $userID = $_SESSION['user']['id'];
             $friendID = "";
 
             // Retrieve list of friends from DataBase
@@ -34,15 +35,16 @@ class UserController extends AbstractController
                         $errors['friendID'] = "Your friend's ID is required";
                 } else {
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        $addedFriend = $friendManager->addFriendToDB($_SESSION['user']['id'], $friendID);
+                        $addedFriend = $friendManager->addFriendToDB($userID, $friendID);
                         if ($addedFriend === false) {
                             $errors['friendID'] = "Friend #".$_POST['addFriend']." is already your friend";
                         }
                     }
                 }
             }
+            $friendsList = $friendManager->selectFriendsById($userID);
 
-            return $this->twig->render('User/account.html.twig', ['errors' => $errors]);
+            return $this->twig->render('User/account.html.twig', ['errors' => $errors, 'friends' => $friendsList]);
         }
     }
 }

@@ -55,11 +55,26 @@
             </div>
         </form>
     </div>
-    {# Display list of friends #}
-    <ul class="list-group">
+    {# Display table of friends #}
+    <h1>Your Friends :</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Username</th>
+            <th scope="col">His Buzz!</th>
+        </tr>
+        </thead>
+        <tbody>
         {% for friend in friends %}
-            <li class="list-group-item">{{ friends.username }}</li>
-        {% endfor %}
-    </ul>
+                <tr>
+                    <td>{{ friend.id }}</td>
+                    <td>{{ friend.username }}</td>
+                    <td><a href="/friends/index/{{ friend.id }}">buzzes</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

@@ -54,4 +54,31 @@ class FriendManager extends AbstractManager
             return false;
         }
     }
+
+    public function selectFriendsById($id)
+    {
+        // Select info from DB of all friends
+        $statement = $this->pdo->prepare(
+            "SELECT user_id_1, user_id_2 FROM $this->table 
+                        WHERE (user_id_1=:id OR user_id_2=:id)"
+        );
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+
+        $statement->execute();
+        // friends user table
+        $friendsTable = $statement->fetchAll();
+        $friendsData = [];
+
+        $userManager = new UserManager();
+
+        foreach ($friendsTable as $friend) {
+            // if user_id_1 is a friend and not me, then, add its info to $friendsData
+            if ($friend['user_id_1'] != $id) {
+                array_push($friendsData, $userManager->selectOneById($friend['user_id_1']));
+            } elseif ($friend['user_id_2'] != $id) {
+                array_push($friendsData, $userManager->selectOneById($friend['user_id_2']));
+            }
+        }
+        return $friendsData;
+    }
 }
