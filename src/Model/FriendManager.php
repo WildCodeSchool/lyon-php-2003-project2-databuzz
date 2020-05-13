@@ -81,4 +81,15 @@ class FriendManager extends AbstractManager
         }
         return $friendsData;
     }
+
+    public function deleteFriend($id1, $id2)
+    {
+        $statement = $this->pdo->prepare("DELETE FROM $this->table
+                        WHERE (user_id_1=:user_id_1 AND user_id_2=:user_id_2) 
+                        OR (user_id_1=:user_id_2 AND user_id_2=:user_id_1)");
+        $statement->bindValue('user_id_1', $id1, \PDO::PARAM_INT);
+        $statement->bindValue('user_id_2', $id2, \PDO::PARAM_INT);
+
+        $statement->execute();
+    }
 }
