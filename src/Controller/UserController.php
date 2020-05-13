@@ -36,6 +36,7 @@ class UserController extends AbstractController
                 } else {
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $userManager = new UserManager();
+                        // int is used to transform $friendID into an int
                         if (empty($userManager->selectOneById((int)$friendID))) {
                             $errors['friendID'] = "This user does not exists";
                         } else {
