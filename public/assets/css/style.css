@@ -62,6 +62,13 @@
 .text-error {
     color: red;
 }
+
+.user-header {
+    background-color: #FFB400;
+    padding-top: 20px;
+    height: 110vh;
+}
+
 /*////////////////////// ACCOUNT INFORMATION STYLING //////////////////////*/
 .user-info {
     background-color: #C4C4C4;

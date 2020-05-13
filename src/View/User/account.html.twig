@@ -1,45 +1,62 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<div class="container userInfo">
-    <header>
-        <div class="row title-header">
-            <div class="col-12"><h1>Account Information</h1></div>
-        </div>
-        <div class="row">
-            <div class="col-6 offset-3 user-info">
-                <div class="user-info-title"">USER ID
-                <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right"
-                    title="Give this ID to your friends to see their buzz!"></i>
+    <div class="container userInfo">
+        <div class="user-header">
+            <div class="row title-header">
+                <div class="col-12"><h1>Account Information</h1></div>
+            </div>
+            <div class="row">
+                <div class="col-6 offset-3 user-info">
+                    <div class="user-info-title">USER ID
+                        <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right"
+                           title="Give this ID to your friends to see their buzz!"></i>
+                    </div>
+                    <div>{{ session.user.id }}</div>
                 </div>
-                <div>{{ session.user.id }}</div>
             </div>
+            <div class="row">
+                <div class="col-6 offset-3 user-info">
+                    <div class="user-info-title">USERNAME</div>
+                    <div>{{ session.user.username }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 offset-3 user-info">
+                    <div class="user-info-title">FIRSTNAME</div>
+                    <div>{{ session.user.firstname }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 offset-3 user-info">
+                    <div class="user-info-title">LASTNAME</div>
+                    <div>{{ session.user.lastname }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 offset-3 user-info">
+                    <div class="user-info-title">EMAIL</div>
+                    <div>{{ session.user.email }}</div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row">
-            <div class="col-6 offset-3 user-info">
-                <div class="user-info-title"">USERNAME</div>
-                <div>{{ session.user.username }}</div>
+
+    {# Add a friend feature #}
+    <div>
+        <form action="" method="POST">
+            <div class="form-group row">
+                <label class="col-2 offset-1 col-form-label" for="addFriend">Add a friend</label>
+                <input class="col-4" type="text" class="form-control" id="addFriend" name="addFriend">
+                <button type="submit" class="col-2 offset-1 btn btn-primary">Add</button>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6 offset-3 user-info">
-                <div class="user-info-title">FIRSTNAME</div>
-                <div>{{ session.user.firstname }}</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 offset-3 user-info">
-                <div class="user-info-title">LASTNAME</div>
-                <div>{{ session.user.lastname }}</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 offset-3 user-info">
-                <div class="user-info-title">EMAIL</div>
-                <div>{{ session.user.email }}</div>
-            </div>
-        </div>
-    </header>
-</div>
+        </form>
+    </div>
+    {# Display list of friends #}
+    <ul class="list-group">
+        {% for friend in friends %}
+            <li class="list-group-item">{{ friends.username }}</li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
