@@ -1,13 +1,42 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+    <header class="user-header">
+        <div class=""><h1>Account Information</h1></div>
+        <table>
+            <tr>
+                <th>USER ID:</th>
+                    <td>{{ session.user.id }} &nbsp; <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right"
+                                                 title="Give this ID to your friends to see their buzz!"></i></td>
+            </tr>
+            <tr>
+                <th>USERNAME:</th>
+                <td>{{ session.user.username }}</td>
+            </tr>
+            <tr>
+                <th>FIRSTNAME:</th>
+                <td>{{ session.user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>LASTNAME:</th>
+                <td>{{ session.user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>EMAIL:</th>
+                <td>{{ session.user.email }}</td>
+            </tr>
+        </table>
+    </header>
+
+
+    {#
     <div class="container userInfo">
         <div class="user-header">
-            <div class="row title-header">
+            <div class="row">
                 <div class="col-12"><h1>Account Information</h1></div>
             </div>
-            <div class="row">
-                <div class="col-6 offset-3 user-info">
+            <div class="">
+                <div class="o">
                     <div class="user-info-title">USER ID
                         <i class="far fa-question-circle" data-toggle="tooltip" data-placement="right"
                            title="Give this ID to your friends to see their buzz!"></i>
@@ -41,6 +70,7 @@
             </div>
         </div>
     </div>
+    #}
 
     {# Add a friend feature #}
     <div>
