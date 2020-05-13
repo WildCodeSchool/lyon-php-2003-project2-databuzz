@@ -35,9 +35,14 @@ class UserController extends AbstractController
                         $errors['friendID'] = "Your friend's ID is required";
                 } else {
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        $addedFriend = $friendManager->addFriendToDB($userID, $friendID);
-                        if ($addedFriend === false) {
-                            $errors['friendID'] = "Friend #".$_POST['addFriend']." is already your friend";
+                        $userManager = new UserManager();
+                        if (empty($userManager->selectOneById((int)$friendID))) {
+                            $errors['friendID'] = "This user does not exists";
+                        } else {
+                            $addedFriend = $friendManager->addFriendToDB($userID, $friendID);
+                            if ($addedFriend === false) {
+                                $errors['friendID'] = "Friend #".$_POST['addFriend']." is already your friend";
+                            }
                         }
                     }
                 }
