@@ -2,4 +2,9 @@
 
 {% block content %}
     <h1>{{ userInfo.username }}'s buzzes!</h1>
+
+    {% for show in shows %}
+        <div>{{ show.title }}</div>
+        <img src="{{ show.img }}">
+    {% endfor %}
 {% endblock %}

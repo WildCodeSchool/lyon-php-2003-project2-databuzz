@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Model\BuzzManager;
 use App\Model\UserManager;
 
 class FriendsController extends AbstractController
@@ -12,6 +13,9 @@ class FriendsController extends AbstractController
         $userManager = new UserManager();
         $userInfo = $userManager->selectOneById($id);
 
-        return $this->twig->render('User/friends.html.twig', ['userInfo' =>$userInfo]);
+        $buzzManager = new BuzzManager();
+        $buzzedTvshows = $buzzManager->getBuzzByUser($id);
+
+        return $this->twig->render('User/friends.html.twig', ['userInfo' =>$userInfo, 'shows' => $buzzedTvshows]);
     }
 }
