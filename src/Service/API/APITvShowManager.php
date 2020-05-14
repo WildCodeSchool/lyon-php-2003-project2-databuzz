@@ -52,4 +52,21 @@ class APITvShowManager extends APIAbstractManager
         $recommendations = $response->toArray();
         return $recommendations['results'];
     }
+
+    public function getGenres()
+    {
+        $response = $this->client->request('GET', $this->baseUrl . 'genre/tv/list' . $this->apiKey);
+        $genres = $response->toArray();
+        return $genres['genres'];
+    }
+
+    public function getRecommendationsByGenre($genreId)
+    {
+        $response = $this->client->request(
+            'GET',
+            $this->baseUrl . 'discover/tv' . $this->apiKey . '&with_genres=' . $genreId
+        );
+        $recoByGenre = $response->toArray();
+        return $recoByGenre['results'];
+    }
 }

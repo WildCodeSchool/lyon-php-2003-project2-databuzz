@@ -11,6 +11,27 @@ body{
     margin-right: auto;
 }
 
+.home_buzz_body {
+    position: absolute;
+    top : 0px;
+    left: 15px;
+}
+
+.home_buzz_text {
+    position: absolute;
+    margin: -15px 15px;
+    color: #FFB400;
+    text-shadow: 1px 1px 1px #204051;
+}
+
+.home_buzz_img {
+    width: 30%;
+}
+
+.home_buzz_container:hover .home_buzz_img {
+    opacity: 0.5;
+}
+
 /*///////////////////////   CSS NAVBAR   /////////////////////////*/
 .navbar {
 
@@ -155,6 +176,21 @@ h1 {
     text-align: center;
 }
 
+.imghome img {
+    width: 60%;
+
+}
+
+h2 {
+    text-align: center;
+    color: #204051;
+    padding: 10px 10px;
+    width: 100%;
+}
+
+.container-fluid{
+    padding: 0;
+}
 
 /*////////////////////// SEARCH //////////////////////*/
 .card.searchcard {
@@ -415,9 +451,6 @@ a:hover {
 
 /*////////////////////// MOSTBUZZED //////////////////////*/
 /***********************  F O R   A L L   V E R S I O N  ***************************/
-.mostbuzzedcard {
-    margin: 50px 5% 15px 5%;
-}
 
 .mostbuzzedcard {
     margin: 50px 5% 15px 5%;

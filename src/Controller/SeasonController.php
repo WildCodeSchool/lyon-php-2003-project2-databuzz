@@ -49,7 +49,7 @@ class SeasonController extends AbstractController
                 'tvshow' => $tvshow,
                 'tvshowSeasons' => $tvshowSeasons,
                 'numberOfSeasons' => $numberOfSeasons,
-                'recommandations' => $recommendations
+                'recommendations' => $recommendations
             ]
         );
     }
