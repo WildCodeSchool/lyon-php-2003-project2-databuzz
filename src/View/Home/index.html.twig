@@ -4,25 +4,28 @@
     <div class="container-fluid">
         <header class="col-12 home">
             <div class="row justify-content-around row-header-home">
-                <div class="col-8 block">
-                    <h1>TV DATA BUZZ</h1>
+                <div class="col-lg-8 block">
+                    <h1 class="tvdbHome">TV DATA BUZZ</h1>
                 </div>
-                <div class="col-8 search-div">
+                <div class="col-lg-8 search-div">
                     <form action="/search" method="post">
                         <input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
                     </form>
                 </div>
             </div>
         </header>
+        {% if not session.user is defined %}
         <div class="col-10 offset-1 h-100 imghome">
-            <img src="/assets/images/conceptHomeDesktop.jpg" class="home_page_visitor_image">
+            <img src="/assets/images/conceptHomeDesktop.jpg" class="home_page_visitor_image conceptHomeDesktop">
+            <img src="/assets/images/conceptHomeMobile.jpg" class="home_page_visitor_image conceptHomeMobile">
         </div>
+        {% endif %}
     </div>
     <section id="carousselreco">
-        <div class="row">
-            <div class="col-12"><h2>Most buzzed TvShows</h2></div>
+        <div class="row no-gutters">
+            <div class="col-12"><h2 class="redirectionHomepage"><a href="/mostbuzzed/buzz">Most buzzed TvShows</a></h2></div>
         </div>
-        <div class="row">
+        <div class="row no-gutters">
             <div class="col-12 recommendations">
                 {% for buzz in buzzes %}
                     <div class="col-6 col-sm-2 home_buzz_container">
@@ -43,10 +46,10 @@
             {% endfor %}
             </div>
         </div>
-    <div class="row">
-        <div class="col-12"><h2>{{ buzzbygenre1.0.name }}</h2></div>
+    <div class="row no-gutters">
+        <div class="col-12"><h2 class="redirectionHomepage"><a href="/mostbuzzed/genre/{{ buzzbygenre1.0.id_genre }}">{{ buzzbygenre1.0.name }}</a></h2></div>
     </div>
-    <div class="row">
+    <div class="row no-gutters">
         <div class="col-12 recommendations">
             {% for buzzbygenre in buzzbygenre1 %}
                 <div class="col-6 col-sm-2">
@@ -67,10 +70,10 @@
             {% endfor %}
         </div>
     </div>
-    <div class="row">
-        <div class="col-12"><h2>{{ buzzbygenre2.0.name }}</h2></div>
+    <div class="row no-gutters">
+        <div class="col-12"><h2 class="redirectionHomepage"><a href="/mostbuzzed/genre/{{ buzzbygenre2.0.id_genre }}">{{ buzzbygenre2.0.name }}</a></h2></div>
     </div>
-    <div class="row">
+    <div class="row no-gutters">
         <div class="col-12 recommendations">
             {% for buzzbygenre in buzzbygenre2 %}
                 <div class="col-6 col-sm-2">
@@ -91,10 +94,10 @@
             {% endfor %}
         </div>
     </div>
-        <div class="row">
-            <div class="col-12"><h2>{{ buzzbygenre3.0.name }}</h2></div>
+        <div class="row no-gutters">
+            <div class="col-12"><h2 class="redirectionHomepage"><a href="/mostbuzzed/genre/{{ buzzbygenre3.0.id_genre }}">{{ buzzbygenre3.0.name }}</a></h2></div>
         </div>
-    <div class="row">
+    <div class="row no-gutters">
         <div class="col-12 recommendations">
             {% for buzzbygenre in buzzbygenre3 %}
                 <div class="col-6 col-sm-2">
@@ -115,10 +118,10 @@
             {% endfor %}
         </div>
     </div>
-        <div class="row">
-            <div class="col-12"><h2>Discover</h2></div>
+        <div class="row no-gutters">
+            <div class="col-12"><h2 class="redirectionHomepage">Discover</h2></div>
         </div>
-        <div class="row">
+        <div class="row no-gutters">
             <div class="col-12 recommendations">
                 {% for discover in discovers %}
                     <div class="col-6 col-sm-2 home_buzz_container">
