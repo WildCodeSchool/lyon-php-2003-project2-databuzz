@@ -14,9 +14,11 @@
                 </div>
             </div>
         </header>
+        {% if not session.user is defined %}
         <div class="col-10 offset-1 h-100 imghome">
             <img src="/assets/images/conceptHomeDesktop.jpg" class="home_page_visitor_image">
         </div>
+        {% endif %}
     </div>
     <section id="carousselreco">
         <div class="row">

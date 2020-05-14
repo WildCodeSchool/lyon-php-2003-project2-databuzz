@@ -132,6 +132,12 @@ body{
     margin-bottom: 20px;
 }
 
+.user-buttons:hover {
+    background-color: #204051;
+    color: #FFB400;
+
+}
+
 /*//////////////////////    CSS SEASON-SELECT BOX      //////////////////////*/
 .season-select-div {
     padding: 25px 10px 25px 10px;
@@ -448,6 +454,21 @@ a:hover {
     align-items: center;
     justify-content: center;
 }
+
+.btn-link {
+    text-decoration: none;
+    color: #204051;
+}
+
+.btn-link:hover {
+    text-decoration: none;
+    color: #204051;
+}
+
+.season-display {
+    margin: 50px 50px;
+}
+
 
 /*////////////////////// MOSTBUZZED //////////////////////*/
 /***********************  F O R   A L L   V E R S I O N  ***************************/
