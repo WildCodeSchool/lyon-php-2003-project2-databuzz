@@ -1,5 +1,9 @@
 @import "recommendation.css";
 
+body{
+    background-color: #F9F7F7;
+}
+
 .home_page_visitor_image {
     width: 75%;
     display: block;
@@ -346,6 +350,7 @@ ol.people {
 .season-synopsis{
     text-align: justify;
     font-size: 19px;
+    padding: 20px;
 }
 
 a:hover {
