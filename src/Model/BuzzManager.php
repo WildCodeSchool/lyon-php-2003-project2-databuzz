@@ -36,7 +36,7 @@ class BuzzManager extends AbstractManager
     {
         return $this->pdo->query("
 
-            SELECT tvshow.img, tvshow.id, COUNT(buzz.tvshow_id) AS nb_buzz
+            SELECT tvshow.img, tvshow.title, tvshow.id, COUNT(buzz.tvshow_id) AS nb_buzz
             FROM $this->table
             RIGHT JOIN tvshow ON tvshow.id = buzz.tvshow_id
             GROUP BY tvshow.id
@@ -53,10 +53,11 @@ class BuzzManager extends AbstractManager
      */
     public function selectTvshowByGenre($id): array
     {
-        $statement = $this->pdo->prepare("SELECT tvshow.img, COUNT(buzz.tvshow_id) AS nb_buzz
+        $statement = $this->pdo->prepare("SELECT genre.name, tvshow.id, tvshow.img, COUNT(buzz.tvshow_id) AS nb_buzz
             FROM $this->table
             RIGHT JOIN tvshow ON tvshow.id = buzz.tvshow_id
             JOIN genre_tvshow ON genre_tvshow.tvshow_id = tvshow.id AND genre_tvshow.genre_id = :id
+            JOIN genre ON genre.id = :id
             GROUP BY tvshow.id
             ORDER BY nb_buzz DESC");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);

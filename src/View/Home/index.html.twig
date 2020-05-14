@@ -4,8 +4,8 @@
     <div class="container-fluid">
         <header class="col-12 home">
             <div class="row justify-content-around row-header-home">
-                <div class="col-8 ">
-                    <h1>You like it, BUZZ IT !</h1>
+                <div class="col-8 block">
+                    <h1>TV DATA BUZZ</h1>
                 </div>
                 <div class="col-8 search-div">
                     <form action="/search" method="post">
@@ -14,8 +14,89 @@
                 </div>
             </div>
         </header>
-        <div class="col-10 offset-1 h-100">
-            <img src="/assets/images/tvdbHomePageVisitor.png" class="home_page_visitor_image">
+        <div class="col-10 offset-1 h-100 imghome">
+            <img src="/assets/images/conceptHomeDesktop.jpg" class="home_page_visitor_image">
         </div>
     </div>
+    <section id="carousselreco">
+        <div class="row">
+            <div class="col-12"><h2>Most buzzed TvShows</h2></div>
+        </div>
+        <div class="row">
+            <div class="col-12 recommendations">
+                {% for buzz in buzzes %}
+                    <div class="col-6 col-sm-2 home_buzz_container">
+                        <a href="tvshow/show/{{buzz.id}}">
+                        {% if not(buzz.img) %}
+                            <img src="/assets/images/no-image.jpg"
+                                 class="card-img-top" alt="{{ buzz.title }}">
+                        {% else %}
+                            <img src="https://image.tmdb.org/t/p/w500{{ buzz.img }}"
+                                 class="card-img-top" alt="{{ buzz.title }}">
+                        {% endif %}
+                        <div class="home_buzz_body">
+                            <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                            <div class="home_buzz_text">{{ buzz.nb_buzz }}</div>
+                        </div>
+                        </a>
+                    </div>
+            {% endfor %}
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-12"><h2>{% for genre in genres %}{% if ((recobygenre1.0.genre_ids.0) == genre.id) %} {{ genre.name }} {% endif %}{% endfor %}</h2></div>
+    </div>
+    <div class="row">
+        <div class="col-12 recommendations">
+            {% for recobygenre in recobygenre1 %}
+                <div class="col-6 col-sm-2">
+                    {% if not(recobygenre.poster_path) %}
+                        <img src="/assets/images/no-image.jpg"
+                             class="card-img-top" alt="{{ recobygenre.name }}">
+                    {% else %}
+                        <img src="https://image.tmdb.org/t/p/w500{{ recobygenre.poster_path }}"
+                             class="card-img-top" alt="{{ recobygenre.name }}">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12"><h2>{% for genre in genres %}{% if ((recobygenre2.0.genre_ids.0) == genre.id ) %} {{ genre.name }} {% endif %}{% endfor %}</h2></div>
+    </div>
+    <div class="row">
+        <div class="col-12 recommendations">
+            {% for recobygenre in recobygenre2 %}
+                <div class="col-6 col-sm-2">
+                    {% if not(recobygenre.poster_path) %}
+                        <img src="/assets/images/no-image.jpg"
+                             class="card-img-top" alt="{{ recobygenre.name }}">
+                    {% else %}
+                        <img src="https://image.tmdb.org/t/p/w500{{ recobygenre.poster_path }}"
+                             class="card-img-top" alt="{{ recobygenre.name }}">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-12"><h2>{% for genre in genres %}{% if ((recobygenre3.0.genre_ids.0) == genre.id ) %} {{ genre.name }} {% endif %}{% endfor %}</h2></div>
+        </div>
+    <div class="row">
+        <div class="col-12 recommendations">
+            {% for recobygenre in recobygenre3 %}
+                <div class="col-6 col-sm-2">
+                    {% if not(recobygenre.poster_path) %}
+                        <img src="/assets/images/no-image.jpg"
+                             class="card-img-top" alt="{{ recobygenre.name }}">
+                    {% else %}
+                        <img src="https://image.tmdb.org/t/p/w500{{ recobygenre.poster_path }}"
+                             class="card-img-top" alt="{{ recobygenre.name }}">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </section>
+    <div id="test"></div>
 {% endblock %}

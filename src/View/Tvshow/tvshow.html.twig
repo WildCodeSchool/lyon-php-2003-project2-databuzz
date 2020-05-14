@@ -1,6 +1,6 @@
 {% extends 'tvshowlayout.html.twig' %}
 
-{% block img_header %}{{ tvshow.img }}{% endblock %}
+{% block img_header %}https://image.tmdb.org/t/p/w1920_and_h800_multi_faces{{ tvshow.img }}{% endblock %}
 {% block alt_img %}{{ tvshow.title }}{% endblock %}
 {% block serietitle %}{{ tvshow.title }}{% endblock %}
 {% block rating_season %}{{ nbBuzzs.nb_buzz }} buzzs{% endblock %}
