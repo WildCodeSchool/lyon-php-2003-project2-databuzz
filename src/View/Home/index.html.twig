@@ -26,95 +26,101 @@
             <div class="col-12 recommendations">
                 {% for buzz in buzzes %}
                     <div class="col-6 col-sm-2 home_buzz_container">
-                        <a href="tvshow/show/{{buzz.id}}">
-                        {% if not(buzz.img) %}
-                            <img src="/assets/images/no-image.jpg"
-                                 class="card-img-top" alt="{{ buzz.title }}">
-                        {% else %}
-                            <img src="https://image.tmdb.org/t/p/w500{{ buzz.img }}"
-                                 class="card-img-top" alt="{{ buzz.title }}">
-                        {% endif %}
-                        <div class="home_buzz_body">
-                            <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
-                            <div class="home_buzz_text">{{ buzz.nb_buzz }}</div>
-                        </div>
+                        <a href="tvshow/show/{{ buzz.id }}">
+                            {% if not(buzz.img) %}
+                                <img src="/assets/images/no-image.jpg"
+                                     class="card-img-top" alt="{{ buzz.title }}">
+                            {% else %}
+                                <img src="https://image.tmdb.org/t/p/w500{{ buzz.img }}"
+                                     class="card-img-top" alt="{{ buzz.title }}">
+                            {% endif %}
+                            <div class="home_buzz_body">
+                                <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                <div class="home_buzz_text">{{ buzz.nb_buzz }}</div>
+                            </div>
                         </a>
                     </div>
-            {% endfor %}
+                {% endfor %}
             </div>
         </div>
-    <div class="row">
-        <div class="col-12"><h2>{{ buzzbygenre1.0.name }}</h2></div>
-    </div>
-    <div class="row">
-        <div class="col-12 recommendations">
-            {% for buzzbygenre in buzzbygenre1 %}
-                <div class="col-6 col-sm-2">
-                    <a href="tvshow/show/{{buzzbygenre.id}}">
-                    {% if not(buzzbygenre.img) %}
-                        <img src="/assets/images/no-image.jpg"
-                             class="card-img-top" alt="{{ buzzbygenre.name }}">
-                    {% else %}
-                        <img src="https://image.tmdb.org/t/p/w500{{ buzzbygenre.img }}"
-                             class="card-img-top" alt="{{ buzzbygenre.name }}">
-                    {% endif %}
-                    <div class="home_buzz_body">
-                        <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
-                        <div class="home_buzz_text">{{ buzzbygenre.nb_buzz }}</div>
-                    </div>
-                    </a>
-                </div>
-            {% endfor %}
+        <div class="row">
+            <div class="col-12"><h2>{{ buzzbygenre1.0.name }}</h2></div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12"><h2>{{ buzzbygenre2.0.name }}</h2></div>
-    </div>
-    <div class="row">
-        <div class="col-12 recommendations">
-            {% for buzzbygenre in buzzbygenre2 %}
-                <div class="col-6 col-sm-2">
-                    <a href="tvshow/show/{{buzzbygenre.id}}">
-                    {% if not(buzzbygenre.img) %}
-                        <img src="/assets/images/no-image.jpg"
-                             class="card-img-top" alt="{{ buzzbygenre.name }}">
-                    {% else %}
-                        <img src="https://image.tmdb.org/t/p/w500{{ buzzbygenre.img }}"
-                             class="card-img-top" alt="{{ buzzbygenre.name }}">
-                    {% endif %}
-                    <div class="home_buzz_body">
-                        <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
-                        <div class="home_buzz_text">{{ buzzbygenre.nb_buzz }}</div>
+        <div class="row">
+            <div class="col-12 recommendations">
+                {% for buzzbygenre in buzzbygenre1 %}
+                    <div class="col-6 col-sm-2">
+                        <a href="tvshow/show/{{ buzzbygenre.id }}">
+                            {% if not(buzzbygenre.img) %}
+                                <img src="/assets/images/no-image.jpg"
+                                     class="card-img-top" alt="{{ buzzbygenre.name }}">
+                            {% else %}
+                                <img src="https://image.tmdb.org/t/p/w500{{ buzzbygenre.img }}"
+                                     class="card-img-top" alt="{{ buzzbygenre.name }}">
+                            {% endif %}
+                            <div class="row no-gutters home_buzz_body">
+                                <div class="col-12">
+                                    <p class="home_buzz_text">{{ buzzbygenre.nb_buzz }}</p>
+                                    <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                </div>
+                            </div>
+                            <div class="home_buzz_body">
+                                <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                <div class="home_buzz_text">{{ buzzbygenre.nb_buzz }}</div>
+                            </div>
+                        </a>
                     </div>
-                    </a>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-12"><h2>{{ buzzbygenre2.0.name }}</h2></div>
+        </div>
+        <div class="row">
+            <div class="col-12 recommendations">
+                {% for buzzbygenre in buzzbygenre2 %}
+                    <div class="col-6 col-sm-2">
+                        <a href="tvshow/show/{{ buzzbygenre.id }}">
+                            {% if not(buzzbygenre.img) %}
+                                <img src="/assets/images/no-image.jpg"
+                                     class="card-img-top" alt="{{ buzzbygenre.name }}">
+                            {% else %}
+                                <img src="https://image.tmdb.org/t/p/w500{{ buzzbygenre.img }}"
+                                     class="card-img-top" alt="{{ buzzbygenre.name }}">
+                            {% endif %}
+                            <div class="home_buzz_body">
+                                <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                <div class="home_buzz_text">{{ buzzbygenre.nb_buzz }}</div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
         <div class="row">
             <div class="col-12"><h2>{{ buzzbygenre3.0.name }}</h2></div>
         </div>
-    <div class="row">
-        <div class="col-12 recommendations">
-            {% for buzzbygenre in buzzbygenre3 %}
-                <div class="col-6 col-sm-2">
-                    <a href="tvshow/show/{{buzzbygenre.id}}">
-                    {% if not(buzzbygenre.img) %}
-                        <img src="/assets/images/no-image.jpg"
-                             class="card-img-top" alt="{{ buzzbygenre.name }}">
-                    {% else %}
-                        <img src="https://image.tmdb.org/t/p/w500{{ buzzbygenre.img }}"
-                             class="card-img-top" alt="{{ buzzbygenre.name }}">
-                    {% endif %}
-                    <div class="home_buzz_body">
-                        <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
-                        <div class="home_buzz_text">{{ buzzbygenre.nb_buzz }}</div>
+        <div class="row">
+            <div class="col-12 recommendations">
+                {% for buzzbygenre in buzzbygenre3 %}
+                    <div class="col-6 col-sm-2">
+                        <a href="tvshow/show/{{ buzzbygenre.id }}">
+                            {% if not(buzzbygenre.img) %}
+                                <img src="/assets/images/no-image.jpg"
+                                     class="card-img-top" alt="{{ buzzbygenre.name }}">
+                            {% else %}
+                                <img src="https://image.tmdb.org/t/p/w500{{ buzzbygenre.img }}"
+                                     class="card-img-top" alt="{{ buzzbygenre.name }}">
+                            {% endif %}
+                            <div class="home_buzz_body">
+                                <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                <div class="home_buzz_text">{{ buzzbygenre.nb_buzz }}</div>
+                            </div>
+                        </a>
                     </div>
-                    </a>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
         <div class="row">
             <div class="col-12"><h2>Discover</h2></div>
         </div>
@@ -122,7 +128,7 @@
             <div class="col-12 recommendations">
                 {% for discover in discovers %}
                     <div class="col-6 col-sm-2 home_buzz_container">
-                        <a href="tvshow/show/{{discover.id}}">
+                        <a href="tvshow/show/{{ discover.id }}">
                             {% if not(discover.poster_path) %}
                                 <img src="/assets/images/no-image.jpg"
                                      class="card-img-top" alt="{{ discover.name }}">
