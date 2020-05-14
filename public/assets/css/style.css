@@ -64,18 +64,46 @@
     color: red;
 }
 
+.user-header {
+    background-color: #FFB400;
+    padding-top: 20px;
+    height: 110vh;
+}
 /*////////////////////// ACCOUNT INFORMATION STYLING //////////////////////*/
-.user-info {
-    background-color: #C4C4C4;
-    border-radius: 5px;
-    text-align: center;
-    margin: 0.6rem;
+
+.userInfo {
+    display:flex;
+    justify-content: center;
 }
 
-.user-info-title {
-    font-weight: bold;
+.account-header {
+    height: 250px;
 }
 
+.friends-list {
+    width: 80%;
+    margin: auto auto;
+}
+
+.friends-list th {
+    background-color: #204051;
+    color: #FFB400;
+}
+
+#addFriend {
+    margin-top: 10px;
+}
+
+#addFriend::placeholder {
+    font-size: 11px;
+}
+/*////////////////////// USER BUTTONS //////////////////////*/
+
+.user-buttons {
+    background-color: #204051;
+    color: #FFB400;
+    margin-bottom: 20px;
+}
 /*//////////////////////    CSS SEASON-SELECT BOX      //////////////////////*/
 .season-select-div {
     padding: 25px 10px 25px 10px;
