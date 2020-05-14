@@ -3,7 +3,7 @@
 {% block content %}
     <header>
         <div class="container-fluid">
-            <div class="row position-relative">
+            <div class="row position-relative row-header">
                 <div class="img-header"><img
                             src="{% block img_header %}{% endblock %}"
                             alt="{% block alt_img %}{% endblock %}"
@@ -18,27 +18,23 @@
                         <div class="col-lg-8 buzz-title">
                             <h2>{% block rating_season %}{% endblock %}</h2>
                             <h1>{% block serietitle %}{% endblock %}</h1>
-                            <div class="year .d-none .d-lg-block .d-xl-none">({% block year %}{% endblock %})</div>
+                            <div class="year">({% block year %}{% endblock %})</div>
+                            <div class="synopsis">{% block synopsis %}{% endblock %}</div>
+                            <div class="genre">{% block genre %}{% endblock %}</div>
+                            <div class="row">
+                                <div class="col-lg-6 watched">
+                                    <span>{% block next_episode %}{% endblock %}</span>
+                                    <span>{% block on_air %}{% endblock %}</span>
+                                </div>
+                                <div class="col-lg-6 buzzer">{% block buzz %}{% endblock %}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 buzzer">
-                    <div>{% block buzz %}{% endblock %}</div>
                 </div>
-            </div>
-            <div class="row synopsis-header">
-                <div class="col-10 offset-1 col-xl-7 offset-1 synopsis">{% block synopsis %}{% endblock %}</div>
-                <div class="col-10 offset-1 offset-lg-0 col-xl-3 watched">
-                    <div>{% block next_episode %}{% endblock %}</div>
-                    <div>{% block on_air %}{% endblock %}</div>
-                </div>
-            </div>
-            <div class="row informations-header">
-            </div>
-            <div class="row">
-                <div class="col-12 col-xl-3 offset-1 offset-lg-0 genre">{% block genre %}{% endblock %}</div>
             </div>
         </div>
     </header>

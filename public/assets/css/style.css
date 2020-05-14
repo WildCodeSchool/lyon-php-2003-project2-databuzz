@@ -139,6 +139,10 @@ header {
     background-color: #FFB400;
 }
 
+.row-header{
+    padding-bottom: 20px;
+}
+
 .img-header{
     position: absolute;
     height: 100%;
@@ -157,8 +161,7 @@ header {
 }
 
 .img-header > img {
-    width: 100%;
-    height: 100%;
+    display: none;
 }
 
 .img-title{
@@ -178,7 +181,6 @@ header {
 }
 
 .buzz-title > h1 {
-    font-size: 3em;
     color: #204051;
     width: 100%;
     font-weight: bold;
@@ -202,21 +204,26 @@ header {
 
 .synopsis{
     font-size: 25px;
+    padding-top: 20px;
 }
 
 .watched{
     font-size : 20px;
-}
-
-.genre {
-    font-style: italic;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .buzzer {
     display: flex;
     justify-content: center;
+}
+
+
+.genre {
+    font-style: italic;
     padding-top: 20px;
-    padding-bottom: 40px;
 }
 
 .actors {
@@ -272,6 +279,10 @@ a:hover{
         font-size: 5em;
     }
 
+    .buzzer {
+        justify-content: flex-end;
+    }
+
     .buzz-title > h3{
         font-size: 3em;
     }
@@ -282,9 +293,10 @@ a:hover{
         color: #204051;
     }
 
-    .watched{
-        padding-left: 20px;
-        border-left: 1px solid black;
+    .img-header > img{
+        display: block;
+        width: 100%;
+        height: 100%;
     }
 
 }

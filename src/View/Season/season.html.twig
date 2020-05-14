@@ -23,8 +23,7 @@
                 <option value="" disabled selected hidden>Choose a season</option>
                 {% for tvshowSeason in tvshowSeasons %}
                     {% if tvshowSeason.season_number > 0 %}
-                        <option value="/season/index/{{ tvshowSeason.id }}">
-                            Season {{ tvshowSeason.season_number }}</option>
+                        <option value="/season/index/{{ tvshowSeason.id }}">Season {{ tvshowSeason.season_number }}</option>
                     {% endif %}
                 {% endfor %}
             </select>
@@ -86,8 +85,7 @@
     </div>
 {% endblock %}
 {% block javascript %}
-<
-script >
+<script >
 {# Script for the redirection through simply selecting a season in the "season-select" select tag #}
 document.getElementById("season-select").onchange = function(){
     location.href=''+this.options[this.selectedIndex].value;
