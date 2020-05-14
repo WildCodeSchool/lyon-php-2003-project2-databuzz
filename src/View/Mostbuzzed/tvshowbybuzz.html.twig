@@ -23,10 +23,18 @@
                     <div class="col-xs-12 col-sm-4 col-md-3">
                         <a href="/tvshow/show/{{ buzz.id }}">
                             <div class="card mostbuzzedcard">
-                                <img src="https://image.tmdb.org/t/p/w500{{ buzz.img }}" class="card-img-top" alt="affiche {{ buzz.title }}">
-                                <div class="card-body">
-                                    <span class="card-text">{{ buzz.nb_buzz }} <i
-                                                class="fas fa-concierge-bell"></i></span>
+                                {% if not(buzz.img) %}
+                                    <img src="/assets/images/no-image.jpg"
+                                         class="card-img-top" alt="{{ buzz.title }}">
+                                {% else %}
+                                    <img src="https://image.tmdb.org/t/p/w500{{ buzz.img }}" class="card-img-top"
+                                         alt="affiche {{ buzz.title }}">
+                                {% endif %}
+                                <div class="row no-gutters home_buzz_body">
+                                    <div class="col-12">
+                                        <p class="home_buzz_text">{{ buzz.nb_buzz }}</p>
+                                        <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -41,23 +49,23 @@
 {% endblock %}
 
 {% block javascript %}
-    <script>
-    {# Script for the displaying the totality of the shows when clicking on the "See all" button #}
-        let cards = document.getElementsByClassName("mostbuzzedcard");
-        let nbCards = cards.length;
-        let seeAllButton = document.getElementById("seeAll");
-        for(let i = 8; i < nbCards; i++)
+<script >
+{# Script for the displaying the totality of the shows when clicking on the "See all" button #}
+    let cards = document.getElementsByClassName("mostbuzzedcard");
+    let nbCards = cards.length;
+    let seeAllButton = document.getElementById("seeAll");
+    for(let i = 8; i < nbCards; i++)
+    {
+        cards[i].style.display='none';
+    }
+    seeAllButton.addEventListener('click', show_all);
+    function show_all()
+    {
+        for (let i  = 8; i < nbCards; i++)
         {
-            cards[i].style.display='none';
+            cards[i].style.display = '';
+            seeAllButton.style.display = 'none';
         }
-        seeAllButton.addEventListener('click', show_all);
-        function show_all()
-        {
-            for (let i  = 8; i < nbCards; i++)
-            {
-                cards[i].style.display = '';
-                seeAllButton.style.display = 'none';
-            }
-        }
-    </script>
+    }
+</script>
 {% endblock %}
