@@ -320,45 +320,55 @@ a:hover{
     justify-content: center;
 }
 
-/***********************  F O R   A L L   V E R S I O N  ***************************/
-.mostbuzzedcard {
-    margin: 15px 5% 15px 5%;
-    border: rgb(255, 180, 0) solid 1px;
-
-}
-
 /*////////////////////// MOSTBUZZED //////////////////////*/
-
-/***********************  M O B I L E   F I R S T   :   V U E   M O B I L E   P O R T R A I T  ***************************/
-@media screen and (max-width: 470px) {
-    .mostbuzzed-medium-view {
-        display: none;
-    }
-
-    .mostbuzzed-large-view {
-        display: none;
-    }
+/***********************  F O R   A L L   V E R S I O N  ***************************/
+.mostbuzzedcard{
+    margin: 50px 5% 15px 5%;
 }
 
-
-/*******  M E D I A   Q U E R I E S   :   V U E   M O B I L E   P A Y S A G E  -  T A B L E T T E   P O R T R A I T *****/
-@media screen and (min-width: 470px) {
-    .mostbuzzed-small-view {
-        display: none;
-    }
-
-    .mostbuzzed-large-view {
-        display: none;
-    }
+.mostbuzzedcard{
+    margin: 50px 5% 15px 5%;
+    height: auto;
+    width: auto;
+    border-right : solid 1px rgb(255, 255, 255);
+    border-top : solid 1px rgb(255, 255, 255);
 }
 
-/*******  M E D I A   Q U E R I E S   :   V U E   T A B L E T T E   P A Y S A G E  -  D E S K T O P *****/
-@media screen and (min-width: 960px) {
-    .mostbuzzed-medium-view {
-        display: none;
-    }
+.mostbuzzedcard.card-text{
+    border: rgb(255,180,0)  solid 1px;
+    border-radius: 50%;
+    background-color: rgba(255,180,0,0.7);
+    padding: 20px 15px;
+}
 
-    .mostbuzzed-large-view {
-        display: initial;
-    }
+.mostbuzzedcard:hover .card-text {
+    border: rgb(255,180,0)  solid 1px;
+    border-radius: 50%;
+    background: rgb(255,180,0);
+    padding: 20px 15px;
+    text-shadow: 0 0 1px black;
+    box-shadow: 0 0 10px #FFB400;
+}
+
+.mostbuzzedcard.card-body{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding-left: 0;
+}
+
+.seeAllDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#seeAll {
+    background-color: #FFB400;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 3.5em;
 }
