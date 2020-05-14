@@ -76,4 +76,18 @@ class BuzzManager extends AbstractManager
 
         return $statement->fetch();
     }
+
+    public function getBuzzByUser($id)
+    {
+        $statement = $this->pdo->prepare(
+            "SELECT buzz.tvshow_id, tvshow.id, tvshow.img, tvshow.title 
+            FROM $this->table
+            JOIN tvshow ON tvshow.id=buzz.tvshow_id            
+            WHERE buzz.user_id=:id;"
+        );
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }
