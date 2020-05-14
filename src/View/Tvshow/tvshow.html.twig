@@ -88,6 +88,12 @@
                                     <img src="https://image.tmdb.org/t/p/w500{{ recommendation.poster_path }}"
                                          class="card-img-top" alt="{{ recommendation.name }}">
                                 {% endif %}
+                                <div class="row no-gutters home_buzz_body">
+                                    <div class="col-10">
+                                        <p class="home_buzz_text">{{ recommendation.buzzs.nb_buzz }}</p>
+                                        <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                    </div>
+                                </div>
                             </a>
                         </div>
                     {% endfor %}
