@@ -25,9 +25,11 @@
                                     {% endif %}
                                 class="card-img-top"
                                 alt="{{ resultAPI.original_name }}"></a>
-                            <div class="card-body">
-                                <p class="card-text">{{ resultAPI.original_name }}</p>
-                                <span class="card-text">{{ resultAPI.buzzs.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
+                            <div class="row no-gutters home_buzz_body">
+                                <div class="col-12">
+                                    <p class="home_buzz_text">{{ resultAPI.buzzs.nb_buzz }}</p>
+                                    <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                </div>
                             </div>
                         </div>
                     </div>
