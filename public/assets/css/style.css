@@ -1,7 +1,18 @@
-@import "recommendation.css";
-
 body{
     background-color: #F9F7F7;
+}
+/*///////////////////////////////////   RECOMMENDATIONS    /////////////////////////////////////*/
+.recommendations{
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+/*/////////////////////////////////   END RECOMMENDATIONS    ///////////////////////////////////*/
+
+.tvdbHome {
+    color: #204051;
+    font-weight: bold;
 }
 
 .home_page_visitor_image {
@@ -14,14 +25,22 @@ body{
 .home_buzz_body {
     position: absolute;
     top : 0px;
-    left: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.home_buzz_body > div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
 }
 
 .home_buzz_text {
-    position: absolute;
     margin: -15px 15px;
     color: #FFB400;
     text-shadow: 1px 1px 1px #204051;
+    font-size: 3em;
 }
 
 .home_buzz_img {
@@ -30,6 +49,19 @@ body{
 
 .home_buzz_container:hover .home_buzz_img {
     opacity: 0.5;
+}
+.redirectionHomepage {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.redirectionHomepage a {
+    color: #204051;
+}
+
+.redirectionHomepage a:hover {
+    font-weight: bold;
+    color: #204051;
 }
 
 /*///////////////////////   CSS NAVBAR   /////////////////////////*/
@@ -103,7 +135,7 @@ body{
 }
 
 .account-header {
-    height: 250px;
+    height: 300px;
 }
 
 .friends-list {
@@ -130,6 +162,12 @@ body{
     background-color: #204051;
     color: #FFB400;
     margin-bottom: 20px;
+}
+
+.user-buttons:hover {
+    background-color: #204051;
+    color: #FFB400;
+
 }
 
 /*//////////////////////    CSS SEASON-SELECT BOX      //////////////////////*/
@@ -181,13 +219,6 @@ h1 {
 
 }
 
-h2 {
-    text-align: center;
-    color: #204051;
-    padding: 10px 10px;
-    width: 100%;
-}
-
 .container-fluid{
     padding: 0;
 }
@@ -212,6 +243,7 @@ header {
 
 .row-header {
     padding-bottom: 20px;
+    margin: 0;
 }
 
 .img-header {
@@ -394,6 +426,10 @@ a:hover {
 }
 
 @media screen and (min-width: 640px) {
+    .conceptHomeMobile {
+        display: none;
+    }
+
     .row.actors {
         display: flex;
         justify-content: center;
@@ -449,6 +485,21 @@ a:hover {
     justify-content: center;
 }
 
+.btn-link {
+    text-decoration: none;
+    color: #204051;
+}
+
+.btn-link:hover {
+    text-decoration: none;
+    color: #204051;
+}
+
+.season-display {
+    margin: 50px 50px;
+}
+
+
 /*////////////////////// MOSTBUZZED //////////////////////*/
 /***********************  F O R   A L L   V E R S I O N  ***************************/
 
@@ -497,4 +548,10 @@ a:hover {
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
     line-height: 1.5em;
     padding: 0.5em 3.5em 0.5em 3.5em;
+}
+
+@media screen and (max-width: 639px)  {
+    .conceptHomeDesktop {
+        display: none;
+    }
 }
