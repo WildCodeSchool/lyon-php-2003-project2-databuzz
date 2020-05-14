@@ -135,7 +135,7 @@ body{
 }
 
 .account-header {
-    height: 250px;
+    height: 300px;
 }
 
 .friends-list {
@@ -162,6 +162,12 @@ body{
     background-color: #204051;
     color: #FFB400;
     margin-bottom: 20px;
+}
+
+.user-buttons:hover {
+    background-color: #204051;
+    color: #FFB400;
+
 }
 
 /*//////////////////////    CSS SEASON-SELECT BOX      //////////////////////*/
@@ -478,6 +484,21 @@ a:hover {
     align-items: center;
     justify-content: center;
 }
+
+.btn-link {
+    text-decoration: none;
+    color: #204051;
+}
+
+.btn-link:hover {
+    text-decoration: none;
+    color: #204051;
+}
+
+.season-display {
+    margin: 50px 50px;
+}
+
 
 /*////////////////////// MOSTBUZZED //////////////////////*/
 /***********************  F O R   A L L   V E R S I O N  ***************************/
