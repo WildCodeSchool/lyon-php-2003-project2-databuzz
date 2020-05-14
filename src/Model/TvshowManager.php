@@ -37,7 +37,7 @@ class TvshowManager extends AbstractManager
         $statement->bindValue('id', $inputs['id'], \PDO::PARAM_INT);
         $statement->bindValue(
             'img',
-            "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/".$inputs['poster_path'],
+            $inputs['poster_path'],
             \PDO::PARAM_STR
         );
         $statement->bindValue('title', $inputs['original_name'], \PDO::PARAM_STR);

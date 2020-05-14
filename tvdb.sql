@@ -41,6 +41,7 @@ CREATE TABLE `season` (
     `nbEpisodes` Int  NOT NULL ,
     `synopsis` Text  NOT NULL ,
     `img` VARCHAR(255)  NOT NULL ,
+    `year` INT(11)  NOT NULL ,
     PRIMARY KEY (
         `id`
     )
