@@ -20,15 +20,18 @@
                                 <img src=
                                      {% if resultAPI.poster_path is empty %}
                                      "/assets/images/no-img.png"
-                                    {% else %}
-                                        "https://image.tmdb.org/t/p/w500{{ resultAPI.poster_path }}"
-                                    {% endif %}
+                                {% else %}
+                                    "https://image.tmdb.org/t/p/w500{{ resultAPI.poster_path }}"
+                                {% endif %}
                                 class="card-img-top"
-                                alt="{{ resultAPI.original_name }}"></a>
-                            <div class="card-body">
-                                <p class="card-text">{{ resultAPI.original_name }}</p>
-                                <span class="card-text">{{ resultAPI.buzzs.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
-                            </div>
+                                alt="{{ resultAPI.original_name }}">
+                                <div class="row no-gutters home_buzz_body">
+                                    <div class="col-12">
+                                        <p class="home_buzz_text">{{ resultAPI.buzzs.nb_buzz }}</p>
+                                        <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 {% endfor %}

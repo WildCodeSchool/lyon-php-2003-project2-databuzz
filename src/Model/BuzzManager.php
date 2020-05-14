@@ -53,7 +53,8 @@ class BuzzManager extends AbstractManager
      */
     public function selectTvshowByGenre($id): array
     {
-        $statement = $this->pdo->prepare("SELECT genre.name, tvshow.id, tvshow.img, COUNT(buzz.tvshow_id) AS nb_buzz
+        $statement = $this->pdo->prepare("SELECT genre.name, tvshow.id, tvshow.img, 
+       COUNT(buzz.tvshow_id) AS nb_buzz, genre.id AS id_genre
             FROM $this->table
             RIGHT JOIN tvshow ON tvshow.id = buzz.tvshow_id
             JOIN genre_tvshow ON genre_tvshow.tvshow_id = tvshow.id AND genre_tvshow.genre_id = :id

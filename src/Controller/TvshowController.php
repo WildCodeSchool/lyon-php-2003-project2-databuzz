@@ -81,6 +81,12 @@ class TvshowController extends AbstractController
         $seasons = $api->getSeasons($id);
         $recommendations = $api->getRecommendations($id);
         $tvShowInfos = $api->getOneById($id);
+        $index = 0;
+
+        foreach ($recommendations as $singleResult) {
+            $recommendations[$index]['buzzs'] = $buzzs->getBuzzTvShow($singleResult['id']);
+            $index++;
+        }
 
         return $this->twig->render(
             'Tvshow/tvshow.html.twig',
