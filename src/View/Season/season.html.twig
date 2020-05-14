@@ -6,7 +6,7 @@
 {#       COMMENT : the "rating_season block matches 2 possible types of content; either the rating for the tvshow pqahge or the seasontitle for the season page       #}
 {% block rating_season %}Season {{ season.season_number }}{% endblock %}
 {% block synopsis %}{{ season.synopsis }}{% endblock %}
-{% block genre %}Genre : {% for genre in genres %}{{ genre.name }}  {% endfor %}{% endblock %}
+{% block genre %}{% endblock %}
 {% block year %}{{ season.year }}{% endblock %}
 {% block friends_watched %}Lucas, Jeff and François have watched it{% endblock %}
 {% block watched %}Watched or not ?{% endblock %}
@@ -23,7 +23,8 @@
                 <option value="" disabled selected hidden>Choose a season</option>
                 {% for tvshowSeason in tvshowSeasons %}
                     {% if tvshowSeason.season_number > 0 %}
-                        <option value="/season/index/{{ tvshowSeason.id }}">Season {{ tvshowSeason.season_number }}</option>
+                        <option value="/season/index/{{ tvshowSeason.id }}">
+                            Season {{ tvshowSeason.season_number }}</option>
                     {% endif %}
                 {% endfor %}
             </select>
@@ -39,7 +40,7 @@
                                 aria-expanded="false" aria-controls="collapseOne">
                             <div class="row infos-episodes">
                                 <div class="col-12 col-xl-3">
-                                    <img src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces{{ episode.still_path }}"
+                                    <img src="https://image.tmdb.org/t/p/w500{{ episode.still_path }}"
                                          class="card-img-top" alt="...">
                                 </div>
                                 <div class="col-12 col-xl-3">
@@ -63,24 +64,6 @@
                     </div>
                 </div>
             {% endfor %}
-        </div>
-        <div class="row">
-            <div class="col-10">Recommendations</div>
-        </div>
-        <div class="row">
-            <div class="col-12 recommendations">
-                {% for recommendation in recommendations %}
-                    <div class="col-6 col-sm-2">
-                        {% if not(recommendation.poster_path) %}
-                            <img src="/assets/images/no-image.jpg"
-                                 class="card-img-top" alt="{{ recommendation.name }}">
-                        {% else %}
-                            <img src="https://image.tmdb.org/t/p/w500{{ recommendation.poster_path }}"
-                                 class="card-img-top" alt="{{ recommendation.name }}">
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            </div>
         </div>
     </div>
 {% endblock %}

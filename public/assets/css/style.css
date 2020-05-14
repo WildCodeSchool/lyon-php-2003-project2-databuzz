@@ -69,10 +69,11 @@
     padding-top: 20px;
     height: 110vh;
 }
+
 /*////////////////////// ACCOUNT INFORMATION STYLING //////////////////////*/
 
 .userInfo {
-    display:flex;
+    display: flex;
     justify-content: center;
 }
 
@@ -97,6 +98,7 @@
 #addFriend::placeholder {
     font-size: 11px;
 }
+
 /*////////////////////// USER BUTTONS //////////////////////*/
 
 .user-buttons {
@@ -104,6 +106,7 @@
     color: #FFB400;
     margin-bottom: 20px;
 }
+
 /*//////////////////////    CSS SEASON-SELECT BOX      //////////////////////*/
 .season-select-div {
     padding: 25px 10px 25px 10px;
@@ -167,11 +170,11 @@ header {
     background-color: #FFB400;
 }
 
-.row-header{
+.row-header {
     padding-bottom: 20px;
 }
 
-.img-header{
+.img-header {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -179,29 +182,31 @@ header {
     left: 0;
 }
 
-.img-header:after{
-    content:'';
-    position:absolute;
-    left:0; top:0;
-    width:100%; height:100%;
-    display:inline-block;
-    background: linear-gradient(to top, #FFB400 0%,rgba(220, 66, 37, 0.5) 100%); /* W3C */
+.img-header:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: linear-gradient(to top, #FFB400 0%, rgba(32, 64, 81, 0.5) 100%); /* W3C */
 }
 
 .img-header > img {
     display: none;
 }
 
-.img-title{
+.img-title {
     padding-top: 20px;
 }
 
 .poster-show {
-    width:100%;
+    width: 100%;
     border-radius: 8px;
 }
 
-.buzz-title{
+.buzz-title {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -215,13 +220,13 @@ header {
     text-transform: uppercase;
 }
 
-.buzz-title > h2{
+.buzz-title > h2 {
     text-align: center;
     color: #204051;
     font-size: 2em;
 }
 
-.year{
+.year {
     display: none;
 }
 
@@ -230,13 +235,14 @@ header {
     text-align: justify;
 }
 
-.synopsis{
+.synopsis {
     font-size: 25px;
     padding-top: 20px;
+    text-align: justify;
 }
 
-.watched{
-    font-size : 20px;
+.watched {
+    font-size: 20px;
     padding-top: 20px;
     display: flex;
     flex-direction: column;
@@ -254,41 +260,95 @@ header {
     padding-top: 20px;
 }
 
+h2 {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
 .actors {
     display: flex;
     flex-direction: row;
     overflow-y: hidden;
 }
 
+ol.people {
+    list-style-type: none;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.people > li {
+    margin: 10px 4px 10px 10px;
+    border: 1px solid #204051;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
+
 .card {
     width: 12rem;
     height: 22rem;
     margin: 5px;
-    box-shadow: 5px -5px #204051;
-    transition: 0.3s;
-}
-
-.card:hover {
-    box-shadow: 10px -10px #204051;
-    transition: 0.3s;
 }
 
 .season-block {
     background-color: #FFB400;
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 0.5rem;
     color: black;
-    box-shadow: 5px -5px #204051;
-    transition: 0.3s;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 10px;
 }
 
-.season-block:hover {
-    box-shadow: 10px -10px #204051;
-    transition: 0.3s;
+.season-background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
-a:hover{
+.season-background > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.season-background:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: linear-gradient(to left, #ffb400 0%, rgba(32, 64, 81, 0.5) 100%); /* W3C */
+}
+
+.season-poster{
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.season-poster > img{
+    height: 15em;
+    width: auto;
+    border-radius: 1em;
+    margin: 20px;
+}
+
+.season-synopsis{
+    text-align: justify;
+    font-size: 19px;
+}
+
+a:hover {
     text-decoration: none;
 }
 
@@ -303,7 +363,7 @@ a:hover{
         font-size: 10vh;
     }
 
-    .buzz-title > h1{
+    .buzz-title > h1 {
         font-size: 5em;
     }
 
@@ -311,17 +371,17 @@ a:hover{
         justify-content: flex-end;
     }
 
-    .buzz-title > h3{
+    .buzz-title > h3 {
         font-size: 3em;
     }
 
-    .year{
+    .year {
         text-align: center;
         font-size: 1em;
         color: #204051;
     }
 
-    .img-header > img{
+    .img-header > img {
         display: block;
         width: 100%;
         height: 100%;
@@ -332,7 +392,7 @@ a:hover{
 /*////////////////////// SEASONS //////////////////////*/
 .card.episodes {
     height: 100%;
-    width: 80%;
+    width: 100%;
     margin: 15px;
 }
 
@@ -350,35 +410,35 @@ a:hover{
 
 /*////////////////////// MOSTBUZZED //////////////////////*/
 /***********************  F O R   A L L   V E R S I O N  ***************************/
-.mostbuzzedcard{
+.mostbuzzedcard {
     margin: 50px 5% 15px 5%;
 }
 
-.mostbuzzedcard{
+.mostbuzzedcard {
     margin: 50px 5% 15px 5%;
     height: auto;
     width: auto;
-    border-right : solid 1px rgb(255, 255, 255);
-    border-top : solid 1px rgb(255, 255, 255);
+    border-right: solid 1px rgb(255, 255, 255);
+    border-top: solid 1px rgb(255, 255, 255);
 }
 
-.mostbuzzedcard.card-text{
-    border: rgb(255,180,0)  solid 1px;
+.mostbuzzedcard.card-text {
+    border: rgb(255, 180, 0) solid 1px;
     border-radius: 50%;
-    background-color: rgba(255,180,0,0.7);
+    background-color: rgba(255, 180, 0, 0.7);
     padding: 20px 15px;
 }
 
 .mostbuzzedcard:hover .card-text {
-    border: rgb(255,180,0)  solid 1px;
+    border: rgb(255, 180, 0) solid 1px;
     border-radius: 50%;
-    background: rgb(255,180,0);
+    background: rgb(255, 180, 0);
     padding: 20px 15px;
     text-shadow: 0 0 1px black;
     box-shadow: 0 0 10px #FFB400;
 }
 
-.mostbuzzedcard.card-body{
+.mostbuzzedcard.card-body {
     position: absolute;
     top: 5px;
     left: 5px;
