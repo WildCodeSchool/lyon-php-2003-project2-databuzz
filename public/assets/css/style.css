@@ -323,9 +323,9 @@ header {
 
 .buzzer {
     display: flex;
+    align-items: flex-end;
     justify-content: center;
 }
-
 
 .genre {
     font-style: italic;
@@ -504,7 +504,7 @@ a:hover {
 /***********************  F O R   A L L   V E R S I O N  ***************************/
 
 .mostbuzzedcard {
-    margin: 50px 5% 15px 5%;
+    margin: 25px 5% 15px 5%;
     height: auto;
     width: auto;
     border-right: solid 1px rgb(255, 255, 255);
