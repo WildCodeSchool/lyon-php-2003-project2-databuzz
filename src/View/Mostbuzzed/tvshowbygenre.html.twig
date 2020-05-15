@@ -8,53 +8,32 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-11 offset-1">
-                <h1>Most popular TV Shows</h1>
+                <h1>Most popular {{ genres.0.name}} TV Shows</h1>
             </div>
         </div>
     </div>
 
-    <div class="mostbuzzed-small-view">
-       {% for genre in genres %}
-            <div class="card mostbuzzedcard">
-                <img src="{{ genre.img }}" class="card-img-top" alt="affiche {{ genre.title }}">
-                <div class="card-body">
-                    <span class="card-text">{{ genre.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
-                </div>
+    <div class="row no-gutters">
+        {% for genre in genres %}
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <a href="/tvshow/show/{{ genre.id }}">
+                    <div class="card mostbuzzedcard">
+                        {% if not(genre.img) %}
+                            <img src="/assets/images/no-image.jpg"
+                                 class="card-img-top" alt="{{ genre.title }}">
+                        {% else %}
+                            <img src="https://image.tmdb.org/t/p/w500{{ genre.img }}" class="card-img-top"
+                                 alt="affiche {{ genre.title }}">
+                        {% endif %}
+                        <div class="row no-gutters home_buzz_body">
+                            <div class="col-12">
+                                <p class="home_buzz_text">{{ genre.nb_buzz }}</p>
+                                <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         {% endfor %}
-    </div>
-
-    <div class="mostbuzzed-medium-view">
-        <div class="container-fluid">
-            <div class="row no-gutters">
-                {% for genre in genres %}
-                    <div class="col-md-4">
-                        <div class="card mostbuzzedcard">
-                            <a href="#"><img src={{ genre.img }} class="card-img-top" alt="affiche {{ genre.title }}"></a>
-                            <div class="card-body">
-                                <span class="card-text">{{ genre.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-
-    <div class="mostbuzzed-large-view">
-        <div class="container-fluid">
-            <div class="row no-gutters">
-                {% for genre in genres %}
-                    <div class="col-md-3">
-                        <div class="card mostbuzzedcard">
-                            <a href="#"><img src={{ genre.img }} class="card-img-top" alt="affiche {{ genre.title }}"></a>
-                            <div class="card-body">
-                                <span class="card-text">{{ genre.nb_buzz }} <i class="fas fa-concierge-bell"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
     </div>
 {% endblock %}
