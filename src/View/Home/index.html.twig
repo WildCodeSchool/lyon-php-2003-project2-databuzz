@@ -15,31 +15,36 @@
             </div>
         </header>
         {% if not session.user is defined %}
-        <div class="col-10 offset-1 h-100 imghome">
-            <img src="/assets/images/conceptHomeDesktop.jpg" class="home_page_visitor_image conceptHomeDesktop">
-            <img src="/assets/images/conceptHomeMobile.jpg" class="home_page_visitor_image conceptHomeMobile">
-        </div>
+            <div class="col-10 offset-1 h-100 imghome">
+                <img src="/assets/images/conceptHomeDesktop.jpg" class="home_page_visitor_image conceptHomeDesktop">
+                <img src="/assets/images/conceptHomeMobile.jpg" class="home_page_visitor_image conceptHomeMobile">
+            </div>
         {% endif %}
     </div>
     <section id="carousselreco">
         <div class="row no-gutters">
-            <div class="col-12"><h2 class="redirectionHomepage"><a href="/mostbuzzed/buzz">Most buzzed TvShows</a></h2></div>
+            <div class="col-12"><h2 class="redirectionHomepage"><a href="/mostbuzzed/buzz">Most buzzed TvShows</a></h2>
+            </div>
         </div>
         <div class="row no-gutters">
             <div class="col-12 recommendations">
                 {% for buzz in buzzes %}
-                    <div class="col-6 col-sm-2 home_buzz_container">
-                        <a href="tvshow/show/{{ buzz.id }}">
-                            {% if not(buzz.img) %}
-                                <img src="/assets/images/no-image.jpg"
-                                     class="card-img-top" alt="{{ buzz.title }}">
-                            {% else %}
-                                <img src="https://image.tmdb.org/t/p/w500{{ buzz.img }}"
-                                     class="card-img-top" alt="{{ buzz.title }}">
-                            {% endif %}
-                            <div class="home_buzz_body">
-                                <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
-                                <div class="home_buzz_text">{{ buzz.nb_buzz }}</div>
+                    <div class="col-6 col-sm-2">
+                        <a href="/tvshow/show/{{ buzz.id }}">
+                            <div class="card mostbuzzedcard">
+                                {% if not(buzz.img) %}
+                                    <img src="/assets/images/no-image.jpg"
+                                         class="card-img-top" alt="{{ buzz.title }}">
+                                {% else %}
+                                    <img src="https://image.tmdb.org/t/p/w500{{ buzz.img }}" class="card-img-top"
+                                         alt="affiche {{ buzz.title }}">
+                                {% endif %}
+                                <div class="row no-gutters home_buzz_body">
+                                    <div class="col-12">
+                                        <p class="home_buzz_text">{{ buzz.nb_buzz }}</p>
+                                        <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>

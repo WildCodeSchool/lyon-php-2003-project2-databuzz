@@ -323,9 +323,9 @@ header {
 
 .buzzer {
     display: flex;
+    align-items: flex-end;
     justify-content: center;
 }
-
 
 .genre {
     font-style: italic;
