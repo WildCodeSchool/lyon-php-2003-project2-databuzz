@@ -1,20 +1,22 @@
 {% extends 'tvshowlayout.html.twig' %}
 
-{% block img_header %}{{ tvshow.img }}{% endblock %}
+{% block img_header %}https://image.tmdb.org/t/p/w1920_and_h800_multi_faces{{ tvshow.img }}{% endblock %}
 {% block alt_img %}{{ tvshow.title }}{% endblock %}
 {% block serietitle %}{{ tvshow.title }}{% endblock %}
 {% block rating_season %}{{ nbBuzzs.nb_buzz }} buzzs{% endblock %}
 {% block synopsis %}{{ tvshow.synopsis }}{% endblock %}
 {% block genre %}{% for genre in genres %}{{ genre.name }} {% endfor %}{% endblock %}
 {% block year %}{{ tvshow.year }}{% endblock %}
-{% block next_episode %}Last episode : Season {{ tvShowInfos.last_episode_to_air.season_number }} Episode {{ tvShowInfos.last_episode_to_air.episode_number }} {% endblock %}
+{% block next_episode %}Last episode : S{{ tvShowInfos.last_episode_to_air.season_number }}E{{ tvShowInfos.last_episode_to_air.episode_number }} {% endblock %}
 {% block on_air %}Aired : {{ tvShowInfos.last_air_date }}{% endblock %}
 {% block buzz %}
     {% if sessions != null %}
         {% if buzzed == 0 %}
-            <a href="/tvshow/buzz/{{ tvshow.id }}">BUZZ</a>
+            <a href="/tvshow/buzz/{{ tvshow.id }}"><img src="/assets/images/buzzer-icon-unpressed.png"
+                                                        class="img-buzzer"></a>
         {% else %}
-            <a href="/tvshow/unbuzz/{{ tvshow.id }}">UNBUZZ</a>
+            <a href="/tvshow/unbuzz/{{ tvshow.id }}"><img src="/assets/images/buzzer-icon-pressed.png"
+                                                          class="img-buzzer"></a>
         {% endif %}
     {% else %}
         Want to buzz {{ tvshow.title }} ? <a href="/auth/signin">Sign in !</a>
@@ -22,45 +24,81 @@
 {% endblock %}
 {% block tvshowlayoutcontent %}
     <main>
-        <div class="row">
-            <div class="col-10">Distribution</div>
-        </div>
-        <div class="row">
-            <div class="col-12 actors">
-                {% for actor in actors %}
-                    <div class="col-6 col-sm-2">
-                        <div class="card">
-                            <img src="https://image.tmdb.org/t/p/w138_and_h175_face/{{ actor.profile_path }}"
-                                 class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ actor.name }}</h5>
-                                <p class="card-text">{{ actor.character }}</p>
-                            </div>
-                        </div>
-
-                    </div>
-                {% endfor %}
+        <div class="container tvshow-content">
+            <div class="row">
+                <div class="col-10"><h2>Distribution</h2></div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-10 offset-1">Seasons</div>
-        </div>
-        {% for season in seasons %}
-            {% if season.season_number > 0  %}
-                <a href="/season/index/{{ season.id }}">
-                    <div class="row justify-content-around">
-                        <div class="row col-10 season-block">
-                            <div class="col-3-no-gutters">
-                                <div class="text">Saison {{ season.season_number }}</div>
+            <div class="row actors">
+                <div class="actors">
+                    <ol class="people scroller">
+                        {% for actor in actors %}
+                            <li class="card">
+                                <img src=
+                                     {% if actor.profile_path is empty %}
+                                     "/assets/images/no-img-actors.png"
+                                {% else %}
+                                    "https://image.tmdb.org/t/p/w138_and_h175_face{{ actor.profile_path }}"
+                                {% endif %}
+                                class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ actor.name }}</h5>
+                                    <p class="card-text">{{ actor.character }}</p>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10"><h2>Seasons</h2></div>
+            </div>
+            {% for season in seasons %}
+                {% if season.season_number > 0 %}
+                    <a href="/season/index/{{ season.id }}">
+                        <div class="row season-block">
+                            <div class="season-background">
+                                <img src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces{{ season.poster_path }}">
                             </div>
-                            <div class="col-12">
-                                <div>{{ season.episode_count }} episodes</div>
+                            <div class="col-xl-3 season-poster">
+                                <img src="https://image.tmdb.org/t/p/w500/{{ season.poster_path }}">
+                            </div>
+                            <div class="col-xl-3">
+                                <b>Saison {{ season.season_number }}</b> | {{ season.episode_count }}
+                                episodes
+                            </div>
+                            <div class="col-xl-6 season-synopsis">
                                 <div>{{ season.overview }}</div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            {% endif %}
-        {% endfor %}
+                    </a>
+                {% endif %}
+            {% endfor %}
+            <div class="row">
+                <div class="col-10"><h2>Recommendations</h2></div>
+            </div>
+            <div class="row">
+                <div class="recommendations">
+                    {% for recommendation in recommendations %}
+                        <div class="col-6 col-sm-2">
+                            <a href="/tvshow/show/{{ recommendation.id }}">
+                                {% if not(recommendation.poster_path) %}
+                                    <img src="/assets/images/no-image.jpg"
+                                         class="card-img-top" alt="{{ recommendation.name }}">
+                                {% else %}
+                                    <img src="https://image.tmdb.org/t/p/w500{{ recommendation.poster_path }}"
+                                         class="card-img-top" alt="{{ recommendation.name }}">
+                                {% endif %}
+                                <div class="row no-gutters home_buzz_body">
+                                    <div class="col-10">
+                                        <p class="home_buzz_text">{{ recommendation.buzzs.nb_buzz }}</p>
+                                        <img class="home_buzz_img" src="/assets/images/buzzer-icon-pressed.png">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </main>
 {% endblock %}

@@ -23,13 +23,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
     {% block stylesheet %}{% endblock %}
-    <link rel="icon" href="/assets/images/favicon.png">
+    <link rel="icon" href="/assets/images/buzzer-icon-pressed.png">
 </head>
 
 <body>
 
 <nav class="navbar sticky-top navbar-expand-lg">
-    <a class="navbar-brand" href="/"><i class="fa fa-home fa-2x"></i></a>
+    <a class="navbar-brand" href="/"><span>TV<b>DB</b></span></a>
     <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -49,10 +49,10 @@
             </li>
             {% if not session.user is defined %}
                 <li class="nav-item">
-                    <a class="nav-link" href="/auth/signin">SIGN IN</a>
+                    <a class="nav-link" href="/auth/signup">SIGN UP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/auth/signup">SIGN UP</a>
+                <a class="nav-link" href="/auth/signin">SIGN IN</a>
                 </li>
             {% endif %}
         </ul>

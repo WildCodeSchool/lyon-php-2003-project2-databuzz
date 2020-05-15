@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>{{ userInfo.username }}'s buzzes!</h1>
+
+    <div class="mostbuzzed-large-view">
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                {% for show in shows %}
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <a href="/tvshow/show/{{ show.id }}">
+                            <div class="card mostbuzzedcard">
+                                <img src=https://image.tmdb.org/t/p/w500{{ show.img }} class="card-img-top">
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
